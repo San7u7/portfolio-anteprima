@@ -441,6 +441,8 @@ body{margin:0;background:#fcfcfd}
 .tr{view-timeline:--t block;--D:calc(var(--h) * .6)}
 .tr::after{content:'';display:block;height:0}
 .tr>.pin{position:sticky;top:var(--pt,48px)}
+.case-ads>.pin{min-height:calc(var(--h) - var(--pt,48px));box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;padding-bottom:48px}
+.case-ads .igf,.case-ads .cbf{margin-left:auto;margin-right:auto}
 .tr>.pin>:not(.gd):not(.apn):not(.hglow){position:relative;z-index:1}
 
 /* timeline solo sulle classi di costruzione (solo proprietà singole: la scorciatoia azzera la timeline) */
@@ -655,6 +657,7 @@ body{margin:0;background:#fcfcfd}
 /* scene fissate: niente pin, niente tratto fermo */
 .tr::after{height:0!important}
 .tr>.pin{position:relative!important;top:auto!important}
+.case-ads>.pin{min-height:0;padding-bottom:0}
 .sx{animation:none!important}
 .snarw{display:none}
 .g12>p.sm[style*="position: absolute"]{position:static!important;white-space:normal!important}
@@ -954,8 +957,8 @@ body{margin:0;background:#fcfcfd}
 <div class="snc sx" style="--a: .69; --b: .76"><b>2 · come si arriva</b><p class="body">Tre domande («Quale patente fa per te») e il messaggio WhatsApp è già scritto. Chi non vuole scrivere lascia il numero.</p></div>
 <div class="snc sx" style="--a: .87; --b: .94"><b>3 · cosa conta</b><p class="body">Conta come contatto solo un invio vero del modulo o un clic su WhatsApp, chiamata, email: una volta sola e con il consenso.</p></div>
 </div>
-<svg class="snarw sx snt" width="60" height="80" viewBox="0 0 60 80" style="position: absolute; left: 796px; top: 430px; overflow: visible; z-index: 4; --a: 0.42; --b: 0.47" aria-hidden="true"><path d="M8 66 C 30 60, 34 30, 52 14" fill="none" stroke="#b3a9ff" stroke-width="2" stroke-linecap="round"></path><path d="M40 14 L 53 13 L 50 26" fill="none" stroke="#b3a9ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-<p class="sm sx snt" style="position: absolute; left: 424px; top: 572px; color: #ffffff; white-space: nowrap; z-index: 4; --a: .42; --b: .47">il clic porta alla pagina Contatti ↗</p>
+<svg class="snarw sx snt" width="60" height="80" viewBox="0 0 60 80" style="position: absolute; left: calc(50% + 172px); top: 430px; overflow: visible; z-index: 4; --a: 0.42; --b: 0.47" aria-hidden="true"><path d="M8 66 C 30 60, 34 30, 52 14" fill="none" stroke="#b3a9ff" stroke-width="2" stroke-linecap="round"></path><path d="M40 14 L 53 13 L 50 26" fill="none" stroke="#b3a9ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<p class="sm sx snt" style="position: absolute; left: calc(50% - 200px); top: 572px; color: #ffffff; white-space: nowrap; z-index: 4; --a: .42; --b: .47">il clic porta alla pagina Contatti ↗</p>
 </div>
 </div>
 </div>
@@ -1010,8 +1013,8 @@ body{margin:0;background:#fcfcfd}
 <div class="snc sx" style="--a: .69; --b: .76"><b>2 · stesse domande ovunque</b><p class="body">Un modello di modulo unico, copiato per ogni auto: le domande sono sempre le stesse.</p></div>
 <div class="snc sx" style="--a: .87; --b: .94"><b>3 · dritto nel registro</b><p class="body">Ogni contatto arriva nel registro dello studio, pronto per la richiamata.</p></div>
 </div>
-<svg class="snarw sx snt" width="60" height="80" viewBox="0 0 60 80" style="position: absolute; left: 796px; top: 430px; overflow: visible; z-index: 4; --a: 0.42; --b: 0.47" aria-hidden="true"><path d="M8 66 C 30 60, 34 30, 52 14" fill="none" stroke="#b3a9ff" stroke-width="2" stroke-linecap="round"></path><path d="M40 14 L 53 13 L 50 26" fill="none" stroke="#b3a9ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-<p class="sm sx snt" style="position: absolute; left: 424px; top: 572px; color: #ffffff; white-space: nowrap; z-index: 4; --a: .42; --b: .47">il clic apre il modulo Meta ↗</p>
+<svg class="snarw sx snt" width="60" height="80" viewBox="0 0 60 80" style="position: absolute; left: calc(50% + 172px); top: 430px; overflow: visible; z-index: 4; --a: 0.42; --b: 0.47" aria-hidden="true"><path d="M8 66 C 30 60, 34 30, 52 14" fill="none" stroke="#b3a9ff" stroke-width="2" stroke-linecap="round"></path><path d="M40 14 L 53 13 L 50 26" fill="none" stroke="#b3a9ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<p class="sm sx snt" style="position: absolute; left: calc(50% - 200px); top: 572px; color: #ffffff; white-space: nowrap; z-index: 4; --a: .42; --b: .47">il clic apre il modulo Meta ↗</p>
 <p class="sm mut sx snt" style="position: absolute; left: 848px; top: 572px; white-space: nowrap; z-index: 4; --a: .46; --b: .5">ricostruzione del modulo, non schermata</p>
 </div>
 </div>
