@@ -1,0 +1,901 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<style>html body .pg{--h:100dvh}</style>
+<title>Appress OS</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0;background:#fcfcfd}
+.gs{--v:#5c4bff;--ink:#121214;--mut:#52586e;--lav:#ece9ff;--sk:#e4e0ff;--line:#ebebf0;--night:#0d0b1a;--h:var(--gh,900px);height:var(--h);overflow-y:auto;overflow-x:clip;background:#fcfcfd;color:var(--ink);font-family:'Söhne',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:17px;line-height:1.5;container-type:inline-size}
+.gs *{box-sizing:border-box}
+.gs a{color:inherit}
+.bar{position:sticky;top:0;z-index:40;height:48px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 32px;background:#fcfcfd;border-bottom:1px solid var(--line);font-size:14px}
+.bar a{text-decoration:none;padding:12px 0}
+.bar .pg{font-weight:600}
+.bar .cv{color:var(--v);font-weight:600}
+.wrap{max-width:1240px;margin:0 auto;padding:0 32px;position:relative}
+.stage{position:relative;padding:72px 0}
+.g12{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;align-items:start}
+.c1-5{grid-column:1/6}.c1-6{grid-column:1/7}.c7-12{grid-column:7/13}.c6-12{grid-column:6/13}.c1-7{grid-column:1/8}.c8-12{grid-column:8/13}
+.eyebrow{font-size:13px;color:var(--mut);margin:0 0 14px}
+h1,h2,h3{margin:0;font-weight:600;letter-spacing:-.02em;line-height:1.05}
+h1{font-size:128px;letter-spacing:-.045em;line-height:.9}
+h2{font-size:44px}
+p{margin:0}
+.lede{font-size:22px;max-width:36ch}
+.small{font-size:13px;color:var(--mut)}
+.src{font-size:12px;color:var(--mut);max-width:60ch;margin-top:10px}
+.ph{display:block;width:100%;height:100%;object-fit:cover}
+.btn{appearance:none;border:0;background:var(--v);font:inherit;font-size:15px;font-weight:600;min-height:44px;padding:0 18px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:transform .15s ease,background-color .15s ease}
+.gs .btn{color:#fff}
+.gs .btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.gs .btn.off{background:#c9c6e0;cursor:default}
+.btn:hover{transform:translateY(-1px)}.btn:active{transform:translateY(1px)}
+.btn:focus-visible,.pick:focus-visible,.rf:focus-visible,.row:focus-visible{outline:3px solid var(--v);outline-offset:3px}
+.tag{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.04em;color:var(--v);box-shadow:inset 0 0 0 1.5px var(--v);padding:2px 8px}
+.mn{font-style:italic;color:var(--v);font-size:14px;margin-top:14px}
+.dark{background:var(--night);color:#fff}
+.dark .small,.dark .src,.dark .eyebrow{color:#aeacc4}
+
+/* ===== apertura ===== */
+.op .opstage{padding-top:56px;padding-bottom:64px}
+.op h1{color:#fff}
+.op .lede{color:#e4e2f2;margin-top:22px}
+.op .ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.op .btn.ghost{color:#fff;box-shadow:inset 0 0 0 1.5px #fff}
+.open{display:block;max-width:1176px;margin:44px auto 0;aspect-ratio:16/10;overflow:hidden;background:#100c22;position:relative}
+.open figcaption{position:absolute;left:0;bottom:0;background:var(--night);color:#cfcde0;font-size:13px;padding:8px 14px}
+
+/* ===== tutorial: schermata titolo ===== */
+.press{font-size:15px;font-weight:600;color:var(--v);margin-top:26px}
+.word{font-size:150px;font-weight:600;letter-spacing:-.05em;line-height:.9;margin:16px 0 0}
+.sub{font-size:22px;max-width:44ch;margin-top:22px}
+.sel{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.sel li{background:#14121f}
+.sel img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover}
+.sel span{display:block;font-size:13px;font-weight:600;color:#fff;padding:8px 10px}
+
+/* ===== livelli ===== */
+.lvl{display:flex;align-items:center;gap:14px;font-size:13px;font-weight:600;letter-spacing:.06em;color:var(--v)}
+.xp{height:8px;background:var(--sk);margin:12px 0 6px;position:relative}
+.xp i{position:absolute;left:0;top:0;bottom:0;width:100%;background:var(--v);transform-origin:left}
+.score{font-size:13px;color:var(--mut);font-variant-numeric:tabular-nums}
+.score b{color:var(--ink)}
+.lv h2{margin-top:22px}
+.lv .intro{margin-top:14px;font-size:17px;max-width:42ch}
+.tips{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:6px}
+.tips li{display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start;padding:10px 12px 10px 10px;font-size:15px;line-height:1.4}
+.tips li b{display:block;font-size:12px;color:var(--v);letter-spacing:.04em;margin-bottom:2px}
+.tips li>i,.hs>i{width:28px;height:28px;background:var(--v);color:#fff;font-style:normal;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center}
+
+.osw{background:#14121f;position:relative}
+.osw .tb{height:34px;display:flex;align-items:center;gap:8px;padding:0 12px;font-size:12px;color:#aeacc4}
+.osw .tb s{width:9px;height:9px;border-radius:50%;background:#3b3950;display:block;text-decoration:none}
+.osw .tb em{font-style:normal;margin-left:10px}
+.osw .tb .tabs{margin-left:auto;display:flex;gap:4px}
+.osw .tb .tabs button{appearance:none;border:0;font:inherit;font-size:12px;font-weight:600;padding:5px 10px;background:#24223a;color:#cfcde0;cursor:pointer}
+.osw .tb .tabs button.on{background:var(--v);color:#fff}
+.osw .scr{position:relative;aspect-ratio:16/10;overflow:hidden}
+.osw .scr img{display:block;width:100%;height:100%;object-fit:cover}
+.hs{position:absolute;border:2.5px solid #fff;background:rgba(92,75,255,.16);z-index:2;pointer-events:none}
+.hs>i{position:absolute;left:-14px;top:-14px}
+
+.prova{background:var(--lav);padding:16px 18px;margin-top:14px}
+.prova header{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:10px}
+.prova header b{font-size:15px}
+.prova header span{font-size:12px;color:var(--v);font-weight:600}
+.prova .row-b{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.pick{appearance:none;border:0;font:inherit;font-size:14px;font-weight:600;padding:9px 12px;background:#fff;color:var(--ink);cursor:pointer;transition:background-color .15s ease,color .15s ease,transform .15s ease}
+.pick:hover{background:var(--sk)}
+.pick.on{background:var(--ink);color:#fff}
+.out{margin-top:10px;font-size:15px;min-height:22px}
+.out b{color:var(--v)}
+.won{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.04em;background:var(--v);color:#fff;padding:3px 8px;margin-right:8px}
+
+/* taskboard demo */
+.tbd{display:grid;gap:4px}
+.row{appearance:none;border:0;font:inherit;text-align:left;display:grid;grid-template-columns:104px 1fr auto;gap:12px;align-items:center;background:#fff;padding:8px 12px;cursor:pointer;font-size:14px;transition:background-color .15s ease}
+.row:hover{background:#f6f5ff}
+.row time{font-variant-numeric:tabular-nums;color:var(--v);font-weight:600;font-size:13px}
+.row small{color:var(--mut);font-size:12px}
+.row.ok span:first-of-type{text-decoration:line-through;text-decoration-thickness:2px;text-decoration-color:var(--v)}
+.row em{font-style:normal;font-size:12px;font-weight:700;color:var(--mut)}
+.row.ok em{color:var(--v)}
+
+/* clienti demo */
+.cli{display:grid;grid-template-columns:44px 1fr 44px;gap:10px;align-items:center}
+.cli .card{background:#fff;padding:12px 16px;display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:center}
+.cli .card i{width:44px;height:44px;border-radius:50%;background:var(--v);color:#fff;font-style:normal;font-weight:700;display:flex;align-items:center;justify-content:center}
+.cli .card small{display:block;color:var(--mut);font-size:13px}
+
+/* intelligence demo */
+.qb{height:8px;background:#fff;margin:4px 0 8px;position:relative}
+.qb i{position:absolute;inset:0;background:var(--v);transform-origin:left;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.ql{display:grid;gap:4px;font-size:14px}
+.ql span{background:#fff;padding:7px 12px}
+.ql .miss{color:#8a4b00}
+
+/* publisher demo */
+.posts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.posts .pick{display:block;text-align:left;padding:10px 12px;line-height:1.35}
+.posts .pick small{display:block;font-weight:400;font-size:12px;opacity:.75}
+.log{font-variant-numeric:tabular-nums;font-size:13px;background:#14121f;color:#cfcde0;padding:8px 12px;margin-top:8px}
+.log b{color:#8fe3b0}
+
+/* controllo demo */
+.cap{background:#fff;padding:12px 14px;font-size:15px;line-height:1.7}
+.rf{appearance:none;border:0;font:inherit;background:transparent;padding:0 2px;cursor:pointer;color:inherit;transition:background-color .15s ease}
+.rf:hover{background:var(--sk)}
+.rf.fx{background:#e1f6e8;color:#0d5b2c;font-weight:600}
+.rf.pr{background:#ffe9cc;color:#8a4b00;font-weight:600}
+
+/* ===== sistema finale ===== */
+.fin h2{font-size:64px}
+.flow{position:relative;margin-top:88px}
+.rail{position:absolute;left:7.14%;right:7.14%;top:27px;height:4px;background:var(--sk)}
+.rail i{position:absolute;inset:0;background:var(--v);transform-origin:left}
+.pkt{position:absolute;top:-34px;left:92.86%;transform:translateX(-50%);white-space:nowrap;font-size:12px;font-weight:700;background:var(--ink);color:#fff;padding:4px 9px;z-index:3}
+.nodes{display:grid;grid-template-columns:repeat(7,1fr);gap:12px;position:relative;z-index:2;list-style:none;padding:0;margin:0}
+.nodes li{display:grid;justify-items:center;text-align:center;gap:8px}
+.nodes li>i{width:58px;height:58px;border-radius:50%;background:var(--v);color:#fff;font-style:normal;font-weight:700;font-size:20px;display:flex;align-items:center;justify-content:center}
+.nodes li b{font-size:20px;line-height:1.2}
+.nodes li span{font-size:15px;color:#2b2d36;line-height:1.35}
+.nodes li small{font-size:12px;font-weight:700;color:var(--v);background:var(--lav);padding:3px 8px}
+.nodes li.gate>i{background:var(--ink)}
+.nodes li.gate small{background:var(--ink);color:#fff}
+.nodes li.wait small{background:#ffe9cc;color:#8a4b00}
+.stamp{display:inline-block;margin-top:34px;font-size:15px;font-weight:600;background:var(--ink);color:#fff;padding:12px 18px}
+.stamp em{font-style:normal;color:#b3a9ff}
+
+/* ===== perché ci vuole tanto ===== */
+.why{display:grid;gap:64px;margin-top:64px}
+.why article{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:start}
+.why h3{grid-column:1/6;font-size:56px;letter-spacing:-.03em;line-height:1}
+.why .wb{grid-column:6/13;font-size:19px;line-height:1.55}
+.why .wb p+p{margin-top:10px}
+.why .fact{display:inline-block;margin-top:14px;font-size:13px;font-weight:600;color:var(--v);background:var(--lav);padding:4px 10px}
+
+/* ===== lavori in corso ===== */
+.wip{background:var(--v);color:#fff}
+.wip .eyebrow{color:#dcd8ff}
+.wip h2{font-size:96px;letter-spacing:-.04em}
+.load{height:14px;background:rgba(255,255,255,.25);margin-top:32px;position:relative}
+.load i{position:absolute;inset:0;background:#fff;transform-origin:left;transform:scaleX(.88)}
+.loadl{display:flex;justify-content:space-between;font-size:14px;margin-top:8px;color:#ecebff}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.cols h3{font-size:26px;margin-bottom:14px}
+.cols ul{margin:0;padding:0;list-style:none;display:grid;gap:12px;font-size:16px;line-height:1.45}
+.cols li{background:rgba(255,255,255,.12);padding:12px 14px}
+.cols li b{display:block}
+.wip .end{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:48px}
+.gs .wip .btn{background:#fff;color:var(--v)}
+.gs .wip .btn.ghost{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px #fff}
+.wip .mn{color:#fff;font-size:17px;margin-top:28px}
+
+
+/* ===== come si apre ===== */
+.ap h2{font-size:64px}
+.ap .apl{font-size:20px;max-width:56ch;margin-top:14px}
+.scenes{margin-top:40px;display:grid;gap:64px}
+.scn{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;align-items:center}
+.scn .st{grid-column:1/5}
+.scn .sf{grid-column:5/13;margin:0}
+.st .k{font-size:13px;font-weight:600;letter-spacing:.06em;color:var(--v)}
+.st h3{font-size:52px;letter-spacing:-.035em;line-height:1;margin-top:12px}
+.st q{display:block;font-size:18px;line-height:1.45;margin-top:16px;quotes:"«" "»";color:#2b2d36}
+.st q::before{content:open-quote}.st q::after{content:close-quote}
+.st p{font-size:16px;margin-top:12px}
+.st .stat{display:inline-block;margin-top:16px;font-size:12px;font-weight:700;padding:4px 10px;background:var(--lav);color:var(--v)}
+.st .stat.soon{background:#ffe9cc;color:#8a4b00}
+.st .stat.demo{background:#e4f3ff;color:#0b4f7a}
+.pdots{display:flex;gap:10px;align-items:center;margin-top:28px}
+.pdots i{width:14px;height:14px;border-radius:50%;display:block;background:var(--c)}
+.pdots span{font-size:13px;color:var(--mut);margin-left:6px}
+
+/* studio e report demo */
+.ed{background:#fff;padding:12px 14px;font-size:14px}
+.ed b{display:block;font-size:15px}
+.ed small{color:var(--mut)}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-bottom:10px}
+.steps span{font-size:12px;font-weight:700;padding:7px 6px;background:#fff;color:var(--mut);text-align:center}
+.steps span.on{background:var(--v);color:#fff}
+.steps span.ok{background:var(--sk);color:var(--v)}
+
+/* livello bonus */
+.bonus .wrap{padding-top:120px;padding-bottom:120px}
+.bonus h2{font-size:64px;margin-top:18px}
+.bonus .intro{font-size:19px;margin-top:16px;max-width:40ch;color:#e4e2f2}
+.bonus .prova{margin-top:0;background:#1d1a30;color:#fff}
+.bonus .prova header span{color:#b3a9ff}
+.bonus .cap{font-size:20px;color:var(--ink)}
+.bonus .out{color:#e4e2f2}
+.bonus .src{color:#aeacc4}
+.bonus .lvl{color:#b3a9ff}
+.bonus .score{color:#aeacc4}.bonus .score b{color:#fff}
+.bonus ul{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:10px;font-size:16px}
+.bonus ul li{background:#1d1a30;padding:12px 14px;color:#e4e2f2}
+.bonus ul li b{color:#fff}
+
+/* ===== movimento legato allo scorrimento ===== */
+@supports (animation-timeline: view()){
+@media (prefers-reduced-motion: no-preference){
+.tr{view-timeline:--t block;height:calc(var(--len,2.4) * var(--h))}
+.tr>.pin{position:sticky;top:48px;height:calc(var(--h) - 48px);overflow:hidden;display:flex;align-items:center}
+.tr>.pin>.wrap{width:100%}
+.tr .stage{padding:20px 0}
+.tr *{animation-timeline:--t;animation-range:contain 0% contain 100%;animation-fill-mode:both;animation-timing-function:linear;animation-duration:1ms}
+
+/* apertura: la cattura vera si apre a tutto schermo */
+.op-tr>.pin{display:block}
+.op-tr .opstage{position:relative;z-index:2}
+.op-tr .op-txt{animation-name:k-out;animation-range:contain 18% contain 30%}
+.op-tr .open{position:absolute;inset:0;margin:0;max-width:none;aspect-ratio:auto;z-index:1;animation-name:k-open;animation-range:contain 0% contain 62%}
+.op-tr .open img{animation-name:k-zoomin;animation-range:contain 30% contain 100%}
+.op-tr .open figcaption{animation-name:k-fade;animation-range:contain 60% contain 70%}
+
+/* schermata titolo del tutorial */
+.ti-tr .word{animation-name:k-zoom;animation-range:contain 0% contain 34%;transform-origin:left bottom}
+.ti-tr .sub{animation-name:k-in;animation-range:contain 30% contain 46%}
+.ti-tr .sel li{animation-name:k-in}
+.ti-tr .press{animation-name:k-blink;animation-range:contain 70% contain 100%}
+
+/* livelli */
+.lv-tr .xp i{animation-name:k-xp;animation-range:contain 4% contain 92%}
+.lv-tr .osw{animation-name:k-rise;animation-range:contain 0% contain 16%}
+.lv-tr .lvl,.lv-tr h2{animation-name:k-in;animation-range:contain 0% contain 10%}
+.lv-tr .intro{animation-name:k-in;animation-range:contain 4% contain 14%}
+.lv-tr .tips li{animation-name:k-tip}
+.lv-tr .tips li:nth-child(1),.lv-tr .hs:nth-of-type(1){animation-range:contain 14% contain 38%}
+.lv-tr .tips li:nth-child(2),.lv-tr .hs:nth-of-type(2){animation-range:contain 36% contain 60%}
+.lv-tr .tips li:nth-child(3),.lv-tr .hs:nth-of-type(3){animation-range:contain 58% contain 82%}
+.lv-tr .hs{animation-name:k-hs}
+.lv-tr .prova{animation-name:k-in;animation-range:contain 56% contain 68%}
+
+/* sistema finale */
+.fin-tr h2,.fin-tr .lede{animation-name:k-in;animation-range:contain 0% contain 10%}
+.fin-tr .rail i{animation-name:k-rail;animation-range:contain 10% contain 92%}
+.fin-tr .pkt{animation-name:k-pkt;animation-range:contain 10% contain 92%}
+.fin-tr .nodes li{animation-name:k-node}
+.fin-tr .nodes li:nth-child(1){animation-range:contain 8% contain 14%}
+.fin-tr .nodes li:nth-child(2){animation-range:contain 18% contain 24%}
+.fin-tr .nodes li:nth-child(3){animation-range:contain 28% contain 34%}
+.fin-tr .nodes li:nth-child(4){animation-range:contain 38% contain 44%}
+.fin-tr .nodes li:nth-child(5){animation-range:contain 48% contain 54%}
+.fin-tr .nodes li:nth-child(6){animation-range:contain 58% contain 64%}
+.fin-tr .nodes li:nth-child(7){animation-range:contain 84% contain 90%}
+.fin-tr .nodes li.gate>i{animation-name:k-pulse;animation-range:contain 60% contain 80%}
+.fin-tr .stamp{animation-name:k-in;animation-range:contain 64% contain 72%}
+.fin-tr .src{animation-name:k-in;animation-range:contain 88% contain 96%}
+
+
+/* come si apre: una scena per volta */
+.ap-tr .scenes{position:relative;height:540px;display:block;margin-top:28px}
+.ap-tr .scn{position:absolute;inset:0}
+.ap-tr .scn>*{animation-range:var(--a)}
+.ap-tr .scn .sf{animation-name:k-scn}
+.ap-tr .scn .st{animation-name:k-stx}
+.ap-tr .scn:first-child .sf{animation-name:k-scn0}.ap-tr .scn:first-child .st{animation-name:k-stx0}
+.ap-tr .scn:last-child .sf{animation-name:k-scnL}.ap-tr .scn:last-child .st{animation-name:k-stxL}
+.ap-tr .pdots i{animation-name:k-dot}
+.bonus .prova,.bonus ul li{animation:k-in 1ms linear both;animation-timeline:view();animation-range:entry 5% cover 30%}
+
+/* perché, lavori in corso: entrano quando arrivano */
+.why article,.cols>div,.wip h2,.wip .load{animation:k-in 1ms linear both;animation-timeline:view();animation-range:entry 5% cover 30%}
+.why article .fact{animation:k-in 1ms linear both;animation-timeline:view();animation-range:entry 30% cover 40%}
+.wip .load i{animation:k-load 1ms linear both;animation-timeline:view();animation-range:entry 20% cover 50%}
+
+/* mobile: niente scene fissate, si entra scorrendo */
+@container (max-width:640px){
+.tr.flat{height:auto}
+.tr.flat>.pin{position:static;height:auto;overflow:visible;display:block}
+.tr.flat .stage{padding:48px 0}
+.tr.flat *{animation:none}
+.tr.flat .scn,.tr.flat .osw,.tr.flat .prova,.tr.flat .nodes li{animation:k-in 1ms linear both;animation-timeline:view();animation-range:entry 0% cover 30%}
+.op-tr.flat .open{position:relative;inset:auto;margin:28px 0 0;aspect-ratio:16/10}
+.ap-tr.flat .scenes{height:auto;display:grid;gap:44px}
+.ap-tr.flat .scn{position:relative;inset:auto}
+}
+}}
+@keyframes k-scn{0%{opacity:0;transform:translateY(40px) scale(.97)}25%,75%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-30px)}}
+@keyframes k-scn0{0%,75%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-30px)}}
+@keyframes k-scnL{0%{opacity:0;transform:translateY(40px) scale(.97)}25%,100%{opacity:1;transform:none}}
+@keyframes k-stx{0%,27%{opacity:0;transform:translateY(20px)}36%,64%{opacity:1;transform:none}73%,100%{opacity:0;transform:translateY(-20px)}}
+@keyframes k-stx0{0%,64%{opacity:1;transform:none}73%,100%{opacity:0;transform:translateY(-20px)}}
+@keyframes k-stxL{0%,27%{opacity:0;transform:translateY(20px)}36%,100%{opacity:1;transform:none}}
+@keyframes k-dot{0%{opacity:.3;transform:none}25%,75%{opacity:1;transform:scale(1.6)}100%{opacity:.3;transform:none}}
+@keyframes k-out{0%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-40px)}}
+@keyframes k-open{0%,28%{transform:translateY(25%) scale(.46)}100%{transform:none}}
+@keyframes k-zoomin{0%{transform:none}100%{transform:scale(1.08)}}
+@keyframes k-fade{0%{opacity:0}100%{opacity:1}}
+@keyframes k-zoom{0%{opacity:0;transform:scale(2.2)}35%{opacity:1}100%{opacity:1;transform:none}}
+@keyframes k-in{0%{opacity:0;transform:translateY(24px)}100%{opacity:1;transform:none}}
+@keyframes k-blink{0%,20%,40%,60%,80%{opacity:1}10%,30%,50%,70%,90%{opacity:.2}100%{opacity:1}}
+@keyframes k-xp{0%{transform:scaleX(0)}100%{transform:scaleX(1)}}
+@keyframes k-rise{0%{opacity:.2;transform:translateY(120px) scale(.9)}100%{opacity:1;transform:none}}
+@keyframes k-tip{0%{opacity:.35;background-color:transparent}12%,88%{opacity:1;background-color:#ece9ff}100%{opacity:1;background-color:transparent}}
+@keyframes k-hs{0%{opacity:0;transform:scale(1.25)}12%,88%{opacity:1;transform:none}100%{opacity:0;transform:none}}
+@keyframes k-rail{0%{transform:scaleX(0)}55%,72%{transform:scaleX(.83)}100%{transform:scaleX(1)}}
+@keyframes k-pkt{0%{left:7.14%}55%,72%{left:78.57%}100%{left:92.86%}}
+@keyframes k-node{0%{opacity:.25;transform:translateY(16px)}100%{opacity:1;transform:none}}
+@keyframes k-pulse{0%,100%{transform:none}25%,75%{transform:scale(1.15)}50%{transform:scale(1)}}
+@keyframes k-load{0%{transform:scaleX(0)}100%{transform:scaleX(.88)}}
+
+/* ===== telefono 390 ===== */
+@container (max-width:640px){
+.bar{padding:0 16px}.bar .pg{display:none}
+.wrap{padding:0 16px}
+.g12{grid-template-columns:1fr;gap:20px}
+.g12>*{grid-column:1/-1 !important}
+h1{font-size:64px}h2{font-size:32px}
+.lede{font-size:18px}
+.stage{padding:56px 0}
+.op .opstage{padding-top:36px;padding-bottom:48px}
+.word{font-size:84px}.sub{font-size:18px}
+.lv h2{margin-top:16px}
+.tips li{font-size:14px}
+.osw .tb em{display:none}
+.hs>i{width:22px;height:22px;font-size:12px;left:-10px;top:-10px}
+.row{grid-template-columns:1fr auto;gap:2px 10px}
+.row time{grid-column:1/-1}
+.posts{grid-template-columns:1fr}
+.fin h2{font-size:40px}
+.rail,.pkt{display:none}
+.nodes{grid-template-columns:1fr;gap:10px}
+.nodes li{grid-template-columns:44px 1fr;justify-items:start;text-align:left;gap:2px 14px;background:#fff;padding:12px}
+.nodes li>i{width:44px;height:44px;font-size:16px;grid-row:1/4}
+.why{gap:44px;margin-top:40px}
+.why article{grid-template-columns:1fr;gap:12px}
+.why h3,.why .wb{grid-column:1/-1}
+.why h3{font-size:36px}.why .wb{font-size:17px}
+.wip h2{font-size:52px}
+.ap h2,.bonus h2{font-size:38px}
+.scenes{gap:44px}
+.scn{grid-template-columns:1fr;gap:16px}
+.scn .st,.scn .sf{grid-column:1/-1}
+.st h3{font-size:36px}
+.pdots{display:none}
+.bonus .wrap{padding-top:64px;padding-bottom:64px}
+.bonus .cap{font-size:17px}
+.steps span{font-size:10px;padding:6px 2px}
+
+.cols{grid-template-columns:1fr;gap:28px}
+}
+</style>
+</helmet>
+<div class="gs">
+
+<header class="bar">
+<a href="#portfolio">← Torna al portfolio</a>
+<span class="pg">Appress OS</span>
+<a class="cv" href="#cv">CV ↓</a>
+</header>
+
+<!-- APERTURA: la cattura vera si apre a tutto schermo -->
+<section class="tr op-tr op dark flat" style="--len: 2.6" id="inizio">
+<div class="pin">
+<div class="wrap opstage"><div class="op-txt">
+<p class="eyebrow">Sistemi AI · progetto 1 · interno ad Appress Studio · catture vere, novembre 2026</p>
+<h1>Appress OS.</h1>
+<p class="lede">Il sistema interno di Appress Studio. Prepara il lavoro, poi si ferma davanti a una persona.</p>
+<div class="ctas"><a class="btn" href="#apre">Guarda come si apre ↓</a><a class="btn ghost" href="#tutorial">Vai alle sezioni pronte</a></div>
+</div></div>
+<figure class="open">
+<img class="ph" src="./assets/285d7fbed4051d37c1b4633dc1334ce8.jpg" alt="Appress OS, schermata d'ingresso: Benvenuto a bordo, sette mondi operativi lungo la rotta, pulsante Sali al ponte di comando">
+<figcaption>Cattura vera · l'ingresso della Rotta</figcaption>
+</figure>
+</div>
+</section>
+
+<!-- COME SI APRE: benvenuto, decollo, i sette pianeti -->
+<section class="tr ap-tr ap flat" style="--len: 9" id="apre">
+<div class="pin"><div class="wrap"><div class="stage">
+<p class="eyebrow">Capitolo 1 · come si apre · catture vere del servizio, novembre 2026</p>
+<h2>Come si apre.</h2>
+<div class="scenes">
+<article class="scn" style="--a: contain 0% contain 13%"><div class="st"><p class="k">PASSO 1 · IL BENVENUTO</p><h3>Benvenuto a bordo.</h3><q>Sette mondi operativi ti aspettano lungo la rotta.</q><p>Si entra da qui. Un pulsante solo, «Sali al ponte di comando». La navicella è il cursore, e sì: si muove.</p></div><figure class="sf osw"><div class="tb" aria-hidden="true"><s></s><s></s><s></s><em>Appress OS · Rotta</em></div><div class="scr"><img src="./assets/285d7fbed4051d37c1b4633dc1334ce8.jpg" alt="Schermata d'ingresso Benvenuto a bordo con il pulsante Sali al ponte di comando"></div></figure></article>
+<article class="scn" style="--a: contain 9% contain 24%"><div class="st"><p class="k">PASSO 2 · IL DECOLLO</p><h3>Si apre il portellone.</h3><p>Un passaggio animato di pochi secondi, poi la mappa. L'idea: entrare in un posto, non aprire un file.</p></div><figure class="sf osw"><div class="tb" aria-hidden="true"><s></s><s></s><s></s><em>Appress OS · Rotta</em></div><div class="scr"><img src="./assets/9f47f379122c64c8005f11db1da8ecb3.jpg" alt="Il passaggio animato dopo Sali al ponte di comando: un portellone che si apre"></div></figure></article>
+<article class="scn" style="--a: contain 20% contain 35%"><div class="st"><p class="k">PIANETA 1 DI 7</p><h3>Taskboard.</h3><p class="small" style="margin-top: 10px">Dalla pagina vera:</p><q>La mappa stellare dei flussi: ogni colonna una fase, dal decollo alla consegna.</q><p>In pratica legge i compiti da ClickUp e ne fa il piano della giornata, con fasce orarie e ore stimate.</p><span class="stat ">Stato: pronta</span></div><figure class="sf osw"><div class="tb" aria-hidden="true"><s></s><s></s><s></s><em>Appress OS · Rotta · 01 / 07</em></div><div class="scr"><img src="./assets/1b59eb6b0937f9fa18584aeed1ea0057.jpg" alt="Pianeta Taskboard sulla mappa di Appress OS"></div></figure></article>
+<article class="scn" style="--a: contain 31% contain 46%"><div class="st"><p class="k">PIANETA 2 DI 7</p><h3>Clienti.</h3><p class="small" style="margin-top: 10px">Dalla pagina vera:</p><q>La costellazione dei clienti: tutti i mondi che segui, a portata di rotta.</q><p>Ogni cliente è una scheda con lo stato del piano editoriale. Da qui si entra nel suo spazio di lavoro.</p><span class="stat ">Stato: pronta</span></div><figure class="sf osw"><div class="tb" aria-hidden="true"><s></s><s></s><s></s><em>Appress OS · Rotta · 02 / 07</em></div><div class="scr"><img src="./assets/c05781fbc137032d39b1e3319bb5006c.jpg" alt="Pianeta Clienti sulla mappa di Appress OS"></div></figure></article>
+<article class="scn" style="--a: contain 42% contain 57%"><div class="st"><p class="k">PIANETA 3 DI 7</p><h3>Intelligence.</h3><p class="small" style="margin-top: 10px">Dalla pagina vera:</p><q>La sala di analisi: evidenze, vincoli e direzioni prima di decidere la rotta editoriale.</q><p>Propone il quadro strategico del mese in cinque tappe. Una persona lo conferma o lo corregge.</p><span class="stat demo">Stato: prototipo, dati demo</span></div><figure class="sf osw"><div class="tb" aria-hidden="true"><s></s><s></s><s></s><em>Appress OS · Rotta · 03 / 07</em></div><div class="scr"><img src="./assets/bfae358ac4e6d51d40699c37ca83f0e1.jpg" alt="Pianeta Intelligence sulla mappa di Appress OS"></div></figure></article>
+<article class="scn" style="--a: contain 53% contain 68%"><div class="st"><p class="k">PIANETA 4 DI 7</p><h3>Studio Editoriale.</h3><p class="small" style="margin-top: 10px">Dalla pagina vera:</p><q>La camera di scrittura: impostazione, PED, contenuti e revisione, tutto in un posto.</q><p>Si sceglie il cliente e il mese, si scrive, si manda in revisione. Approvare il testo e pubblicarlo sono due sì diversi.</p><span class="stat ">Stato: pronta</span></div><figure class="sf osw"><div class="tb" aria-hidden="true"><s></s><s></s><s></s><em>Appress OS · Rotta · 04 / 07</em></div><div class="scr"><img src="./assets/94c3da8f2bd496d786760391c23cfa65.jpg" alt="Pianeta Studio Editoriale sulla mappa di Appress OS"></div></figure></article>
+<article class="scn" style="--a: contain 64% contain 79%"><div class="st"><p class="k">PIANETA 5 DI 7</p><h3>Controllo e Performance.</h3><p class="small" style="margin-top: 10px">Dalla pagina vera:</p><q>Qualità, controllo e performance dei contenuti e dei processi.</q><p>Sarà il pianeta della qualità e dei numeri. Sulla mappa c'è scritto «in arrivo», ed è la verità.</p><span class="stat soon">Stato: in arrivo</span></div><figure class="sf osw"><div class="tb" aria-hidden="true"><s></s><s></s><s></s><em>Appress OS · Rotta · 05 / 07</em></div><div class="scr"><img src="./assets/621c249e71ffaf9bb94f2bca286bda8e.jpg" alt="Pianeta Controllo e Performance sulla mappa, segnato in arrivo"></div></figure></article>
+<article class="scn" style="--a: contain 75% contain 90%"><div class="st"><p class="k">PIANETA 6 DI 7</p><h3>Social.</h3><p class="small" style="margin-top: 10px">Dalla pagina vera:</p><q>La rampa di lancio: i PED diventano post programmati su Instagram e Facebook, dopo l'approvazione.</q><p>Dentro c'è il Meta Publisher: importa il piano da Figma, prende i file dal NAS, programma solo dopo un sì.</p><span class="stat ">Stato: pronta, pubblica davvero</span></div><figure class="sf osw"><div class="tb" aria-hidden="true"><s></s><s></s><s></s><em>Appress OS · Rotta · 06 / 07</em></div><div class="scr"><img src="./assets/6ffec271ee58c8fd60911584e0b0003d.jpg" alt="Pianeta Social sulla mappa di Appress OS"></div></figure></article>
+<article class="scn" style="--a: contain 86% contain 100%"><div class="st"><p class="k">PIANETA 7 DI 7</p><h3>Report e Consegna.</h3><p class="small" style="margin-top: 10px">Dalla pagina vera:</p><q>Report periodici e consegna finale al cliente.</q><p>Cinque passi, dalla preparazione allo storico. Il sistema prepara lo stato, una persona decide il passo.</p><span class="stat ">Stato: pronta</span></div><figure class="sf osw"><div class="tb" aria-hidden="true"><s></s><s></s><s></s><em>Appress OS · Rotta · 07 / 07</em></div><div class="scr"><img src="./assets/023d03e872e1ea82a64b58bce0a6e9b5.jpg" alt="Pianeta Report e Consegna sulla mappa di Appress OS"></div></figure></article>
+</div>
+<div class="pdots" aria-hidden="true"><i style="--c: #5fd6c5; animation-range: contain 20% contain 35%"></i><i style="--c: #6f8cff; animation-range: contain 31% contain 46%"></i><i style="--c: #e07ad8; animation-range: contain 42% contain 57%"></i><i style="--c: #9b7bff; animation-range: contain 53% contain 68%"></i><i style="--c: #b9b8c6; animation-range: contain 64% contain 79%"></i><i style="--c: #ff8a5c; animation-range: contain 75% contain 90%"></i><i style="--c: #a9b8a0; animation-range: contain 86% contain 100%"></i><span>sette pianeti sulla rotta</span></div>
+</div></div></div>
+</section>
+
+<!-- SCHERMATA TITOLO DEL TUTORIAL -->
+<section class="tr ti-tr flat" style="--len: 1.8" id="tutorial">
+<div class="pin"><div class="wrap"><div class="stage">
+<div class="g12" style="align-items: center"><div class="c1-6">
+<p class="eyebrow">Capitolo 2 · le sezioni già pronte · sei livelli più uno bonus</p>
+<p class="word">Tutorial.</p>
+<p class="sub">Le sezioni che funzionano già, una per livello, come il tutorial di un videogioco: tre suggerimenti sulla cattura vera e una mini prova da fare con le tue mani. I dati delle prove sono inventati, e lo scriviamo ogni volta.</p>
+<p class="press">Scorri per iniziare ↓</p>
+</div>
+<div class="c7-12">
+<ul class="sel" aria-label="I sei livelli">
+<li style="animation-range: contain 30% contain 42%"><img src="./assets/2fa1ef898a7c879413e6e3b2065a66b6.jpg" alt=""><span>Livello 1 · Taskboard</span></li>
+<li style="animation-range: contain 34% contain 46%"><img src="./assets/fbd0bd26a226c3800572075eff721289.jpg" alt=""><span>Livello 2 · Clienti</span></li>
+<li style="animation-range: contain 38% contain 50%"><img src="./assets/62c10d39263be02521f29808188d6beb.jpg" alt=""><span>Livello 3 · Studio editoriale</span></li>
+<li style="animation-range: contain 42% contain 54%"><img src="./assets/2a4596c39b7cb81df2ea06091c7fb9d4.jpg" alt=""><span>Livello 4 · Intelligence</span></li>
+<li style="animation-range: contain 46% contain 58%"><img src="./assets/ae59940e056ebd47a02eb70394db1e6c.jpg" alt=""><span>Livello 5 · Report e consegna</span></li>
+<li style="animation-range: contain 50% contain 62%"><img src="./assets/6392b5671f18682e842d0fda33ad4917.jpg" alt=""><span>Livello 6 · Social</span></li>
+</ul>
+</div></div>
+</div></div></div>
+</section>
+
+<!-- LIVELLO 1 · TASKBOARD -->
+<section class="tr lv-tr lv flat" style="--len: 2.6">
+<div class="pin"><div class="wrap"><div class="stage">
+<div class="g12" style="align-items: center">
+<div class="c1-5">
+<p class="lvl">LIVELLO 1 DI 6 · TASKBOARD</p>
+<div class="xp" aria-hidden="true"><i></i></div>
+<p class="score">Prove superate: <b>{{score}}</b> di 7</p>
+<h2>La Taskboard. Ti dice cosa fare dopo.</h2>
+<p class="intro">Legge i compiti da ClickUp e li mette in fila nella giornata, con le ore stimate. La mattina non si parte da una lista: si parte da un piano.</p>
+<ol class="tips">
+<li><i>A</i><span><b>Suggerimento</b>Lo stato del giorno in due parole. Oggi: «sotto carico», 5 compiti di punta e 6 messaggi Slack.</span></li>
+<li><i>B</i><span><b>Suggerimento</b>Il piano di oggi: fascia oraria, cliente, fase del piano editoriale, ore stimate, chi lo fa.</span></li>
+<li><i>C</i><span><b>Suggerimento</b>Un solo pulsante acceso: «Apri il prossimo focus». Scegliere cosa viene dopo è il lavoro che il sistema ti toglie.</span></li>
+</ol>
+</div>
+<div class="c6-12">
+<div class="osw">
+<div class="tb" aria-hidden="true"><s></s><s></s><s></s><em>Appress OS · Taskboard</em></div>
+<div class="scr">
+<img src="./assets/2fa1ef898a7c879413e6e3b2065a66b6.jpg" alt="Taskboard di Appress OS: stato Sotto carico, 5 focus oggi, piano di oggi con fasce orarie per IGM Giarre, IGM Augusta, IGM Floridia e Nordal">
+<span class="hs" style="left: 22%; top: 34%; width: 19.5%; height: 8.5%"><i>A</i></span>
+<span class="hs" style="left: 22%; top: 49%; width: 56%; height: 43%"><i>B</i></span>
+<span class="hs" style="left: 63.5%; top: 44%; width: 14%; height: 5.5%"><i>C</i></span>
+</div>
+</div>
+<div class="prova">
+<header><b>Mini prova · segna una fascia come fatta</b><span>righe dalla cattura, spunte tue</span></header>
+<div class="tbd">
+<button class="row {{t1}}" onClick="{{tog1}}"><time>09:00–11:18</time><span>IGM Giarre <small>· PED dicembre, da graficare</small></span><em>{{t1l}}</em></button>
+<button class="row {{t2}}" onClick="{{tog2}}"><time>11:18–13:48</time><span>IGM Augusta <small>· correzione refusi</small></span><em>{{t2l}}</em></button>
+<button class="row {{t3}}" onClick="{{tog3}}"><time>17:00–19:30</time><span>Nordal <small>· PED dicembre, in coda</small></span><em>{{t3l}}</em></button>
+</div>
+<p class="out" aria-live="polite">{{tbMsg}}</p>
+</div>
+</div>
+</div>
+</div></div></div>
+</section>
+
+<!-- LIVELLO 2 · CLIENTI -->
+<section class="tr lv-tr lv flat" style="--len: 2.6">
+<div class="pin"><div class="wrap"><div class="stage">
+<div class="g12" style="align-items: center">
+<div class="c1-5">
+<p class="lvl">LIVELLO 2 DI 6 · CLIENTI</p>
+<div class="xp" aria-hidden="true"><i></i></div>
+<p class="score">Prove superate: <b>{{score}}</b> di 7</p>
+<h2>I clienti. Ognuno è un pianeta.</h2>
+<p class="intro">Un carosello di schede: per ogni cliente lo stato del piano editoriale, il mese, l'attività in corso. Da qui si entra nel suo spazio di lavoro.</p>
+<ol class="tips">
+<li><i>A</i><span><b>Suggerimento</b>La scheda in primo piano: stato del PED, mese, attività. Le altre aspettano dietro, sfocate (anche per riservatezza).</span></li>
+<li><i>B</i><span><b>Suggerimento</b>La ricerca per nome. In archivio ci sono 22 clienti.</span></li>
+<li><i>C</i><span><b>Suggerimento</b>Il riepilogo in basso: quanti in lavorazione, quanti in attesa del cliente, quanti con lo stato da verificare.</span></li>
+</ol>
+</div>
+<div class="c6-12">
+<div class="osw">
+<div class="tb" aria-hidden="true"><s></s><s></s><s></s><em>Appress OS · Clienti</em></div>
+<div class="scr">
+<img src="./assets/fbd0bd26a226c3800572075eff721289.jpg" alt="Pianeta Clienti di Appress OS: scheda AuraDigital in primo piano con stato PED in lavorazione, ricerca per nome su 22 clienti e riepilogo in basso">
+<span class="hs" style="left: 35.5%; top: 33%; width: 29%; height: 49.5%"><i>A</i></span>
+<span class="hs" style="left: 11%; top: 17%; width: 78%; height: 6%"><i>B</i></span>
+<span class="hs" style="left: 11%; top: 89%; width: 78%; height: 6%"><i>C</i></span>
+</div>
+</div>
+<div class="prova">
+<header><b>Mini prova · gira il carosello ed entra</b><span>stati inventati</span></header>
+<div class="cli">
+<button class="pick" onClick="{{cliPrev}}" aria-label="Cliente precedente">‹</button>
+<div class="card"><i>{{cliIni}}</i><div><b>{{cliName}}</b><small>{{cliState}} · {{cliPos}} di 5</small></div></div>
+<button class="pick" onClick="{{cliNext}}" aria-label="Cliente successivo">›</button>
+</div>
+<div class="row-b" style="margin-top: 10px"><button class="btn" onClick="{{cliOpen}}">Apri workspace</button></div>
+<p class="out" aria-live="polite">{{cliMsg}}</p>
+</div>
+</div>
+</div>
+</div></div></div>
+</section>
+
+<!-- LIVELLO 3 · STUDIO EDITORIALE -->
+<section class="tr lv-tr lv flat" style="--len: 2.6">
+<div class="pin"><div class="wrap"><div class="stage">
+<div class="g12" style="align-items: center">
+<div class="c1-5">
+<p class="lvl">LIVELLO 3 DI 6 · STUDIO EDITORIALE</p>
+<div class="xp" aria-hidden="true"><i></i></div>
+<p class="score">Prove superate: <b>{{score}}</b> di 7</p>
+<h2>Lo Studio. Si scrive qui, si approva qui.</h2>
+<p class="intro">Si sceglie un cliente e un mese, e tutto il lavoro di scrittura sta in quattro stanze. Prima di uscire, ogni contenuto passa dalla revisione.</p>
+<ol class="tips">
+<li><i>A</i><span><b>Suggerimento</b>«Cosa richiede la tua attenzione adesso»: la prima riga dice se per quel cliente c'è qualcosa da fare. Per Nordal, oggi, niente.</span></li>
+<li><i>B</i><span><b>Suggerimento</b>Quattro stanze: Crea, Revisione, PED, Chat. Si lavora sempre su un cliente e un mese alla volta.</span></li>
+<li><i>C</i><span><b>Suggerimento</b>La regola in arancione: approvare un testo e pubblicarlo sono due consensi separati. La consegna al cliente è un passo a parte.</span></li>
+</ol>
+</div>
+<div class="c6-12">
+<div class="osw">
+<div class="tb" aria-hidden="true"><s></s><s></s><s></s><em>Appress OS · Studio Editoriale</em></div>
+<div class="scr">
+<img src="./assets/62c10d39263be02521f29808188d6beb.jpg" alt="Studio Editoriale di Appress OS per Nordal, novembre 2026: scheda Revisione con la regola approvazione editoriale e promozione">
+<span class="hs" style="left: 17.5%; top: 16.5%; width: 65%; height: 9.5%"><i>A</i></span>
+<span class="hs" style="left: 40.5%; top: 26%; width: 18.5%; height: 5%"><i>B</i></span>
+<span class="hs" style="left: 18.5%; top: 37.5%; width: 63%; height: 6.8%"><i>C</i></span>
+</div>
+</div>
+<div class="prova">
+<header><b>Mini prova · approva o chiedi modifiche</b><span>contenuto inventato</span></header>
+<div class="ed"><b>Carosello «Tre cose da sapere prima di ordinare»</b><small>Da revisionare · cliente di prova · dicembre</small></div>
+<div class="row-b" style="margin-top: 10px"><button class="btn {{edA}}" onClick="{{edOk}}">Approva il testo</button><button class="btn ghost {{edB}}" onClick="{{edNo}}">Chiedi modifiche</button></div>
+<p class="out" aria-live="polite">{{edMsg}}</p>
+</div>
+</div>
+</div>
+</div></div></div>
+</section>
+
+<!-- LIVELLO 4 · INTELLIGENCE -->
+<section class="tr lv-tr lv flat" style="--len: 2.6">
+<div class="pin"><div class="wrap"><div class="stage">
+<div class="g12" style="align-items: center">
+<div class="c1-5">
+<p class="lvl">LIVELLO 4 DI 6 · INTELLIGENCE</p>
+<div class="xp" aria-hidden="true"><i></i></div>
+<p class="score">Prove superate: <b>{{score}}</b> di 7</p>
+<h2>Intelligence. La strategia, in cinque tappe.</h2>
+<p class="intro">Prima di scrivere un mese di contenuti, il sistema propone un quadro: obiettivo, priorità, cosa manca. Una persona lo conferma o lo corregge, poi si passa alla tappa dopo.</p>
+<ol class="tips">
+<li><i>A</i><span><b>Suggerimento</b>Il percorso in cinque tappe. La prima è il quadro del mese, la seconda le evidenze dai dati.</span></li>
+<li><i>B</i><span><b>Suggerimento</b>Il quadro: una frase di direzione, poi obiettivo, priorità e la cosa che manca, in arancione.</span></li>
+<li><i>C</i><span><b>Suggerimento</b>Onestà di sistema: in alto c'è scritto «mockup» e i numeri portano l'etichetta «dati demo». Questo pianeta è ancora un prototipo.</span></li>
+</ol>
+</div>
+<div class="c6-12">
+<div class="osw">
+<div class="tb" aria-hidden="true"><s></s><s></s><s></s><em>Appress OS · Intelligence</em></div>
+<div class="scr">
+<img src="./assets/2a4596c39b7cb81df2ea06091c7fb9d4.jpg" alt="Intelligence di Appress OS: Quadro del mese per AuraDigital, settembre 2026, pronto per la revisione, con obiettivo, priorità e budget mancante, etichetta dati demo">
+<span class="hs" style="left: 9%; top: 8.5%; width: 15%; height: 5%"><i>A</i></span>
+<span class="hs" style="left: 26.5%; top: 19.5%; width: 47%; height: 40.5%"><i>B</i></span>
+<span class="hs" style="left: 69%; top: 2.5%; width: 22%; height: 4.5%"><i>C</i></span>
+</div>
+</div>
+<div class="prova">
+<header><b>Mini prova · completa il quadro</b><span>dati inventati</span></header>
+<div class="qb" aria-hidden="true"><i style="transform: scaleX({{qScale}})"></i></div>
+<p class="small" style="margin-bottom: 8px">{{qDone}} attività completate su 3</p>
+<div class="ql"><span><b>Obiettivo:</b> più richieste di preventivo</span><span><b>Priorità:</b> due servizi di punta</span><span class="{{qMissCls}}"><b>{{qMissK}}</b> {{qMissV}}</span></div>
+<div class="row-b" style="margin-top: 10px"><button class="btn {{qBtnCls}}" onClick="{{qAct}}">{{qBtn}}</button></div>
+<p class="out" aria-live="polite">{{qMsg}}</p>
+</div>
+</div>
+</div>
+</div></div></div>
+</section>
+
+<!-- LIVELLO 5 · REPORT E CONSEGNA -->
+<section class="tr lv-tr lv flat" style="--len: 2.6">
+<div class="pin"><div class="wrap"><div class="stage">
+<div class="g12" style="align-items: center">
+<div class="c1-5">
+<p class="lvl">LIVELLO 5 DI 6 · REPORT E CONSEGNA</p>
+<div class="xp" aria-hidden="true"><i></i></div>
+<p class="score">Prove superate: <b>{{score}}</b> di 7</p>
+<h2>Report e consegna. Un passo alla volta.</h2>
+<p class="intro">Dal periodo da chiudere alla consegna al cliente. Il sistema legge lo stato reale dei contenuti e prepara; il passo successivo lo decide una persona.</p>
+<ol class="tips">
+<li><i>A</i><span><b>Suggerimento</b>Cinque passi in fila: preparazione, verifica, report, consegna, storico.</span></li>
+<li><i>B</i><span><b>Suggerimento</b>«Il sistema ha preparato… Ora tocca a te»: legge lo stato reale del periodo, poi passa la mano.</span></li>
+<li><i>C</i><span><b>Suggerimento</b>«Nessuna associazione inventata»: se ClickUp non collega un piano al cliente, il sistema lo scrive invece di tirare a indovinare.</span></li>
+</ol>
+</div>
+<div class="c6-12">
+<div class="osw">
+<div class="tb" aria-hidden="true"><s></s><s></s><s></s><em>Appress OS · Report e Consegna</em></div>
+<div class="scr">
+<img src="./assets/ae59940e056ebd47a02eb70394db1e6c.jpg" alt="Report e Consegna di Appress OS per Plus Italia, novembre 2026: passo Preparazione con la frase nessuna associazione inventata">
+<span class="hs" style="left: 41%; top: 16.8%; width: 35%; height: 4.6%"><i>A</i></span>
+<span class="hs" style="left: 18.5%; top: 27.5%; width: 63%; height: 7%"><i>B</i></span>
+<span class="hs" style="left: 18.5%; top: 46.5%; width: 43.5%; height: 4%"><i>C</i></span>
+</div>
+</div>
+<div class="prova">
+<header><b>Mini prova · porta il mese fino alla consegna</b><span>dati inventati</span></header>
+<div class="steps" aria-hidden="true"><span class="{{s1}}">Preparazione</span><span class="{{s2}}">Verifica</span><span class="{{s3}}">Report</span><span class="{{s4}}">Consegna</span><span class="{{s5}}">Storico</span></div>
+<p class="ed">{{repState}}</p>
+<div class="row-b" style="margin-top: 10px"><button class="btn {{repCls}}" onClick="{{repNext}}">{{repBtn}}</button></div>
+<p class="out" aria-live="polite">{{repMsg}}</p>
+</div>
+</div>
+</div>
+</div></div></div>
+</section>
+
+<!-- LIVELLO 6 · SOCIAL E META PUBLISHER -->
+<section class="tr lv-tr lv flat" style="--len: 2.8">
+<div class="pin"><div class="wrap"><div class="stage">
+<div class="g12" style="align-items: center">
+<div class="c1-5">
+<p class="lvl">LIVELLO 6 DI 6 · SOCIAL</p>
+<div class="xp" aria-hidden="true"><i></i></div>
+<p class="score">Prove superate: <b>{{score}}</b> di 7</p>
+<h2>Social. Programma da solo, dopo un sì.</h2>
+<p class="intro">Il pianeta Social contiene il Meta Publisher: importa il piano da Figma, prende i file dal NAS, mette tutto in calendario. Niente esce finché una persona non approva.</p>
+<sc-if value="{{tabOggi}}" hint-placeholder-val="{{true}}">
+<ol class="tips">
+<li><i>A</i><span><b>Suggerimento</b>La prima schermata: le decisioni in attesa. Le urgenti sono in rosso.</span></li>
+<li><i>B</i><span><b>Suggerimento</b>«Fallita»: Meta non ha pubblicato entro 30 minuti dall'orario. Il sistema se ne accorge e propone di rimettere in coda.</span></li>
+<li><i>C</i><span><b>Suggerimento</b>«Da approvare»: 7 uscite importate dal piano aspettano un sì.</span></li>
+</ol>
+</sc-if>
+<sc-if value="{{tabCal}}" hint-placeholder-val="{{false}}">
+<ol class="tips">
+<li><i>A</i><span><b>Suggerimento</b>«Approva tutto (9)»: nove uscite pronte che aspettano un sì. Il pulsante c'è, il sì resta umano.</span></li>
+<li><i>B</i><span><b>Suggerimento</b>Il 9 novembre: post di Cantina Gurrieri usciti su Instagram e Facebook, marcati «pubblicata».</span></li>
+<li><i>C</i><span><b>Suggerimento</b>«Da approvare»: preparato, in calendario, fermo. Senza approvazione resta lì.</span></li>
+</ol>
+</sc-if>
+<sc-if value="{{tabReg}}" hint-placeholder-val="{{false}}">
+<ol class="tips">
+<li><i>A</i><span><b>Suggerimento</b>«Flusso ClickUp in prova»: il collegamento con ClickUp è ancora in rodaggio, e la pagina lo dice.</span></li>
+<li><i>B</i><span><b>Suggerimento</b>Le righe «OK»: post pubblicati davvero, ognuno con il suo numero assegnato da Meta.</span></li>
+<li><i>C</i><span><b>Suggerimento</b>Le righe «DRY»: la prova a secco prima dell'uscita vera. Controlla accessi e file senza pubblicare.</span></li>
+</ol>
+</sc-if>
+</div>
+<div class="c6-12">
+<div class="osw">
+<div class="tb"><s aria-hidden="true"></s><s aria-hidden="true"></s><s aria-hidden="true"></s><em>Social · Meta Publisher</em>
+<div class="tabs" role="group" aria-label="Schermata"><button class="{{to}}" onClick="{{showOggi}}">Oggi</button><button class="{{tc}}" onClick="{{showCal}}">Calendario</button><button class="{{tr2}}" onClick="{{showReg}}">Registro</button></div></div>
+<sc-if value="{{tabOggi}}" hint-placeholder-val="{{true}}">
+<div class="scr">
+<img src="./assets/6392b5671f18682e842d0fda33ad4917.jpg" alt="Social di Appress OS: 6 cose da decidere, con uscite fallite, da approvare, da confermare, contenuti e grafiche mancanti">
+<span class="hs" style="left: 20%; top: 9%; width: 37%; height: 9.5%"><i>A</i></span>
+<span class="hs" style="left: 20%; top: 35.5%; width: 60%; height: 9%"><i>B</i></span>
+<span class="hs" style="left: 20%; top: 46%; width: 60%; height: 8.5%"><i>C</i></span>
+</div>
+</sc-if>
+<sc-if value="{{tabCal}}" hint-placeholder-val="{{false}}">
+<div class="scr">
+<img src="./assets/42976145e72643d1a321e517a52b4602.jpg" alt="Meta Publisher, calendario di novembre 2026: post programmati e pubblicati di Giardini del Sole e Cantina Gurrieri, pulsante Approva tutto (9)">
+<span class="hs" style="left: 68%; top: 12%; width: 10.5%; height: 5%"><i>A</i></span>
+<span class="hs" style="left: 2.5%; top: 55%; width: 13.5%; height: 18%"><i>B</i></span>
+<span class="hs" style="left: 57%; top: 26%; width: 13%; height: 5%"><i>C</i></span>
+</div>
+</sc-if>
+<sc-if value="{{tabReg}}" hint-placeholder-val="{{false}}">
+<div class="scr">
+<img src="./assets/e1eb40463def37e5e373ea9eb31aa36b.jpg" alt="Meta Publisher, registro: eventi OK con il numero dei post pubblicati per Plus Italia e Cantina Gurrieri, ed eventi DRY di prova">
+<span class="hs" style="left: 20%; top: 17%; width: 12%; height: 3.5%"><i>A</i></span>
+<span class="hs" style="left: 20%; top: 33%; width: 60%; height: 30%"><i>B</i></span>
+<span class="hs" style="left: 20%; top: 64%; width: 60%; height: 14%"><i>C</i></span>
+</div>
+</sc-if>
+</div>
+<div class="prova">
+<header><b>Mini prova · scegli un post e approvalo</b><span>post inventati</span></header>
+<div class="posts">
+<button class="pick {{pa}}" onClick="{{pickA}}">Carosello «Cinque errori in cucina»<small>martedì 20:30 · Instagram e Facebook</small></button>
+<button class="pick {{pb}}" onClick="{{pickB}}">Reel «Dietro le quinte»<small>giovedì 20:30 · Instagram</small></button>
+</div>
+<div class="row-b" style="margin-top: 10px"><button class="btn {{apCls}}" onClick="{{approve}}">{{apLabel}}</button></div>
+<p class="out" aria-live="polite">{{pubMsg}}</p>
+<sc-if value="{{pubDone}}" hint-placeholder-val="{{false}}"><div class="log"><b>OK</b> demo01 cliente_demo {{pubLog}}</div></sc-if>
+</div>
+</div>
+</div>
+</div></div></div>
+</section>
+
+<!-- LIVELLO BONUS · IL CONTROLLO -->
+<section class="bonus dark" id="controllo">
+<div class="wrap">
+<div class="g12" style="align-items: center">
+<div class="c1-5">
+<p class="lvl">LIVELLO BONUS · IL CONTROLLO</p>
+<p class="score" style="margin-top: 8px">Prove superate: <b>{{score}}</b> di 7</p>
+<h2>Quando non sa, si ferma.</h2>
+<p class="intro">Non è un pianeta: è una regola che vale in tutti. Ogni testo passa da un controllo refusi e da uno di sicurezza. Se manca un file o un dato, il sistema non lo inventa: lo segnala.</p>
+<ul>
+<li><b>Refusi:</b> 37 piani editoriali letti, 55 refusi segnalati (registro del sistema, 20 luglio – 5 novembre 2026).</li>
+<li><b>Dati mancanti:</b> un prezzo, una data, una foto che non c'è diventano una domanda, mai un'invenzione.</li>
+</ul>
+</div>
+<div class="c7-12">
+<div class="prova">
+<header><b>Mini prova · trova i due refusi e il dato inventato</b><span>testo inventato</span></header>
+<p class="cap">Questa settimana proviamo <button class="rf {{r1c}}" onClick="{{fix1}}">{{r1}}</button> menù: primo, secondo e <button class="rf {{r2c}}" onClick="{{fix2}}">{{r2}}</button> dolce della casa, tutto a <button class="rf {{r3c}}" onClick="{{fix3}}">{{r3}}</button>. Prenota in DM.</p>
+<p class="out" aria-live="polite">{{ctrlMsg}}</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- IL SISTEMA FINALE -->
+<section class="tr fin-tr fin flat" style="--len: 2.6" id="finale">
+<div class="pin"><div class="wrap"><div class="stage">
+<p class="eyebrow">Fine del tutorial · ora la mappa completa</p>
+<h2>Il sistema finale.</h2>
+<p class="lede" style="margin-top: 16px; max-width: 52ch">Un unico sistema operativo per lo studio: una richiesta entra, diventa un compito, viene eseguita, controllata due volte, approvata da una persona, consegnata. L'etichetta nera è un compito che attraversa il giro.</p>
+<div class="flow">
+<div class="rail" aria-hidden="true"><i></i></div>
+<span class="pkt" aria-hidden="true">il compito</span>
+<ol class="nodes">
+<li class="wait"><i>1</i><b>Richiesta</b><span>Arriva da chat, ClickUp o Slack.</span><small>dalla chat: sospesa</small></li>
+<li><i>2</i><b>Compito</b><span>Diventa un compito con un responsabile.</span><small>funziona</small></li>
+<li><i>3</i><b>Esecuzione</b><span>Gli agenti preparano testi, immagini, piani.</span><small>funziona, con limiti</small></li>
+<li><i>4</i><b>Qualità</b><span>Refusi, coerenza, formato.</span><small>funziona</small></li>
+<li><i>5</i><b>Sicurezza</b><span>Dati, chiavi, niente inventato.</span><small>funziona</small></li>
+<li class="gate"><i>6</i><b>Una persona</b><span>Approva, corregge o ferma.</span><small>sempre</small></li>
+<li><i>7</i><b>Consegna</b><span>Pubblicazione e archivio.</span><small>funziona sui social</small></li>
+</ol>
+</div>
+<p class="stamp">Il giro si ferma al punto 6 <em>finché una persona non dice sì.</em></p>
+<p class="src">Stato dalle memorie di progetto: servizio sempre acceso validato il 14 luglio 2026, controlla la coda ogni 15 secondi; presa automatica dalla chat sospesa dal 15 ottobre 2026; testi e video arrivano in fondo solo con un file di partenza, le immagini sì.</p>
+</div></div></div>
+</section>
+
+<!-- PERCHÉ CI VUOLE TANTO -->
+<section class="stage" id="perche">
+<div class="wrap">
+<p class="eyebrow">Domanda legittima</p>
+<h2 style="font-size: 64px">Perché ci vuole tanto.</h2>
+<p class="lede" style="margin-top: 16px; max-width: 48ch">Un sistema che lavora per clienti veri non si può provare sui clienti veri. Quattro motivi, tutti successi davvero.</p>
+<div class="why">
+<article>
+<h3>Ogni sì è umano.</h3>
+<div class="wb"><p>Ogni passo che tocca un cliente ha un cancello: il sistema prepara, una persona approva. Mettere un pulsante «Approva» è facile. Costruire tutto il resto in modo che nessun automatismo lo scavalchi mai richiede prove su prove, e ogni pianeta nuovo le rifà da capo.</p><span class="fact">Regola del sistema</span></div>
+</article>
+<article>
+<h3>Le chiavi.</h3>
+<div class="wb"><p>Per pubblicare servono accessi veri alle pagine dei clienti. Ogni chiave ha regole precise su cosa può fare, i file dei clienti non passano da servizi esterni e ogni modifica che tocca la sicurezza viene provata da sola, prima di essere attivata con un sì separato.</p><span class="fact">Regola del sistema</span></div>
+</article>
+<article>
+<h3>I dati veri.</h3>
+<div class="wb"><p>Il lavoro vive in posti diversi: i compiti su ClickUp, i piani su Figma, le foto e i video sul NAS dello studio. Ognuno ha le sue manie. La data di un post si legge da una casella sopra la caption, mai dal nome del riquadro; le immagini si ritrovano sul NAS confrontandole con l'originale di Figma. Ogni fonte va capita prima di fidarsi.</p><span class="fact">Tre fonti, un solo sistema</span></div>
+</article>
+<article>
+<h3>Un pezzo per volta.</h3>
+<div class="wb"><p>Prima la prova a secco, poi l'uscita vera. Ogni pianeta nasce con dati demo dichiarati, passa dalle prove e solo dopo legge i dati veri. E quando un automatismo crea più lavoro di quanto ne tolga si spegne, finché non è pronto: per questo la presa delle richieste dalla chat oggi è ferma.</p><span class="fact">Sette pianeti, uno alla volta</span></div>
+</article>
+</div>
+</div>
+</section>
+
+<!-- LAVORI IN CORSO -->
+<section class="wip" id="wip">
+<div class="wrap"><div class="stage" style="padding: 120px 0 96px">
+<p class="eyebrow">Accesso anticipato</p>
+<h2>Lavori in corso.</h2>
+<div class="load" aria-hidden="true"><i></i></div>
+<p class="loadl"><span>Caricamento del sistema finale</span><span>88%, il resto lo decide una persona</span></p>
+<div class="cols">
+<div><h3>Funziona oggi</h3><ul>
+<li><b>Il servizio sempre acceso</b>Validato il 14 luglio 2026, guarda la coda ogni 15 secondi.</li>
+<li><b>Cinque pianeti aperti su sette</b>Taskboard, Clienti, Studio editoriale, Report e consegna, Social. Intelligence è un prototipo dichiarato.</li>
+<li><b>La programmazione automatica</b>Dal piano in Figma al calendario: Facebook programmato su Meta, Instagram da un giro automatico ogni 5 minuti. Sempre dopo un sì.</li>
+</ul></div>
+<div><h3>Sospeso, per scelta</h3><ul>
+<li><b>La presa delle richieste dalla chat</b>Ferma dal 15 ottobre. Torna quando saprà distinguere una richiesta da un appunto.</li>
+<li><b>Intelligence con i dati veri</b>Il quadro del mese gira con dati demo, e resta così finché le prove non dicono il contrario.</li>
+</ul></div>
+<div><h3>Viene dopo</h3><ul>
+<li><b>Un server vero</b>Oggi la pubblicazione gira sul Mac dello studio. Il prossimo passo è un server, così esce anche a computer spento.</li>
+<li><b>Un solo cliente in testa</b>Passando da un pianeta all'altro il sistema deve ricordare su quale cliente stai lavorando. Oggi lo dimentica.</li>
+<li><b>Controllo e Performance</b>Il settimo pianeta, quello che sulla mappa dice «in arrivo».</li>
+</ul></div>
+</div>
+<p class="mn">Come ogni gioco serio esce in accesso anticipato. A differenza dei giochi seri, il boss finale è un'approvazione.</p>
+<div class="end"><a class="btn" href="#portfolio">← Torna al portfolio</a><a class="btn ghost" href="#cv">Scarica il CV ↓</a></div>
+</div></div>
+</section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { tb: [false, false, false], ci: 0, cliIn: '', ed: '', budget: false, qOk: false, rep: 0, tab: 'oggi', pick: '', ap: false, r1: false, r2: false, r3: false, won: {} };
+  }
+  win(k) { const w = Object.assign({}, this.state.won); w[k] = true; return w; }
+  renderVals() {
+    const s = this.state;
+    const score = Object.keys(s.won).length;
+    const tog = (i) => () => { const tb = s.tb.slice(); tb[i] = !tb[i]; this.setState({ tb, won: tb.some(Boolean) ? this.win('task') : s.won }); };
+    const left = s.tb.filter(x => !x).length;
+    const clients = [
+      ['AuraDigital', 'In lavorazione'], ['Nordal', 'Da avviare'], ['Plus Italia', 'In lavorazione'],
+      ['Giardini del Sole', 'Attesa cliente'], ['Scuola Nautica Magnano', 'In pausa']
+    ];
+    const c = clients[s.ci];
+    const steps = ['Preparazione', 'Verifica', 'Report', 'Consegna', 'Storico'];
+    const repStates = [
+      'Il sistema ha preparato: 8 contenuti pronti su 8, nessuno bloccato.',
+      'Verifica: un dato da confermare con il cliente. Confermato da te.',
+      'Report: slide del mese pronte, ogni numero con la sua fonte.',
+      'Consegna: inviato al cliente (simulato).',
+      'Storico: il mese è chiuso e archiviato.'
+    ];
+    const stc = (i) => i === s.rep ? 'on' : (i < s.rep ? 'ok' : '');
+    const posts = { A: 'ig/carousel + fb/carousel -> programmato martedì 20:30', B: 'ig/reel -> in coda per giovedì 20:30' };
+    const refusi = s.r1 && s.r2;
+    return {
+      score,
+
+      t1: s.tb[0] ? 'ok' : '', t2: s.tb[1] ? 'ok' : '', t3: s.tb[2] ? 'ok' : '',
+      t1l: s.tb[0] ? 'FATTO' : 'segna', t2l: s.tb[1] ? 'FATTO' : 'segna', t3l: s.tb[2] ? 'FATTO' : 'segna',
+      tog1: tog(0), tog2: tog(1), tog3: tog(2),
+      tbMsg: left === 3 ? 'Clicca una fascia quando l’hai finita.' : left === 0 ? 'In pari. Succede di rado: goditelo. Prova superata.' : `Ne restano ${left}. Il prossimo focus si accende da solo. Prova superata.`,
+
+      cliIni: c[0][0], cliName: c[0], cliState: c[1], cliPos: s.ci + 1,
+      cliPrev: () => this.setState({ ci: (s.ci + 4) % 5, cliIn: '' }),
+      cliNext: () => this.setState({ ci: (s.ci + 1) % 5, cliIn: '' }),
+      cliOpen: () => this.setState({ cliIn: c[0], won: this.win('cli') }),
+      cliMsg: s.cliIn ? `Sei nello spazio di lavoro di ${s.cliIn} (simulato). Prova superata.` : 'Usa le frecce, poi entra.',
+
+      edA: s.ed === 'no' ? 'off' : '', edB: s.ed === 'ok' ? 'off' : '',
+      edOk: () => this.setState({ ed: 'ok', won: this.win('studio') }),
+      edNo: () => this.setState({ ed: 'no', won: this.win('studio') }),
+      edMsg: s.ed === 'ok' ? 'Approvato editorialmente da te. Pubblicarlo è un secondo sì, separato. Prova superata.' : (s.ed === 'no' ? 'Torna in scrittura con la tua nota. Nessuno lo pubblica per sbaglio. Prova superata.' : 'Il testo aspetta te: approvalo o rimandalo indietro.'),
+
+      qScale: s.budget ? 1 : 0.67, qDone: s.budget ? 3 : 2,
+      qMissCls: s.budget ? '' : 'miss', qMissK: s.budget ? 'Budget:' : 'Manca:', qMissV: s.budget ? 'ricevuto dal cliente' : 'budget della campagna',
+      qBtn: !s.budget ? 'Il cliente ha mandato il budget' : (s.qOk ? 'Confermato' : 'Conferma e continua →'),
+      qBtnCls: s.qOk ? 'off' : '',
+      qAct: () => { if (!s.budget) this.setState({ budget: true }); else if (!s.qOk) this.setState({ qOk: true, won: this.win('intel') }); },
+      qMsg: s.qOk ? 'Quadro confermato da te. Prossima tappa: Evidenze. Prova superata.' : (s.budget ? 'Quadro completo. Ora serve il tuo sì.' : 'Senza budget il sistema non va avanti, e non se lo inventa.'),
+
+      s1: stc(0), s2: stc(1), s3: stc(2), s4: stc(3), s5: stc(4),
+      repState: repStates[s.rep],
+      repBtn: s.rep < 4 ? `Decido io: passa a ${steps[s.rep + 1]}` : 'Mese chiuso',
+      repCls: s.rep < 4 ? '' : 'off',
+      repNext: () => { if (s.rep < 4) { const r = s.rep + 1; this.setState({ rep: r, won: r >= 3 ? this.win('rep') : s.won }); } },
+      repMsg: s.rep >= 3 ? 'Il sistema ha preparato ogni passo, tu li hai decisi. Prova superata.' : 'Il sistema prepara lo stato, tu decidi il passo.',
+
+      tabOggi: s.tab === 'oggi', tabCal: s.tab === 'cal', tabReg: s.tab === 'reg',
+      to: s.tab === 'oggi' ? 'on' : '', tc: s.tab === 'cal' ? 'on' : '', tr2: s.tab === 'reg' ? 'on' : '',
+      showOggi: () => this.setState({ tab: 'oggi' }), showCal: () => this.setState({ tab: 'cal' }), showReg: () => this.setState({ tab: 'reg' }),
+      pa: s.pick === 'A' ? 'on' : '', pb: s.pick === 'B' ? 'on' : '',
+      pickA: () => !s.ap && this.setState({ pick: 'A' }), pickB: () => !s.ap && this.setState({ pick: 'B' }),
+      apCls: !s.pick || s.ap ? 'off' : '',
+      apLabel: s.ap ? 'Approvato da te' : (s.pick ? 'Approva e programma' : 'Prima scegli un post'),
+      approve: () => { if (s.pick && !s.ap) this.setState({ ap: true, won: this.win('pub') }); },
+      pubMsg: s.ap ? (s.pick === 'A' ? 'Programmato. Facebook va su Meta, Instagram esce dal giro automatico ogni 5 minuti. Prova superata.' : 'Programmato. Instagram esce dal giro automatico ogni 5 minuti. Prova superata.') : 'Senza il tuo sì il post resta in coda. Anche per sempre.',
+      pubDone: s.ap, pubLog: posts[s.pick] || '',
+
+      r1: s.r1 ? 'il nuovo' : 'il nouvo', r1c: s.r1 ? 'fx' : '',
+      r2: s.r2 ? 'un altro' : "un'altro", r2c: s.r2 ? 'fx' : '',
+      r3: s.r3 ? '[prezzo da chiedere al cliente]' : '15 €', r3c: s.r3 ? 'pr' : '',
+      fix1: () => this.setState({ r1: true, won: (s.r2 && s.r3) ? this.win('ctrl') : s.won }),
+      fix2: () => this.setState({ r2: true, won: (s.r1 && s.r3) ? this.win('ctrl') : s.won }),
+      fix3: () => this.setState({ r3: true, won: (s.r1 && s.r2) ? this.win('ctrl') : s.won }),
+      ctrlMsg: (refusi && s.r3) ? 'Tutto trovato. I refusi li corregge, il prezzo no: non c’era nel brief, quindi lo chiede. Prova superata.' : (s.r3 ? 'Giusto: quel prezzo non era nel brief. Il sistema non lo inventa, lo chiede.' : 'Clicca le parole sbagliate. Suggerimento: anche un numero può essere un errore.')
+    };
+  }
+}
+</script>
+</body>
+</html>

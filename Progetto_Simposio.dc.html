@@ -1,0 +1,611 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<style>html body .pg{--h:100dvh}</style>
+<title>Simposio · progetto sperimentale</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0;background:#fcfcfd}
+.frame{--v:#5c4bff;--ink:#121214;--mut:#52586e;--lav:#ece9ff;--line:#ebebf0;--h:var(--gh,900px);position:relative;height:var(--h);overflow:hidden;container-type:inline-size;color:var(--ink);font-family:'Söhne',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+.gs{height:var(--h);overflow-y:auto;overflow-x:clip;background:#fcfcfd;font-size:17px;line-height:1.5;container-type:inline-size;scroll-behavior:smooth}
+.frame *{box-sizing:border-box}
+.gs a{color:inherit}
+.bar{position:sticky;top:0;z-index:40;height:48px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;padding:0 32px;background:#fcfcfd;box-shadow:0 1px 0 var(--line);font-size:14px}
+.bar a{text-decoration:none;padding:12px 0}
+.bar .back{font-weight:600}
+.bar .back:hover,.bar .cv:hover{text-decoration:underline;text-underline-offset:4px}
+.bar .pg{text-align:center;color:var(--mut)}
+.bar .cv{justify-self:end;color:var(--v);font-weight:600}
+.wrap{max-width:1240px;margin:0 auto;padding:0 32px;position:relative}
+.g12{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:start}
+.c1-7{grid-column:1/8}.c8-12{grid-column:8/13}.c1-6{grid-column:1/7}.c7-12{grid-column:7/13}.c1-5{grid-column:1/6}.c6-12{grid-column:6/13}
+h1,h2,h3{margin:0;font-weight:600;letter-spacing:-.025em;line-height:1.02}
+h1{font-size:104px}h2{font-size:56px}h3{font-size:36px;line-height:1.08}
+p{margin:0}
+blockquote{margin:0}
+.lede{font-size:22px;line-height:1.4;max-width:34ch}
+.small{font-size:14px;color:var(--mut)}
+.ph{display:block;width:100%;height:100%;object-fit:cover}
+.btn{appearance:none;border:0;background:var(--v);color:#fff;font:inherit;font-size:16px;font-weight:600;min-height:48px;padding:0 20px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:transform .15s ease,background-color .15s ease}
+.gs a.btn,.frame .btn{color:#fff}
+.frame .btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
+.btn:hover{background:#4a3ae6}.frame .btn.ghost:hover{background:var(--ink);color:#fff}
+.btn:active{transform:scale(.97)}
+.frame :focus-visible{outline:3px solid var(--v);outline-offset:3px}
+.sec{padding:160px 0}
+.mn{font-style:italic;color:var(--v);font-size:15px}
+.tag{display:inline-block;font-size:13px;font-weight:600;color:var(--v);background:var(--lav);padding:3px 10px}
+.dark{background:#0b0b0c;color:#fff}
+.dark .small{color:#a9a8b8}
+.ap{background:var(--lav);padding:28px 32px;font-size:26px;line-height:1.3;font-weight:500;letter-spacing:-.01em}
+.ap small{display:block;font-size:13px;font-style:italic;color:var(--v);font-weight:400;letter-spacing:0;margin-top:12px}
+.big{font-size:180px;font-weight:600;letter-spacing:-.05em;line-height:.9;font-variant-numeric:tabular-nums}
+.closing{padding:160px 0 120px}
+.closing blockquote{font-size:36px;line-height:1.25;font-weight:500;letter-spacing:-.015em;max-width:30ch}
+.closing .acts{display:flex;flex-wrap:wrap;gap:14px;margin-top:44px;align-items:center}
+.closing .name{font-size:13vw;font-weight:600;letter-spacing:-.05em;line-height:.85;margin-top:120px;color:var(--ink);white-space:nowrap;overflow:hidden}
+.closing .foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:28px}
+
+/* ===== Simposio ===== */
+.hero{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:center;padding:64px 0 96px}
+.hero .txt{grid-column:1/7}
+.hero .room{grid-column:7/13}
+.hero .lede{margin-top:24px;max-width:30ch}
+.hero .honest{margin-top:28px;font-size:17px;max-width:46ch;background:var(--lav);padding:18px 22px}
+.hero .meta{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;font-size:15px;margin:24px 0 0;max-width:52ch}
+.hero .meta dt{font-weight:600}.hero .meta dd{margin:0}
+.hero .acts{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+.room svg{width:100%;height:auto;display:block;max-height:calc(var(--h) - 140px)}
+.room text{font-family:inherit}
+.seat circle{fill:#fff;stroke:var(--v);stroke-width:4}
+.seat.mod circle{fill:var(--ink);stroke:var(--ink)}
+.seat.off circle{stroke:#b9b8c6;stroke-dasharray:6 6}
+.seat .nm{font-size:17px;font-weight:600;fill:var(--ink)}
+.seat .sts{font-size:13px;fill:var(--mut)}
+.seat.mod .ini{fill:#fff}
+.seat .ini{font-size:20px;font-weight:600;fill:var(--v);text-anchor:middle;dominant-baseline:central}
+.room .ln{stroke:var(--v);stroke-width:3;fill:none}
+.room .ln.off{stroke:#c9c8d6;stroke-dasharray:4 8}
+
+.prob .stmt{font-size:34px;line-height:1.25;font-weight:500;letter-spacing:-.015em;max-width:24ch}
+.prob .ctx{font-size:19px;max-width:50ch;margin-top:28px}
+.hands{display:grid;gap:12px;font-size:20px}
+.hands p{background:var(--lav);padding:16px 20px}
+.hands small{display:block;font-size:13px;color:var(--v);font-weight:600;margin-bottom:4px}
+.hands s{text-decoration-color:var(--v);text-decoration-thickness:3px}
+.hands p.mod{background:var(--ink);color:#fff}.hands p.mod small{color:#b3a9ff}
+
+.rows{display:grid;margin-top:56px}
+.row{display:grid;grid-template-columns:4fr 8fr;gap:24px;padding:28px 32px;align-items:baseline;background:#f3f3f6}
+.row:nth-child(even){background:#fcfcfd}
+.row b{font-size:36px;letter-spacing:-.025em;line-height:1.05}
+.row p{font-size:19px;max-width:54ch}
+.row.key{background:var(--ink);color:#fff}.row.key b{color:#b3a9ff}
+
+/* demo */
+.demo{background:var(--lav);padding:140px 0}
+.demo .head{display:grid;grid-template-columns:7fr 5fr;gap:24px;align-items:end}
+.demo .warn{font-size:15px;background:#fff;padding:14px 18px;font-weight:500}
+.demo .warn b{color:var(--v)}
+.steps{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-top:48px}
+.steps span{font-size:14px;font-weight:600;color:#8d8aa8;padding-top:12px;position:relative}
+.steps span::before{content:'';position:absolute;left:0;right:0;top:0;height:5px;background:#d6d2f5}
+.steps span.done{color:var(--ink)}.steps span.done::before{background:var(--ink)}
+.steps span.on{color:var(--v)}.steps span.on::before{background:var(--v)}
+.stepnow{display:none;margin-top:12px;font-size:14px;font-weight:600;color:var(--v)}
+.panel{background:#fff;margin-top:20px;padding:44px 48px;min-height:560px}
+.panel h3{font-size:30px}
+.panel .why{font-size:15px;color:var(--mut);margin-top:10px;max-width:70ch}
+.q{font-size:28px;line-height:1.3;font-weight:500;letter-spacing:-.01em;margin-top:28px;max-width:40ch}
+.ctxbox{margin-top:24px;background:#f3f3f6;padding:18px 22px;font-size:16px;max-width:70ch}
+.ctxbox b{display:block;font-size:13px;color:var(--mut);margin-bottom:4px}
+.go{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:32px}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
+.an{background:#f3f3f6;padding:22px 24px;animation:k-pop .5s cubic-bezier(.2,.7,.2,1) both}
+.an:nth-child(2){animation-delay:.7s}.an:nth-child(3){animation-delay:1.4s}
+.an .who{font-weight:600;color:var(--v);font-size:15px}
+.an .sees{font-size:13px;color:var(--mut);margin-top:2px}
+.an p.t{margin-top:12px;font-size:17px}
+.an .cl{margin-top:14px;font-size:14px;background:#fff;padding:10px 12px}
+.an .cl b{color:var(--v)}
+.turns{display:grid;gap:14px;margin-top:28px;max-width:860px}
+.turn{display:grid;grid-template-columns:200px 1fr;gap:20px;padding:20px 24px;background:#f3f3f6;animation:k-pop .45s cubic-bezier(.2,.7,.2,1) both}
+.turn b{color:var(--v);font-size:15px}
+.turn small{display:block;font-size:13px;color:var(--mut);font-weight:400}
+.turn p{font-size:17px}
+.syn{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+.syn>div{padding:22px 24px;animation:k-pop .45s ease both}
+.syn .ok{background:#f3f3f6}
+.syn .ko{background:var(--ink);color:#fff;animation-delay:.3s}
+.syn h4{margin:0 0 10px;font-size:16px}
+.syn .ko h4{color:#b3a9ff}
+.syn ul{margin:0;padding-left:20px;display:grid;gap:8px;font-size:17px}
+.opts{display:grid;gap:12px;margin-top:24px}
+.opt{appearance:none;border:0;font:inherit;text-align:left;cursor:pointer;background:#f3f3f6;color:var(--ink);padding:18px 22px;display:grid;grid-template-columns:44px 1fr;gap:16px;align-items:center;font-size:18px;transition:background-color .15s ease,transform .15s ease}
+.opt i{width:44px;height:44px;display:flex;align-items:center;justify-content:center;font-style:normal;font-weight:600;background:#fff;color:var(--v)}
+.opt:hover{background:#e7e5f5}
+.opt:active{transform:scale(.99)}
+.opt.on{background:var(--v);color:#fff}.opt.on i{background:#fff}
+.ogl{font-size:13px;font-weight:600;color:var(--mut);margin-top:10px;text-transform:lowercase}
+.ownl{font-size:14px;font-weight:600;margin-top:4px}
+.own{font:inherit;font-size:17px;line-height:1.5;padding:14px 16px;border:2px solid var(--v);border-radius:4px;resize:vertical;min-height:96px;width:100%;box-sizing:border-box}
+.own:focus-visible{outline:3px solid var(--v);outline-offset:2px}
+.btn.off{background:#c9c8d6;cursor:not-allowed}
+.log{display:grid;gap:8px;margin-top:24px;max-width:900px}
+.log div{display:grid;grid-template-columns:70px 1fr 110px;gap:16px;padding:14px 18px;background:#f3f3f6;font-size:16px;animation:k-pop .4s ease both}
+.log div:nth-child(2){animation-delay:.08s}.log div:nth-child(3){animation-delay:.16s}.log div:nth-child(4){animation-delay:.24s}.log div:nth-child(5){animation-delay:.32s}.log div:nth-child(6){animation-delay:.4s}.log div:nth-child(7){animation-delay:.48s}
+.log span{color:var(--mut);font-variant-numeric:tabular-nums}
+.log em{font-style:normal;color:var(--mut);text-align:right;font-variant-numeric:tabular-nums}
+.log .me{background:var(--ink);color:#fff}.log .me span,.log .me em{color:#b3a9ff}
+.vok{font-weight:600;color:var(--v);animation:k-pop .4s ease both}
+
+/* stato vero */
+.state{padding:140px 0}
+.srow{display:grid;grid-template-columns:3fr 3fr 6fr;gap:24px;padding:26px 0;align-items:baseline}
+
+.srow b{font-size:28px;letter-spacing:-.02em}
+.srow .st{font-size:15px;font-weight:600;display:inline-flex;align-items:center;gap:10px}
+.srow .st i{width:12px;height:12px;display:inline-block}
+.st.y i{background:#7ee0a1}.st.o i{background:#b3a9ff}.st.n i{background:#f0c36b}.st.x i{background:#ff8a8a}
+.srow p{color:#c9c8d6;font-size:17px}
+.wip{display:grid;gap:12px;margin-top:48px}
+.wip p{background:#f3f3f6;padding:20px 24px;font-size:18px;display:grid;grid-template-columns:220px 1fr;gap:24px}
+.wip p b{color:var(--v)}
+.dv{font-size:12px;font-weight:600;color:#b4461b;background:#fbe9e1;padding:2px 6px;white-space:nowrap}
+
+@keyframes k-pop{0%{opacity:0;transform:translateY(18px)}100%{opacity:1;transform:none}}
+@keyframes k-in{0%{opacity:0;transform:translateY(28px)}100%{opacity:1;transform:none}}
+@keyframes k-seat{0%{opacity:.15;transform:scale(.7)}100%{opacity:1;transform:none}}
+@keyframes k-draw{from{stroke-dashoffset:300}to{stroke-dashoffset:0}}
+@keyframes k-fade{0%,40%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-30px)}}
+
+@supports (animation-timeline: view()){
+@media (prefers-reduced-motion: no-preference){
+.hero-tr{view-timeline:--hz block;height:calc(2 * var(--h))}
+.hero-tr>.pin{position:sticky;top:48px;height:calc(var(--h) - 48px);overflow:hidden;display:flex;align-items:center}
+.hero-tr>.pin>.wrap{width:100%}
+.hero-tr .hero{padding:0}
+.hero-tr *{animation-timeline:--hz;animation-fill-mode:both;animation-timing-function:linear;animation-duration:1ms}
+.hero-tr .seat{transform-box:fill-box;transform-origin:center;animation-name:k-seat}
+.hero-tr .s1{animation-range:contain 4% contain 18%}.hero-tr .s2{animation-range:contain 16% contain 30%}.hero-tr .s3{animation-range:contain 28% contain 42%}.hero-tr .mod{animation-range:contain 56% contain 72%}
+.hero-tr .ln{stroke-dasharray:300;animation-name:k-draw}
+.hero-tr .l1{animation-range:contain 10% contain 24%}.hero-tr .l2{animation-range:contain 22% contain 36%}.hero-tr .l3{animation-range:contain 34% contain 48%}.hero-tr .l4{animation-range:contain 60% contain 76%}
+.hero-tr .ln.off{stroke-dasharray:4 8;animation:none}
+.rv>*{animation:k-in linear both;animation-timeline:view();animation-range:entry 0% entry 70%}
+.rows .row,.srow,.wip p{animation:k-in linear both;animation-timeline:view();animation-range:entry 0% entry 80%}
+@container (max-width:640px){
+.hero-tr{height:auto}
+.hero-tr>.pin{position:static;height:auto;display:block}
+.hero-tr *{animation-timeline:view();animation-range:entry 10% cover 40%}
+.hero-tr .hero{padding:32px 0 72px}
+}
+}}
+
+@container (max-width:640px){
+.bar{padding:0 16px;grid-template-columns:1fr auto}.bar .pg{display:none}
+.wrap{padding:0 16px}
+.g12{grid-template-columns:1fr;gap:28px}
+.g12>*{grid-column:1/-1 !important}
+h1{font-size:60px}h2{font-size:36px}h3{font-size:24px}
+.lede{font-size:18px}
+.sec{padding:96px 0}
+.hero{grid-template-columns:1fr;padding:32px 0 72px}
+.hero .txt,.hero .room{grid-column:1/-1}
+.room .sts{font-size:16px}.room .seat .nm{font-size:20px}
+.prob .stmt{font-size:25px}.prob .ctx{font-size:17px}
+.hands{font-size:17px}
+.row{grid-template-columns:1fr;gap:6px;padding:22px 20px}.row b{font-size:26px}.row p{font-size:17px}
+.demo{padding:96px 0}
+.demo .head{grid-template-columns:1fr}
+.steps{grid-template-columns:repeat(6,1fr);gap:4px}
+.steps span{font-size:0;padding-top:8px}
+.stepnow{display:block !important}
+.panel{padding:24px 20px;min-height:0}
+.panel h3{font-size:24px}
+.q{font-size:21px}
+.three{grid-template-columns:1fr}
+.turn{grid-template-columns:1fr;gap:6px}
+.syn{grid-template-columns:1fr}
+.opt{font-size:16px;grid-template-columns:36px 1fr;padding:14px 16px}.opt i{width:36px;height:36px}
+.log div{grid-template-columns:52px 1fr;font-size:14px}.log em{grid-column:2;text-align:left}
+.state{padding:96px 0}
+.srow{grid-template-columns:1fr;gap:6px}
+.srow b{font-size:22px}
+.wip p{grid-template-columns:1fr;gap:6px;font-size:16px}
+.closing{padding:96px 0 80px}.closing blockquote{font-size:24px}
+}
+.closing .name{font-size:13cqw}
+
+/* demo giocabile */
+.qs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
+.qc{appearance:none;border:0;font:inherit;text-align:left;cursor:pointer;background:#f3f3f6;color:var(--ink);padding:26px 26px 22px;display:flex;flex-direction:column;gap:14px;min-height:260px;transition:background-color .15s ease,transform .15s ease}
+.qc small{font-size:14px;font-weight:600;color:var(--v)}
+.qc span{font-size:20px;line-height:1.35;font-weight:500;flex:1}
+.qc b{font-size:15px;color:var(--v)}
+.qc:hover{background:var(--lav);transform:translateY(-3px)}
+.qc:active{transform:scale(.98)}
+.an.sealed{background:var(--lav);display:flex;flex-direction:column}
+.an.sealed .btn{margin-top:auto;align-self:flex-start}
+.an .seal{margin:18px 0 22px;font-size:15px;color:var(--mut)}
+.an.open{background:#f3f3f6}
+.contest{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px}
+.cb{appearance:none;border:0;font:inherit;text-align:left;cursor:pointer;background:var(--lav);color:var(--ink);padding:18px 20px;display:flex;flex-direction:column;gap:8px;font-size:16px;transition:background-color .15s ease,transform .15s ease}
+.cb small{font-size:13px;font-weight:600;color:var(--v)}
+.cb b{font-size:15px;color:var(--v)}
+.cb:hover{background:#dcd8ff}.cb:active{transform:scale(.98)}
+.cb.done{background:var(--ink);color:#fff;cursor:default}.cb.done small,.cb.done b{color:#b3a9ff}
+.pair{display:grid;gap:8px}
+.turn.me{background:var(--lav)}
+.dec{display:grid;grid-template-columns:7fr 5fr;gap:20px;align-items:start}
+.keep{background:var(--ink);color:#fff;padding:22px 24px;margin-top:24px}
+.keep h4{margin:0 0 10px;font-size:16px;color:#b3a9ff}
+.keep ul{margin:0;padding-left:20px;display:grid;gap:8px;font-size:16px}
+.log div{grid-template-columns:64px 1fr 220px;align-items:baseline;transition:background-color .3s ease}
+.log div p{margin:0}
+.log em b{color:var(--ink);font-weight:600}
+.log .me em b{color:#fff}
+.log div.good{background:#e3f5ea}.log div.good em b{color:#137a3f}
+.log div.bad{background:#fde6e4}.log div.bad em b{color:#b3261e}
+.log div.me.good{background:#14532d;color:#fff}.log div.me.bad{background:#7f1d1d;color:#fff}
+.log div.tam p{color:#b3261e;font-weight:600}
+.log div.me.tam p{color:#fff}
+.btn.green{background:#15803d}.btn.red{background:#b3261e}
+.verdict{margin-top:18px;padding:14px 18px;font-weight:600;animation:k-pop .35s ease both}
+.verdict.ok{background:#e3f5ea;color:#14532d}.verdict.ko{background:#fde6e4;color:#7f1d1d}
+@container (max-width:640px){
+.qs,.contest,.dec{grid-template-columns:1fr}
+.qc{min-height:0}.qc span{font-size:17px}
+.log div{grid-template-columns:48px 1fr}.log em{grid-column:2;text-align:left}
+}
+
+</style>
+</helmet>
+<div class="frame">
+<div class="gs">
+
+<header class="bar">
+<a class="back" href="./Costruzione.dc.html">← Torna al portfolio</a>
+<span class="pg">Progetto · Simposio</span>
+<a class="cv" href="./Costruzione.dc.html#percorso">CV ↓</a>
+</header>
+
+<!-- APERTURA: la stanza si accende -->
+<section class="hero-tr" id="inizio"><div class="pin"><div class="wrap">
+<div class="hero">
+<div class="txt">
+<p><span class="tag">SPERIMENTALE</span></p>
+<h1 style="margin-top: 22px">Simposio</h1>
+<p class="lede">Le IA discutono, decide una persona.</p>
+<p class="honest">È un esperimento. Un'interfaccia vera non esiste ancora e un giro completo con i tre modelli dal vivo non l'ho mai fatto. Qui trovi le regole della stanza e una demo simulata, dichiarata tale.</p>
+<dl class="meta"><dt>Io</dt><dd>ho definito le regole della stanza (chi parla, cosa vede, chi decide) e le soglie di sicurezza per ogni modello</dd><dt>Stato</dt><dd>motore coperto da test, nessun giro completo dal vivo</dd></dl>
+<div class="acts"><a class="btn" href="#demo">Prova la demo ↓</a><a class="btn ghost" href="#stato">Lo stato vero</a></div>
+</div>
+<div class="room" aria-label="Disegno della stanza: tre posti per i modelli e il posto del moderatore umano">
+<svg viewBox="0 0 560 600" role="img" aria-hidden="true">
+<circle cx="280" cy="290" r="118" fill="#ece9ff"></circle>
+<text x="280" y="282" text-anchor="middle" font-size="15" font-weight="600" fill="#5c4bff">la domanda</text>
+<text x="280" y="304" text-anchor="middle" font-size="13" fill="#52586e">uguale per tutti</text>
+<path class="ln l1" d="M146 164 L194 209"></path>
+<path class="ln l2" d="M414 164 L366 209"></path>
+<path class="ln off l3" d="M144 434 L199 376"></path>
+<g class="seat s1"><circle cx="110" cy="130" r="50"></circle><text class="ini" x="110" y="130">C</text><text class="nm" x="20" y="212">Claude</text><text class="sts" x="20" y="232">una chiamata reale, protetta</text></g>
+<g class="seat s2"><circle cx="450" cy="130" r="50"></circle><text class="ini" x="450" y="130">L</text><text class="nm" x="374" y="212">Modello locale</text><text class="sts" x="374" y="232">non ancora validato</text></g>
+<g class="seat off s3"><circle cx="110" cy="470" r="50"></circle><text class="ini" x="110" y="470">X</text><text class="nm" x="20" y="552">Codex</text><text class="sts" x="20" y="572">escluso per sicurezza</text></g>
+<g class="seat mod"><circle cx="420" cy="470" r="58"></circle><text class="ini" x="420" y="470">Tu</text><text class="nm" x="340" y="556">Il moderatore umano</text><text class="sts" x="340" y="576">l'unico che decide</text></g>
+<path class="ln l4" d="M384 425 L352 383" style="stroke: #121214; stroke-width: 5"></path>
+</svg>
+</div>
+</div>
+</div></div></section>
+
+<!-- IL PROBLEMA -->
+<section class="sec prob" id="problema"><div class="wrap"><div class="g12">
+<div class="c1-6 rv"><h2>Il problema.</h2>
+<p class="stmt" style="margin-top: 28px">Chiedere la stessa cosa a più IA è facile. Il difficile è non farle decidere.</p>
+<p class="ctx">Le risposte si somigliano o si contraddicono, e viene voglia di contare chi vince. Ma tre modelli d'accordo non sono una ragione, e un dissenso nascosto è un rischio che nessuno vede. Volevo una stanza dove le IA lavorano la domanda fino in fondo e la decisione resta a una persona, con tutto a verbale.</p></div>
+<div class="c8-12 rv"><div class="hands">
+<p><small>Posto 1</small>Servono più dati prima di decidere.</p>
+<p><small>Posto 2</small><s>Decidiamo noi, a maggioranza.</s></p>
+<p><small>Posto 3</small>Dissenso: il secondo punto esce dalle regole della stanza.</p>
+<p class="mod"><small>Moderatore umano</small>Decido io. Il dissenso resta a verbale.</p>
+</div></div>
+</div></div></section>
+
+<!-- LE REGOLE -->
+<section class="sec" id="regole" style="padding-top: 0"><div class="wrap">
+<h2>Le regole della stanza.</h2>
+<div class="rows">
+<div class="row"><b>Chi parla</b><p>Tre posti, uno per modello, con lo stesso peso. Se un posto manca il giro non parte: niente stanza a due.</p></div>
+<div class="row"><b>Cosa vede</b><p>Nel primo giro ognuno vede solo la domanda e il contesto, non le analisi degli altri. Nei turni dopo vede solo i turni già chiusi.</p></div>
+<div class="row key"><b>Chi decide</b><p>Solo il moderatore umano. Niente voti, niente maggioranze: la sintesi propone, la persona sceglie e ratifica.</p></div>
+<div class="row"><b>Cosa resta</b><p>Ogni passaggio finisce in un registro a catena: la seduta si ricostruisce da capo, e se un anello non torna la stanza si ferma invece di andare avanti.</p></div>
+<div class="row"><b>Cosa vale</b><p>Un'affermazione registrata non è un fatto. I dissensi restano in vista nella sintesi, non vengono smussati.</p></div>
+<div class="row"><b>Cosa entra</b><p>Solo dati pubblici o inventati per la prova. I dati dei clienti restano fuori.</p></div>
+</div>
+</div></section>
+
+<!-- DEMO TUTORIAL (simulata) -->
+<section class="demo" id="demo"><div class="wrap">
+<div class="head">
+<div><h2>Fai tu il moderatore.</h2><p class="lede" style="margin-top: 16px">Scegli una domanda, apri le analisi, contesta, decidi. Poi prova a rompere il registro.</p></div>
+<p class="warn"><b>Demo simulata.</b> I testi dei tre posti li ho scritti a mano, nessun modello viene chiamato. Clienti, numeri e impronte sono inventati.</p>
+</div>
+<div class="steps" aria-hidden="true"><span class="{{st0}}">Domanda</span><span class="{{st1}}">Analisi separate</span><span class="{{st2}}">Contraddittorio</span><span class="{{st3}}">Sintesi</span><span class="{{st4}}">Decido io</span><span class="{{st5}}">Registro</span></div>
+<p class="stepnow">{{stepName}}</p>
+<div class="panel" aria-live="polite">
+
+<sc-if value="{{s0}}" hint-placeholder-val="{{true}}">
+<h3>Scegli la domanda da portare nella stanza.</h3>
+<p class="why">La porta il moderatore. I tre posti ricevono la stessa domanda e lo stesso contesto, congelati: nessuno può cambiarli a metà.</p>
+<div class="qs">
+<button class="qc" onClick="{{pick0}}"><small>Piano editoriale</small><span>«Il Forno Esempio passa da 5 a 3 post a settimana e usa il tempo per un video al mese. Da dicembre?»</span><b>Porta questa domanda →</b></button>
+<button class="qc" onClick="{{pick1}}"><small>Budget pubblicitario</small><span>«La Ferramenta Esempio ha 300 € al mese: tutto in inserzioni o metà per un video?»</span><b>Porta questa domanda →</b></button>
+<button class="qc" onClick="{{pick2}}"><small>Commenti e IA</small><span>«Il Mobilificio Esempio vuole far rispondere l'IA ai commenti negativi, in automatico. Lo attiviamo?»</span><b>Porta questa domanda →</b></button>
+</div>
+<p class="small" style="margin-top: 18px">Le tre attività non esistono: nella stanza entrano solo dati pubblici o inventati.</p>
+</sc-if>
+
+<sc-if value="{{s1}}" hint-placeholder-val="{{false}}">
+<h3>Tre analisi, ognuna per conto suo.</h3>
+<p class="q">{{qText}}</p>
+<div class="ctxbox"><b>Contesto congelato (inventato)</b>{{qCtx}}</div>
+<p class="why" style="margin-top: 22px">Le analisi sono già scritte e sigillate: nessun posto ha letto gli altri. Aprile una alla volta.</p>
+<div class="three">
+<div class="an {{a1cls}}"><p class="who">Posto 1</p><p class="sees">vede: domanda e contesto</p>
+<sc-if value="{{r1}}" hint-placeholder-val="{{false}}"><p class="t">{{a1t}}</p><p class="cl"><b>Tesi:</b> {{a1c}}</p></sc-if>
+<sc-if value="{{n1}}" hint-placeholder-val="{{true}}"><p class="seal">Analisi sigillata</p><button class="btn" onClick="{{rev1}}">Apri l'analisi</button></sc-if></div>
+<div class="an {{a2cls}}"><p class="who">Posto 2</p><p class="sees">vede: domanda e contesto</p>
+<sc-if value="{{r2}}" hint-placeholder-val="{{false}}"><p class="t">{{a2t}}</p><p class="cl"><b>Tesi:</b> {{a2c}}</p></sc-if>
+<sc-if value="{{n2}}" hint-placeholder-val="{{true}}"><p class="seal">Analisi sigillata</p><button class="btn" onClick="{{rev2}}">Apri l'analisi</button></sc-if></div>
+<div class="an {{a3cls}}"><p class="who">Posto 3</p><p class="sees">vede: domanda e contesto</p>
+<sc-if value="{{r3}}" hint-placeholder-val="{{false}}"><p class="t">{{a3t}}</p><p class="cl"><b>Tesi:</b> {{a3c}}</p></sc-if>
+<sc-if value="{{n3}}" hint-placeholder-val="{{true}}"><p class="seal">Analisi sigillata</p><button class="btn" onClick="{{rev3}}">Apri l'analisi</button></sc-if></div>
+</div>
+<div class="go"><button class="btn {{goCls1}}" aria-disabled="{{goDis1}}" onClick="{{toCross}}">Passa al contraddittorio</button><button class="btn ghost" onClick="{{back}}">Cambia domanda</button><span class="small">{{revLabel}}</span></div>
+</sc-if>
+
+<sc-if value="{{s2}}" hint-placeholder-val="{{false}}">
+<h3>Contesta un'analisi.</h3>
+<p class="why">Scegli chi mettere alla prova: ricevi la tua obiezione e la replica del posto. Ogni replica vede solo i turni già chiusi, e nessuno può riscrivere quello che ha detto prima.</p>
+<div class="contest">
+<button class="cb {{c1cls}}" onClick="{{con1}}"><small>Posto 1</small>{{a1c}}<b>{{c1lab}}</b></button>
+<button class="cb {{c2cls}}" onClick="{{con2}}"><small>Posto 2</small>{{a2c}}<b>{{c2lab}}</b></button>
+<button class="cb {{c3cls}}" onClick="{{con3}}"><small>Posto 3</small>{{a3c}}<b>{{c3lab}}</b></button>
+</div>
+<div class="turns">
+<sc-for list="{{contests}}" as="c" hint-placeholder-count="1">
+<div class="pair"><div class="turn me"><b>Tu al {{c.who}}<small>turno {{c.n}}</small></b><p>{{c.obj}}</p></div><div class="turn"><b>{{c.who}} risponde<small>vede: analisi e turni chiusi</small></b><p>{{c.rep}}</p></div></div>
+</sc-for>
+</div>
+<div class="go"><button class="btn {{goCls2}}" aria-disabled="{{goDis2}}" onClick="{{toSynth}}">Chiedi la sintesi</button><button class="btn ghost" onClick="{{back}}">Indietro</button><span class="small">{{conLabel}}</span></div>
+</sc-if>
+
+<sc-if value="{{s3}}" hint-placeholder-val="{{false}}">
+<h3>La sintesi, con i dissensi in vista.</h3>
+<p class="why">La sintesi mette in fila accordi e dissensi e propone opzioni. Non sceglie, non conta voti e non smussa i dissensi.</p>
+<div class="syn">
+<div class="ok"><h4>Su cosa sono d'accordo</h4><ul><li>{{acc1}}</li><li>{{acc2}}</li></ul></div>
+<div class="ko"><h4>Dissensi e punti scoperti</h4><ul><li>{{dis1}}</li><li>{{dis2}}</li></ul></div>
+</div>
+<div class="go"><button class="btn" onClick="{{toDecide}}">Decido io</button><button class="btn ghost" onClick="{{back}}">Indietro</button></div>
+</sc-if>
+
+<sc-if value="{{s4}}" hint-placeholder-val="{{false}}">
+<h3>Tocca a te.</h3>
+<p class="why">Nessuna risposta ha un voto accanto. Scegli un’opzione della sintesi, la tesi di uno dei posti, oppure scrivi tu la decisione. I dissensi restano comunque a verbale.</p>
+<div class="dec">
+<div class="opts" role="radiogroup" aria-label="Opzioni">
+<p class="ogl">dalla sintesi</p>
+<button class="opt {{cA}}" role="radio" aria-checked="{{ckA}}" onClick="{{pickA}}"><i>A</i><span>{{oA}}</span></button>
+<button class="opt {{cB}}" role="radio" aria-checked="{{ckB}}" onClick="{{pickB}}"><i>B</i><span>{{oB}}</span></button>
+<button class="opt {{cC}}" role="radio" aria-checked="{{ckC}}" onClick="{{pickC}}"><i>C</i><span>{{oC}}</span></button>
+<p class="ogl">oppure la tesi di un posto</p>
+<button class="opt {{cT1}}" role="radio" aria-checked="{{ckT1}}" onClick="{{pickT1}}"><i>1</i><span>{{a1c}}</span></button>
+<button class="opt {{cT2}}" role="radio" aria-checked="{{ckT2}}" onClick="{{pickT2}}"><i>2</i><span>{{a2c}}</span></button>
+<button class="opt {{cT3}}" role="radio" aria-checked="{{ckT3}}" onClick="{{pickT3}}"><i>3</i><span>{{a3c}}</span></button>
+<p class="ogl">oppure decidi a modo tuo</p>
+<button class="opt {{cD}}" role="radio" aria-checked="{{ckD}}" onClick="{{pickD}}"><i>✎</i><span>Scrivo io la decisione</span></button>
+<sc-if value="{{ownOn}}" hint-placeholder-val="{{false}}">
+<label class="ownl" for="own-dec">La tua decisione</label>
+<textarea id="own-dec" class="own" rows="3" placeholder="Per esempio: tre post a settimana da gennaio, il video lo proviamo a febbraio." onChange="{{typeOwn}}" onInput="{{typeOwn}}"></textarea>
+</sc-if>
+</div>
+<div class="keep"><h4>Restano a verbale</h4><ul><li>{{dis1}}</li><li>{{dis2}}</li></ul></div>
+</div>
+<div class="go"><button class="btn {{ratCls}}" aria-disabled="{{ratDis}}" onClick="{{ratify}}">Ratifico la decisione</button><button class="btn ghost" onClick="{{back}}">Indietro</button><span class="small">{{ratHint}}</span></div>
+</sc-if>
+
+<sc-if value="{{s5}}" hint-placeholder-val="{{false}}">
+<h3>Il registro della seduta.</h3>
+<p class="why">Ogni riga porta l'impronta della riga prima e la propria. Se qualcuno cambia una riga, le impronte non tornano più e la stanza si ferma. Orari e impronte sono simulati.</p>
+<div class="log">
+<sc-for list="{{rows}}" as="r" hint-placeholder-count="7">
+<div class="{{r.cls}}"><span>{{r.n}}</span><p>{{r.txt}}</p><em>{{r.prev}} › <b>{{r.h}}</b></em></div>
+</sc-for>
+</div>
+<div class="go"><button class="btn {{verCls}}" onClick="{{verify}}">{{verLabel}}</button><button class="btn ghost" onClick="{{tamper}}">{{tamLabel}}</button><button class="btn ghost" onClick="{{reset}}">Rifai la demo</button></div>
+<sc-if value="{{showVer}}" hint-placeholder-val="{{false}}"><p class="verdict {{verdictCls}}">{{verdict}}</p></sc-if>
+</sc-if>
+
+</div>
+</div></section>
+
+<!-- LO STATO VERO -->
+<section class="state dark" id="stato"><div class="wrap">
+<h2>Lo stato vero.</h2>
+<p class="lede" style="margin-top: 16px; color: #c9c8d6">È il più ambizioso dei miei progetti e il meno finito. Preferisco dirlo io.</p>
+<div style="margin-top: 48px">
+<div class="srow"><b>Il motore</b><span class="st y"><i></i>Fatto</span><p>Fasi della seduta, registro a catena e ricostruzione ci sono, coperti da test.</p></div>
+<div class="srow"><b>Claude</b><span class="st o"><i></i>Una volta</span><p>Una chiamata reale, in un ambiente protetto: rete filtrata e contesto separato.</p></div>
+<div class="srow"><b>Modello locale</b><span class="st n"><i></i>Non ancora</span><p>Scelto e provato a pezzi sul computer dello studio, non validato.</p></div>
+<div class="srow"><b>Codex</b><span class="st x"><i></i>Escluso</span><p>L'ho escluso: usciva dal perimetro di sicurezza della stanza.</p></div>
+<div class="srow"><b>Giro completo a tre</b><span class="st x"><i></i>Mai fatto</span><p>Un giro con i tre modelli dal vivo non c'è mai stato.</p></div>
+<div class="srow"><b>Interfaccia</b><span class="st n"><i></i>Non esiste</span><p>La demo qui sopra è un disegno, non una schermata del sistema.</p></div>
+</div>
+</div></section>
+
+<!-- LAVORI IN CORSO -->
+<section class="sec" id="lavori"><div class="wrap">
+<h2>Lavori in corso.</h2>
+<div class="wip">
+<p><b>Il posto locale</b><span>Metterlo in sicurezza: il progetto c'è, l'autorizzazione a costruirlo ancora no.</span></p>
+<p><b>Il primo giro a tre</b><span>Dal vivo, solo con dati di prova, e con il registro da verificare a fine seduta.</span></p>
+<p><b>L'interfaccia</b><span>Prima passa dal design, poi dal codice. Questa demo è il primo schizzo.</span></p>
+<p><b>Un primo aggancio</b><span>Nel sistema dello studio, sulla scrivania dei testi, la stanza propone una revisione e la persona accetta o rifiuta. Per ora la proposta è un'anteprima fissa, senza modello. <span class="dv">[DA VERIFICARE]</span></span></p>
+</div>
+</div></section>
+
+<!-- CHIUSURA -->
+<section class="closing" id="fine"><div class="wrap">
+<h2>La regola, in una frase.</h2>
+<blockquote style="margin-top: 28px"><p>«Il Simposio stabilisce la volontà. Appress OS le dà forma nel mondo operativo.»</p></blockquote>
+<div class="acts"><a class="btn" href="./Costruzione.dc.html">← Torna al portfolio</a><a class="btn ghost" href="#demo">Rifai la demo</a><a class="small" href="mailto:g.santuccio7@gmail.com?subject=Simposio">Vuoi vedere il motore? Scrivimi.</a></div>
+<p class="name" aria-hidden="true">Simposio</p>
+<div class="foot small"><span>Giovanni Santuccio · progetto sperimentale</span><span>Demo simulata: testi scritti a mano, dati inventati.</span></div>
+</div></section>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.Q = [
+      { short: 'Forno Esempio, da 5 a 3 post',
+        text: '«Il Forno Esempio pubblica 5 post a settimana su Instagram. Propone di scendere a 3 e usare il tempo per un video al mese. Lo facciamo da dicembre?»',
+        ctx: 'Ultimi tre mesi: i caroselli con le ricette vengono salvati quattro volte più dei post singoli. Video pubblicati finora: due, entrambi sopra la media del profilo.',
+        an: [
+          { t: 'Sì, ma per gradi. Tre post bastano se restano i caroselli con le ricette, che sono quelli che vengono salvati. Dicembre come mese di prova, poi si guarda.', c: 'i caroselli rendono più dei post singoli.',
+            o: 'Dicembre è il mese più strano dell\'anno. Cosa misureresti davvero?', r: 'I salvataggi per post, non il totale: se tre caroselli salvano quanto cinque post, la riduzione regge. Ma andrebbe confrontato con il dicembre scorso, che nel contesto non c\'è.' },
+          { t: 'Non a dicembre. È il mese delle feste: meno post proprio quando la gente compra di più è un rischio. Rimanderei a gennaio.', c: 'a dicembre la presenza conta più del formato.',
+            o: 'Rimandare a gennaio non è solo prudenza? Anche gennaio ha i suoi problemi.', r: 'Vero, gennaio è un mese di calo. Ma resto contrario a dicembre: è il mese in cui il forno vende di più, e un errore lì costa più che altrove. Il mio dissenso resta.' },
+          { t: 'Dipende dal video. Due video sopra la media sono pochi per farne una regola. Prima un video di prova, poi si taglia.', c: 'due casi non fanno una tendenza.',
+            o: 'D\'accordo, due sono pochi. Allora quanti ne servono?', r: 'Non c\'è un numero magico. Tre o quattro nello stesso formato, prima di cambiare il piano. Fino ad allora il video è una prova, non una regola.' }
+        ],
+        acc: ['I caroselli con le ricette restano, in qualunque scenario.', 'Il video va provato prima di diventare una regola.'],
+        dis: ['Il Posto 2 resta contrario a cambiare a dicembre: è il mese che vende di più.', 'Punto non verificato: i numeri del dicembre scorso non sono nel contesto.'],
+        opt: ['Da dicembre: 3 post, tutti caroselli con le ricette, più un video di prova.', 'Da gennaio. A dicembre restano i 5 post, più un video di prova.', 'Nessun cambio per ora: prima servono i numeri del dicembre scorso.'] },
+      { short: 'Ferramenta Esempio, 300 € al mese',
+        text: '«La Ferramenta Esempio ha 300 € al mese di pubblicità. Tutti in inserzioni, o metà per girare un video?»',
+        ctx: 'Ultimi sei mesi: le inserzioni portano circa 400 visite al mese al sito. Nessun video pubblicato. Il negozio vende soprattutto al banco, non online.',
+        an: [
+          { t: 'Tutto in inserzioni. Funzionano già, e un video fatto con 150 € rischia di sembrare povero.', c: 'quello che funziona non si tocca.',
+            o: 'Se il negozio vende al banco, le 400 visite al sito cosa dimostrano?', r: 'Che le persone cercano il negozio. Non che comprano, lo ammetto. Ma tagliare qualcosa che porta traffico per una prova incerta non mi convince.' },
+          { t: 'Metà al video. Il negozio vende al banco: le visite al sito non sono il numero giusto da guardare.', c: 'le visite al sito non sono vendite.',
+            o: 'Un video da 150 € non rischia di peggiorare l\'immagine del negozio?', r: 'Dipende da cosa mostra. Il banco, le mani, un consiglio vero: non serve una produzione. Il rischio è più basso del non provarci mai.' },
+          { t: 'Un mese di prova: 200 € alle inserzioni e 100 € al video, poi si guarda chi entra in negozio dicendo di averlo visto.', c: 'senza una misura al banco, nessuna delle due strade si può giudicare.',
+            o: 'Come si misura chi entra in negozio?', r: 'In modo semplice: per un mese una domanda alla cassa, «come ci ha conosciuto?». È imperfetto, ma meglio di nessun dato. Al cliente va detto che è una stima.' }
+        ],
+        acc: ['Oggi manca una misura di quello che succede al banco.', 'Le inserzioni portano traffico al sito.'],
+        dis: ['Il Posto 1 resta contrario a spostare budget dalle inserzioni.', 'Punto non verificato: nessuno sa quante visite diventano acquisti.'],
+        opt: ['Tutto in inserzioni, e da subito la domanda alla cassa.', 'Un mese di prova: 200 € alle inserzioni, 100 € al video, con la domanda alla cassa.', 'Metà e metà da subito.'] },
+      { short: 'Mobilificio Esempio, risposte automatiche',
+        text: '«Il Mobilificio Esempio vuole far rispondere l\'IA ai commenti negativi, in automatico. Lo attiviamo?»',
+        ctx: 'Circa 15 commenti negativi al mese, quasi tutti sui tempi di consegna. Oggi risponde il titolare, a volte dopo giorni.',
+        an: [
+          { t: 'Non in automatico. Una risposta sbagliata a un cliente arrabbiato fa più danni del ritardo. Sì a bozze preparate dall\'IA, inviate da una persona.', c: 'su un reclamo l\'ultima parola è di una persona.',
+            o: 'Le bozze non risolvono il ritardo, se il titolare le approva dopo giorni.', r: 'Giusto. Allora serve un tempo massimo: se la bozza non viene approvata entro poche ore, arriva un promemoria. Ma l\'invio resta umano.' },
+          { t: 'Sì, ma solo il primo messaggio: «abbiamo letto, ti scriviamo entro oggi». Il resto lo fa il titolare.', c: 'il danno vero è il silenzio di giorni.',
+            o: 'Una risposta automatica non rischia di sembrare finta?', r: 'Se promette solo una cosa che poi succede davvero, no. Il rischio è promettere una risposta che non arriva: per questo serve l\'impegno del titolare.' },
+          { t: 'Prima il problema: quasi tutti i commenti parlano di consegne. Se si sistemano i tempi, calano anche i commenti.', c: 'la risposta automatica cura il sintomo.',
+            o: 'Le consegne non dipendono da noi. Intanto i commenti cosa fanno?', r: 'Restano. Per questo non sono contrario alle bozze, ma il report al cliente deve dire chiaramente che il problema è la consegna.' }
+        ],
+        acc: ['Il ritardo nelle risposte è il danno più visibile.', 'L\'ultima parola su un reclamo resta a una persona.'],
+        dis: ['Il Posto 2 vuole un primo messaggio automatico: gli altri due no.', 'Il Posto 3 avverte: la causa sono le consegne, non i commenti.'],
+        opt: ['Bozze preparate dall\'IA, invio sempre del titolare, con promemoria.', 'Primo messaggio automatico di presa in carico, poi risponde il titolare.', 'Nessuna automazione: si porta al cliente il problema delle consegne.'] }
+    ];
+    this.state = this.fresh();
+  }
+  fresh() { return { step: 0, q: 0, rev: [false, false, false], con: [], choice: '', own: '', tampered: false, checked: '' }; }
+  h(str) { let x = 0x811c9dc5; for (let i = 0; i < str.length; i++) { x ^= str.charCodeAt(i); x = Math.imul(x, 0x01000193) >>> 0; } return ('0000000' + x.toString(16)).slice(-8); }
+  entries(s, Q) {
+    const L = ['A', 'B', 'C'].indexOf(s.choice);
+    const e = ['Domanda aperta dal moderatore: ' + Q.short, 'Contesto congelato, uguale per i tre posti', 'Analisi separate ricevute: tre su tre, sigillate'];
+    s.con.forEach(k => e.push('Il moderatore contesta il Posto ' + (k + 1) + ', replica registrata'));
+    e.push('Sintesi con due dissensi in vista');
+    if (L >= 0) e.push('Decisione ratificata dal moderatore: opzione ' + s.choice + ', ' + Q.opt[L]);
+    else if (s.choice && s.choice[0] === 'T') { const k = +s.choice[1] - 1; e.push('Decisione ratificata dal moderatore: la tesi del Posto ' + (k + 1) + ', ' + Q.an[k].c); }
+    else if (s.choice === 'D') e.push('Decisione scritta e ratificata dal moderatore: «' + s.own.trim() + '»');
+    e.push('Dissensi a verbale: ' + Q.dis[0]);
+    return e;
+  }
+  renderVals() {
+    const s = this.state, Q = this.Q[s.q];
+    const names = ['Domanda', 'Analisi separate', 'Contraddittorio', 'Sintesi', 'Decido io', 'Registro'];
+    const nRev = s.rev.filter(Boolean).length;
+    const ok = !!s.choice && (s.choice !== 'D' || s.own.trim().length > 3);
+    const v = {
+      stepName: 'Passaggio: ' + names[s.step],
+      qText: Q.text, qCtx: Q.ctx,
+      revLabel: nRev < 3 ? 'Analisi aperte: ' + nRev + ' su 3' : 'Tutte aperte.',
+      goCls1: nRev === 3 ? '' : 'off', goDis1: nRev === 3 ? 'false' : 'true',
+      goCls2: s.con.length ? '' : 'off', goDis2: s.con.length ? 'false' : 'true',
+      conLabel: s.con.length ? 'Contestazioni: ' + s.con.length : 'Contesta almeno un posto.',
+      contests: s.con.map((k, i) => ({ n: i + 1, who: 'Posto ' + (k + 1), obj: Q.an[k].o, rep: Q.an[k].r })),
+      acc1: Q.acc[0], acc2: Q.acc[1], dis1: Q.dis[0], dis2: Q.dis[1],
+      oA: Q.opt[0], oB: Q.opt[1], oC: Q.opt[2],
+      ratCls: ok ? '' : 'off', ratDis: ok ? 'false' : 'true',
+      ratHint: !s.choice ? 'Prima scegli o scrivi una decisione.' : (s.choice === 'D' ? (ok ? 'Decisione tua, pronta da ratificare.' : 'Scrivi la tua decisione.') : (s.choice[0] === 'T' ? 'Tesi del Posto ' + s.choice[1] + ' scelta.' : 'Opzione ' + s.choice + ' scelta.')),
+      ownOn: s.choice === 'D',
+      typeOwn: (ev) => { const val = ev && ev.target ? ev.target.value : ''; if (val !== s.own) this.setState({ own: val }); },
+      toCross: () => { if (nRev === 3) this.setState({ step: 2 }); },
+      toSynth: () => { if (s.con.length) this.setState({ step: 3 }); },
+      toDecide: () => this.setState({ step: 4 }),
+      back: () => this.setState({ step: Math.max(0, s.step - 1) }),
+      ratify: () => { if (ok) this.setState({ step: 5, tampered: false, checked: '' }); },
+      reset: () => this.setState(this.fresh())
+    };
+    for (let k = 0; k < 6; k++) { v['s' + k] = s.step === k; v['st' + k] = k < s.step ? 'done' : (k === s.step ? 'on' : ''); }
+    [0, 1, 2].forEach(k => {
+      const n = k + 1, a = Q.an[k], done = s.con.indexOf(k) >= 0;
+      v['pick' + k] = () => this.setState(Object.assign(this.fresh(), { step: 1, q: k }));
+      v['r' + n] = s.rev[k]; v['n' + n] = !s.rev[k];
+      v['a' + n + 't'] = a.t; v['a' + n + 'c'] = a.c;
+      v['a' + n + 'cls'] = s.rev[k] ? 'open' : 'sealed';
+      v['rev' + n] = () => { const r = s.rev.slice(); r[k] = true; this.setState({ rev: r }); };
+      v['c' + n + 'cls'] = done ? 'done' : '';
+      v['c' + n + 'lab'] = done ? 'Contestato ✓' : 'Contesta →';
+      v['con' + n] = () => { if (!done) this.setState({ con: s.con.concat([k]) }); };
+    });
+    ['A', 'B', 'C', 'T1', 'T2', 'T3', 'D'].forEach(o => {
+      v['c' + o] = s.choice === o ? 'on' : '';
+      v['ck' + o] = s.choice === o ? 'true' : 'false';
+      v['pick' + o] = () => this.setState({ choice: o });
+    });
+    // registro a catena: impronte calcolate sul testo originale, la riga 3 può essere manomessa
+    const orig = this.entries(s, Q);
+    let prev = '00000000';
+    const stored = orig.map(t => { const h = this.h(prev + t); const r = { prev, h }; prev = h; return r; });
+    const shown = orig.map((t, i) => (s.tampered && i === 2) ? 'Analisi separate ricevute: due su tre (riga modificata dopo)' : t);
+    let broken = -1, p2 = '00000000';
+    if (s.checked) shown.forEach((t, i) => { if (broken < 0 && this.h(p2 + t) !== stored[i].h) broken = i; p2 = stored[i].h; });
+    const t0 = 2;
+    v.rows = shown.map((t, i) => ({
+      n: '10:' + String(t0 + i * 2).padStart(2, '0'), txt: t, prev: stored[i].prev, h: stored[i].h,
+      cls: [i === orig.length - 2 ? 'me' : '', s.checked ? (broken >= 0 && i >= broken ? 'bad' : 'good') : '', (s.tampered && i === 2) ? 'tam' : ''].join(' ')
+    }));
+    v.showVer = !!s.checked;
+    v.verdictCls = broken >= 0 ? 'ko' : 'ok';
+    v.verdict = broken >= 0 ? 'La catena non torna alla riga ' + (broken + 1) + ': l\'impronta non corrisponde più al testo. La stanza si ferma.' : 'Catena integra: ' + orig.length + ' anelli su ' + orig.length + ' (simulazione).';
+    v.verCls = s.checked ? (broken >= 0 ? 'red' : 'green') : '';
+    v.verLabel = s.checked ? (broken >= 0 ? 'Catena rotta' : 'Catena verificata ✓') : 'Verifica la catena';
+    v.verify = () => this.setState({ checked: 'y' + Date.now() });
+    v.tamLabel = s.tampered ? 'Ripristina la riga 3' : 'Prova a manomettere la riga 3';
+    v.tamper = () => this.setState({ tampered: !s.tampered, checked: '' });
+    return v;
+  }
+}
+
+</script>
+</body>
+</html>

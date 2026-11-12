@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<style>html body .pg{--h:100dvh}</style>
+<title>Caso studio · Plus Italia</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0;background:#fcfcfd}
+.frame{--v:#5c4bff;--ink:#121214;--mut:#52586e;--lav:#ece9ff;--line:#ebebf0;--h:var(--gh,900px);position:relative;height:var(--h);overflow:hidden;container-type:inline-size;color:var(--ink);font-family:'Söhne',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+.gs{height:var(--h);overflow-y:auto;overflow-x:clip;background:#fcfcfd;font-size:17px;line-height:1.5;container-type:inline-size;scroll-behavior:smooth}
+.frame *{box-sizing:border-box}
+.gs a{color:inherit}
+.bar{position:sticky;top:0;z-index:40;height:48px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;padding:0 32px;background:#fcfcfd;box-shadow:0 1px 0 var(--line);font-size:14px}
+.bar a{text-decoration:none;padding:12px 0}
+.bar .back{font-weight:600}
+.bar .back:hover,.bar .cv:hover{text-decoration:underline;text-underline-offset:4px}
+.bar .pg{text-align:center;color:var(--mut)}
+.bar .cv{justify-self:end;color:var(--v);font-weight:600}
+.wrap{max-width:1240px;margin:0 auto;padding:0 32px;position:relative}
+.g12{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:start}
+.c1-7{grid-column:1/8}.c8-12{grid-column:8/13}.c1-6{grid-column:1/7}.c7-12{grid-column:7/13}.c1-5{grid-column:1/6}.c6-12{grid-column:6/13}
+h1,h2,h3{margin:0;font-weight:600;letter-spacing:-.025em;line-height:1.02}
+h1{font-size:104px}h2{font-size:56px}h3{font-size:36px;line-height:1.08}
+p{margin:0}
+blockquote{margin:0}
+.lede{font-size:22px;line-height:1.4;max-width:34ch}
+.small{font-size:14px;color:var(--mut)}
+.ph{display:block;width:100%;height:100%;object-fit:cover}
+.btn{appearance:none;border:0;background:var(--v);color:#fff;font:inherit;font-size:16px;font-weight:600;min-height:48px;padding:0 20px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:transform .15s ease,background-color .15s ease}
+.gs a.btn,.frame .btn{color:#fff}
+.frame .btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
+.btn:hover{background:#4a3ae6}.frame .btn.ghost:hover{background:var(--ink);color:#fff}
+.btn:active{transform:scale(.97)}
+.frame :focus-visible{outline:3px solid var(--v);outline-offset:3px}
+.sec{padding:160px 0}
+.mn{font-style:italic;color:var(--v);font-size:15px}
+.tag{display:inline-block;font-size:13px;font-weight:600;color:var(--v);background:var(--lav);padding:3px 10px}
+.dark{background:#0b0b0c;color:#fff}
+.dark .small{color:#a9a8b8}
+.ap{background:var(--lav);padding:28px 32px;font-size:26px;line-height:1.3;font-weight:500;letter-spacing:-.01em}
+.ap small{display:block;font-size:13px;font-style:italic;color:var(--v);font-weight:400;letter-spacing:0;margin-top:12px}
+.big{font-size:180px;font-weight:600;letter-spacing:-.05em;line-height:.9;font-variant-numeric:tabular-nums}
+.closing{padding:160px 0 120px}
+.closing blockquote{font-size:36px;line-height:1.25;font-weight:500;letter-spacing:-.015em;max-width:30ch}
+.closing .acts{display:flex;flex-wrap:wrap;gap:14px;margin-top:44px;align-items:center}
+.closing .name{font-size:13vw;font-weight:600;letter-spacing:-.05em;line-height:.85;margin-top:120px;color:var(--ink);white-space:nowrap;overflow:hidden}
+.closing .foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:28px}
+
+/* ===== modello comune dei casi: apertura, problema, scelte, chi, numero, post, chiusura ===== */
+/* apertura: la foto si apre */
+.op{position:relative;padding:64px 0 0}
+.op-txt .sector{font-size:20px;font-weight:600;color:var(--acc);margin:0 0 20px}
+.op-txt h1{max-width:9.5ch;font-size:var(--h1,104px)}
+.op-txt .lede{margin-top:28px}
+.op-txt .hint{margin-top:36px;font-size:14px;color:var(--mut)}
+.op-fig{margin:56px 0 0;height:calc(var(--h) * .72);overflow:hidden;background:var(--accs)}
+.op-fig img{object-position:var(--pos,50% 50%)}
+.op-meta{position:relative;background:#fff;padding:26px 30px;max-width:600px;margin:-96px 0 0 32px;z-index:2}
+.op-meta .t{font-size:19px;font-weight:600;line-height:1.35}
+.meta{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;font-size:15px;margin:16px 0 0}
+.meta dt{font-weight:600;color:var(--acc)}.meta dd{margin:0}
+
+/* il problema */
+.brief .stmt{font-size:34px;line-height:1.25;font-weight:500;letter-spacing:-.015em;max-width:24ch}
+.brief .ctx{font-size:19px;max-width:52ch;margin-top:32px}
+.brief .ctx b{color:var(--acc)}
+.brief .ap{margin-top:40px;max-width:30ch}
+
+/* le scelte */
+.ch{padding-block:120px}
+.ch-h{position:relative;z-index:3;background:#fcfcfd;display:flex;align-items:baseline;justify-content:space-between;gap:24px;margin-bottom:48px}
+.ch-h p{font-size:18px;color:var(--mut)}
+.chp{display:none}
+.scenes{display:grid;gap:120px}
+.sfig{margin:0;height:640px;overflow:hidden;background:var(--accs)}
+.slist{height:640px;background:var(--accs);display:flex;align-items:center;padding:48px}
+.slist ul{list-style:none;margin:0;padding:0;display:grid;gap:18px}
+.slist li{font-size:34px;font-weight:600;letter-spacing:-.02em;line-height:1.1;color:var(--acc)}
+.slist.dates li{font-size:24px;display:grid;grid-template-columns:200px 1fr;gap:16px;color:var(--ink);font-weight:500}
+.slist.dates li b{color:var(--acc);font-weight:600}
+.slist .small{margin-top:24px}
+.stx{align-self:center;padding-left:16px}
+.stx p.tx{font-size:19px;margin-top:22px;max-width:44ch}
+.ev{margin-top:32px;padding:22px 26px;background:var(--accs)}
+.ev p{font-size:21px;line-height:1.4;font-weight:500}
+.ev footer{margin-top:10px}
+
+/* chi ha fatto cosa */
+.rows{display:grid;margin-top:56px}
+.row{display:grid;grid-template-columns:4fr 8fr;gap:24px;padding:30px 32px;align-items:baseline;background:#f3f3f6}
+.row:nth-child(even){background:#fcfcfd}
+.row.io{background:var(--lav)}
+.row b{font-size:40px;letter-spacing:-.025em;line-height:1.05}
+.row.io b{color:var(--v)}
+.row p{font-size:19px;max-width:52ch}
+.who-s .note{margin-top:24px}
+
+/* il numero */
+.num-s{padding-block:140px}
+.num-s .big{color:#fff;margin-top:28px}
+.n{counter-reset:n var(--n)}
+.num-s .nl{margin-top:20px;color:#e6e5ee}
+.cmp{display:grid;gap:26px}
+.cr{display:grid;grid-template-columns:1fr auto;gap:8px 16px;font-size:15px;color:#c9c8d6}
+.cr .cb{grid-column:1/-1;height:28px;background:#1d1d22;display:block}
+.cr .cb i{display:block;height:100%;width:var(--w);background:#5b5a66;transform-origin:left}
+.cr.new .cb i{background:var(--accd)}
+.cr b{color:#fff;font-size:22px;font-variant-numeric:tabular-nums}
+.tl .tlb{position:relative;height:28px;background:var(--accd)}
+.tl em{position:absolute;top:-10px;bottom:-10px;width:6px;background:#fff;font-style:normal}
+.tl em span{position:absolute;left:14px;top:-30px;white-space:nowrap;font-size:15px;font-weight:600}
+.tl .tle{display:flex;justify-content:space-between;margin-top:12px;font-size:15px;color:#c9c8d6}
+.tl .tll{font-size:15px;color:#c9c8d6;margin-bottom:44px}
+.srcs{display:grid;grid-template-columns:auto 1fr;gap:8px 18px;margin:40px 0 0;font-size:14px;color:#c9c8d6}
+.srcs dt{font-weight:600;color:#fff}.srcs dd{margin:0;max-width:56ch}
+.mets{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:72px}
+.mets>div{background:#17171b;padding:24px 26px}
+.mets b{display:block;font-size:44px;font-weight:600;letter-spacing:-.03em;line-height:1;color:var(--accd);font-variant-numeric:tabular-nums}
+.mets span{display:block;margin-top:10px;font-size:15px;color:#c9c8d6}
+
+/* i post come storie */
+.rings{display:flex;flex-wrap:wrap;gap:22px;margin-top:40px}
+.ring{appearance:none;border:0;background:none;padding:0;font:inherit;cursor:pointer;display:grid;justify-items:center;gap:10px;width:96px;color:var(--ink)}
+.ring>span{width:92px;height:92px;border-radius:50%;padding:4px;background:var(--acc);display:block;transition:transform .2s ease}
+.ring>span img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block;background:var(--accs);box-shadow:0 0 0 3px #fcfcfd}
+.ring:hover>span{transform:scale(1.06)}
+.ring:active>span{transform:scale(.95)}
+.ring small{font-size:13px;text-align:center;line-height:1.3}
+.ring.miss{cursor:default}
+.ring.miss>span{background:var(--lav);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:600;color:var(--v)}
+.ring.miss small{color:var(--v)}
+.st-s .count{margin-top:28px}
+.pv{appearance:none;border:0;padding:0;background:var(--accs);cursor:pointer;display:block;width:100%;font:inherit;text-align:left;color:var(--ink)}
+.pv .pvi{aspect-ratio:4/5;overflow:hidden}
+.pv .pvi img{transition:transform .5s ease}
+.pv:hover .pvi img{transform:scale(1.03)}
+.pv .pvh{display:flex;justify-content:space-between;padding:16px 18px;background:var(--ink);color:#fff;font-weight:600}
+
+/* visore delle storie (fuori dallo scorrimento, copre la tavola) */
+.sv{position:absolute;inset:0;z-index:100;background:#0b0b0c;color:#fff;display:flex;align-items:center;justify-content:center;animation:k-svin .25s ease both}
+.sv-in{position:relative;width:calc((var(--h) - 190px) * .8);max-width:calc(100% - 32px)}
+.sbars{display:flex;gap:6px}
+.sb{flex:1;height:4px;background:rgba(255,255,255,.28);overflow:hidden}
+.sb i{display:block;height:100%;width:0;background:#fff}
+.sb.done i{width:100%}
+.sb.on i{animation:k-fill 6s linear forwards}
+.svh{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:14px 0 12px;font-size:14px}
+.svh b{font-size:15px}
+.svx{appearance:none;border:0;background:#24242b;color:#fff;width:44px;height:44px;font-size:20px;cursor:pointer}
+.svx:hover{background:#34343c}
+.stage4{position:relative;aspect-ratio:4/5;background:#17171b}
+.stage4 img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;animation:k-svimg .35s ease both}
+.tap{position:absolute;top:0;bottom:0;width:50%;appearance:none;border:0;background:transparent;cursor:pointer;z-index:2}
+.tap.l{left:0}.tap.r{right:0}
+.svc{margin-top:14px;font-size:15px;color:#c9c8d6;min-height:44px}
+.arr{position:absolute;top:50%;width:56px;height:56px;margin-top:-28px;appearance:none;border:0;background:#fff;color:#0b0b0c;font-size:24px;font-weight:600;cursor:pointer;transition:transform .15s ease}
+.arr:hover{transform:scale(1.08)}
+.arr.l{left:-88px}.arr.r{right:-88px}
+@keyframes k-fill{from{width:0}to{width:100%}}
+@keyframes k-svin{from{opacity:0}to{opacity:1}}
+@keyframes k-svimg{from{opacity:0;transform:scale(1.03)}to{opacity:1;transform:none}}
+
+/* ===== scorrimento stile Apple: solo se il browser lo regge e il movimento è gradito ===== */
+@supports (animation-timeline: view()){
+@media (prefers-reduced-motion: no-preference){
+.op-tr{view-timeline:--op block;height:calc(2.4 * var(--h))}
+.op-tr>.pin{position:sticky;top:48px;height:calc(var(--h) - 48px);overflow:hidden}
+.op-tr .op{height:100%;padding:0}
+.op-tr .op-txt{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);z-index:0}
+.op-tr .op-txt>*{max-width:50%}
+.op-tr .op-txt h1{max-width:9.5ch}
+.op-tr .op-fig{position:absolute;inset:0;margin:0;height:auto;z-index:1}
+.op-tr .op-meta{position:absolute;left:max(32px, calc((100% - 1240px) / 2 + 32px));bottom:32px;margin:0;z-index:3}
+.op-tr *{animation-timeline:--op;animation-fill-mode:both;animation-timing-function:linear;animation-duration:1ms}
+.op-tr .op-txt>*{animation-name:k-optx;animation-range:contain 0% contain 24%}
+.op-tr .op-fig{animation-name:k-opfig;animation-range:contain 8% contain 62%}
+.op-tr .op-fig img{animation-name:k-opimg;animation-range:contain 8% contain 90%}
+.op-tr .op-meta{animation-name:k-in;animation-range:contain 66% contain 82%}
+
+.tr{view-timeline:--t block}
+.tr>.pin{position:sticky;top:48px;height:calc(var(--h) - 48px);overflow:hidden;display:flex;align-items:center}
+.tr>.pin>.wrap{width:100%}
+.tr *{animation-timeline:--t;animation-fill-mode:both;animation-timing-function:linear;animation-duration:1ms}
+
+/* le scelte scorrono come scene, una alla volta */
+.ch-tr{height:calc((var(--n) * .9 + .4) * var(--h))}
+.ch-tr .ch{padding-block:0}
+.ch-tr .ch-h{margin-bottom:28px}
+.ch-tr .chp{display:block;position:absolute;left:32px;right:32px;top:-28px;height:4px;background:var(--line)}
+.ch-tr .chp i{display:block;height:100%;background:var(--acc);transform-origin:left;animation-name:k-grow;animation-range:contain 0% contain 100%}
+.ch-tr .scenes{display:block;position:relative;height:calc(var(--h) - 260px)}
+.ch-tr .scene{position:absolute;inset:0;animation-name:k-sc;animation-range:contain var(--a) contain var(--b)}
+.ch-tr .scene.first{animation-name:k-sc0}
+.ch-tr .scene.last{animation-name:k-sc1}
+.ch-tr .sfig,.ch-tr .slist{height:calc(var(--h) - 260px)}
+.ch-tr .scene .ph{animation-name:k-opimg;animation-range:contain var(--a) contain var(--b)}
+
+/* il numero conta mentre scorri */
+.num-tr{height:calc(2.1 * var(--h))}
+.num-tr .num-s{padding-block:0}
+.num-tr .n{animation-name:k-n;animation-range:contain 4% contain 42%}
+.num-tr .nl{animation-name:k-in;animation-range:contain 20% contain 34%}
+.num-tr .cr .cb i{animation-name:k-bar;animation-range:contain 30% contain 52%}
+.num-tr .cr.new .cb i{animation-range:contain 38% contain 60%}
+.num-tr .tl em{animation-name:k-in;animation-range:contain 36% contain 50%}
+.num-tr .srcs{animation-name:k-in;animation-range:contain 50% contain 62%}
+.num-tr .mets>div:nth-child(1){animation-name:k-in;animation-range:contain 60% contain 70%}
+.num-tr .mets>div:nth-child(2){animation-name:k-in;animation-range:contain 66% contain 76%}
+.num-tr .mets>div:nth-child(3){animation-name:k-in;animation-range:contain 72% contain 82%}
+.num-s .mets{margin-top:56px}
+
+/* entrate dentro le sezioni normali */
+.rv>*{animation:k-in linear both;animation-timeline:view();animation-range:entry 0% entry 70%}
+.rows .row{animation:k-slide linear both;animation-timeline:view();animation-range:entry 0% entry 80%}
+.rings .ring{animation:k-pop linear both;animation-timeline:view();animation-range:entry 10% cover 30%}
+.rings .ring:nth-child(2){animation-range:entry 20% cover 34%}.rings .ring:nth-child(3){animation-range:entry 30% cover 38%}.rings .ring:nth-child(4){animation-range:entry 40% cover 42%}
+.closing .name{animation:k-name linear both;animation-timeline:view();animation-range:entry 0% cover 40%}
+
+@container (max-width:640px){
+.op-tr .op-txt{top:28px;transform:none}
+.op-tr .op-txt>*{max-width:100%}
+.op-tr .op-fig{animation-name:k-opfigm}
+.op-tr .op-meta{left:16px;right:16px;bottom:16px}
+.tr{height:auto !important}
+.tr>.pin{position:static;height:auto;overflow:visible;display:block}
+.tr *{animation-timeline:view();animation-range:entry 10% cover 40%}
+.ch-tr .ch{padding-block:96px}
+.ch-tr .chp{display:none}
+.ch-tr .scenes{display:grid;gap:72px;height:auto}
+.ch-tr .scene{position:static;animation-name:k-in}
+.ch-tr .scene.first,.ch-tr .scene.last{animation-name:k-in}
+.ch-tr .scene,.ch-tr .scene .ph{animation-range:entry 0% cover 30%}
+.ch-tr .sfig{height:auto;aspect-ratio:4/5}
+.ch-tr .slist{height:auto}
+.num-tr .num-s{padding-block:96px}
+.num-tr .n{animation-name:k-n;animation-range:entry 20% cover 50%}
+}
+}}
+@keyframes k-optx{0%,45%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-40px)}}
+@keyframes k-opfig{0%{clip-path:inset(13% 5% 13% 57%)}100%{clip-path:inset(0 0 0 0)}}
+@keyframes k-opfigm{0%{clip-path:inset(58% 16px 64px 16px)}100%{clip-path:inset(0 0 0 0)}}
+@keyframes k-opimg{0%{transform:scale(1.18)}100%{transform:none}}
+@keyframes k-in{0%{opacity:0;transform:translateY(28px)}100%{opacity:1;transform:none}}
+@keyframes k-slide{0%{opacity:0;transform:translateX(-60px)}100%{opacity:1;transform:none}}
+@keyframes k-pop{0%{opacity:0;transform:scale(.6)}100%{opacity:1;transform:none}}
+@keyframes k-grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes k-bar{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes k-name{from{transform:translateX(-18%);opacity:.2}to{transform:none;opacity:1}}
+@keyframes k-sc{0%{opacity:0;transform:translateY(40px)}16%,84%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-40px)}}
+@keyframes k-sc0{0%,84%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-40px)}}
+@keyframes k-sc1{0%{opacity:0;transform:translateY(40px)}16%,100%{opacity:1;transform:none}}
+
+/* telefono 390 */
+@container (max-width:640px){
+.bar{padding:0 16px;grid-template-columns:1fr auto}.bar .pg{display:none}
+.wrap{padding:0 16px}
+.g12{grid-template-columns:1fr;gap:28px}
+.g12>*{grid-column:1/-1 !important}
+h1{font-size:54px}h2{font-size:38px}h3{font-size:28px}
+.lede{font-size:18px}
+.sec{padding:96px 0}
+.op{padding-top:32px}
+.op-txt h1{font-size:var(--h1m,54px)}
+.op-fig{height:calc(var(--h) * .5);margin-top:32px}
+.op-meta{margin:-48px 12px 0;padding:20px}
+.brief .stmt{font-size:25px}
+.brief .ctx{font-size:17px}
+.ap{font-size:21px;padding:22px}
+.ch{padding-block:96px}
+.ch-h{display:block}.ch-h p{margin-top:10px;font-size:16px}
+.scenes{gap:72px}
+.sfig{height:auto;aspect-ratio:4/5}
+.slist{height:auto;padding:28px}
+.slist li{font-size:25px}
+.slist.dates li{grid-template-columns:1fr;gap:2px;font-size:18px}
+.stx{padding-left:0}
+.stx p.tx{font-size:17px}
+.ev p{font-size:18px}
+.row{grid-template-columns:1fr;gap:6px;padding:22px 20px}
+.row b{font-size:28px}.row p{font-size:17px}
+.num-s{padding-block:96px}
+.big{font-size:104px}
+.mets{grid-template-columns:1fr;gap:12px;margin-top:40px}
+.mets b{font-size:34px}
+.tl em span{font-size:13px}
+.rings{gap:14px}.ring{width:76px}.ring>span{width:74px;height:74px}
+.closing{padding:96px 0 80px}
+.closing blockquote{font-size:24px}
+.closing .name{margin-top:72px}
+.sv-in{width:calc(100% - 32px)}
+.arr{display:none}
+}
+
+.closing .name{font-size:10cqw}
+@property --n{syntax:'<integer>';inherits:true;initial-value:10}
+.n::before{content:'×' counter(n)}
+@keyframes k-n{from{--n:1}to{--n:10}}
+
+
+.mg-s{background:#0b0b0c;color:#fff}.mgh{font-size:56px;letter-spacing:-.03em;line-height:1.02;max-width:18ch;margin:0}.mgp{color:#c9c8d6;max-width:56ch;margin-top:18px}.mgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:44px}.mgv{margin:0}.mgv video{width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:18px;background:#17171b;display:block}.mgv figcaption{margin-top:12px;display:grid;gap:4px}.mgv b{font-size:16px}.mgv span{font-size:13px;color:#a9a8b8}@container (max-width:640px){.mgh{font-size:32px}.mgrid{grid-template-columns:1fr 1fr}}
+</style>
+</helmet>
+<div class="frame" style="--acc: #8a1d43; --accs: #f3e6ea; --accd: #ec86a8">
+<div class="gs">
+
+<header class="bar">
+<a class="back" href="./Costruzione.dc.html">← Torna al portfolio</a>
+<span class="pg">Caso studio · Plus Italia</span>
+<a class="cv" href="./Costruzione.dc.html#percorso">CV ↓</a>
+</header>
+
+<!-- APERTURA: la foto si apre -->
+<section class="op-tr" id="inizio"><div class="pin"><div class="op">
+<div class="op-txt wrap">
+<p class="sector">Industria, B2B</p>
+<h1 style="">Plus Italia</h1>
+<p class="lede">Da catalogo che pubblica ogni giorno a distributore che si fa conoscere. Comunicazione B2B per un'azienda di lubrificanti e batterie.</p>
+<p class="hint">Scorri: la foto si apre.</p>
+</div>
+<figure class="op-fig" style="--pos: 50% 50%"><img class="ph" src="./assets/3fdcf22f62e24969d375bbdb87ada7a5.jpg" alt="La sede di Plus Italia vista dall'alto, tra ulivi e muretti a secco"></figure>
+<div class="op-meta"><p class="t">Plus Italia · Industria, B2B</p><dl class="meta"><dt>Ruolo</dt><dd>Strategia, contenuti e direzione creativa</dd><dt>Incarico</dt><dd>Appress Studio (dipendente), reparto social</dd><dt>Periodo</dt><dd>Da dicembre 2024 (primo piano editoriale a marzo 2025), in corso</dd></dl></div>
+</div></div></section>
+
+<!-- IL PROBLEMA -->
+<section class="sec brief" id="problema"><div class="wrap"><div class="g12">
+<div class="c1-5 rv"><h2>Il problema.</h2>
+<div class="ap"><span>Plus: un post al giorno e nessuno che risponde. Convincerli a pubblicare meno (auguri).</span><small>appunto scritto per questo sito, non è un documento d'archivio</small></div></div>
+<div class="c6-12 rv"><p class="stmt">Come si rende interessante un distributore di lubrificanti per chi lavora in officina?</p><p class="ctx">Plus Italia distribuisce lubrificanti e batterie dei grandi marchi in Sicilia, Calabria e Sardegna da vent'anni. Sui social pubblicava quasi un post al giorno, senza un piano preciso, e quasi nessuno interagiva.</p><p class="ctx" style="margin-top: 16px"><b>Il vincolo:</b> pubblico tecnico e B2B (officine, flotte, rivenditori), prodotti di marchi terzi con regole d'uso precise, nessun budget pubblicitario.</p></div>
+</div></div></section>
+
+<!-- LE SCELTE: una scena per scelta -->
+<section class="tr ch-tr" style="--n: 3" id="scelte"><div class="pin"><div class="wrap ch">
+<div class="ch-h"><h2>Le scelte.</h2><p>Tre decisioni hanno guidato il lavoro.</p></div>
+<div style="position: relative"><div class="chp" aria-hidden="true"><i></i></div>
+<div class="scenes">
+<article class="scene first" style="--a: 0.0%; --b: 33.3%"><div class="g12"><figure class="c1-6 sfig"><img class="ph" src="./assets/aa17e799214f803fc7b6ba0e0c0e938b.jpg" alt="Post Plus Italia"></figure><div class="c7-12 stx"><h3>Pubblicare meno, ognuno con un ruolo.</h3><p class="tx">Da circa 240 post l'anno a circa 80. Quattro filoni fissi: visione di settore, scheda tecnica di prodotto, problema reale d'officina, caso pratico.</p><blockquote class="ev"><p>«Posizionare Plus Italia come azienda solida, organizzata e affidabile agli occhi di partner, fornitori e competitor, valorizzando le persone e i processi interni.»</p><footer class="small">Piano dello shooting · documento interno · novembre 2025</footer></blockquote></div></div></article>
+<article class="scene" style="--a: 33.3%; --b: 66.7%"><div class="g12"><figure class="c1-6 sfig"><img class="ph" src="./assets/e3f19d615273d917e87b50bd2ae5ec2b.jpg" alt="Video girato nella sede di Plus Italia"></figure><div class="c7-12 stx"><h3>L'azienda dietro il catalogo.</h3><p class="tx">I video girati in sede: interviste doppie tra reparti, il dietro le quinte della logistica, i vent'anni raccontati dai fondatori.</p><blockquote class="ev"><p>«Far capire, a chi lavora con Plus Italia, che dietro ogni ordine ci sono coordinamento, esperienza e cura condivisa.»</p><footer class="small">Format «Intervista doppia» · documento interno · novembre 2025</footer></blockquote></div></div></article>
+<article class="scene last" style="--a: 66.7%; --b: 100.0%"><div class="g12"><figure class="c1-6 sfig"><img class="ph" src="./assets/65956b92447340dbd025a05b4421d9e8.jpg" alt="Post Plus Italia"></figure><div class="c7-12 stx"><h3>LinkedIn al centro.</h3><p class="tx">Documenti PDF e caroselli tecnici pensati per chi decide gli acquisti: vendite e sviluppo commerciale sono le prime funzioni del pubblico. Accanto, il racconto dei vent'anni attraverso i fondatori.</p><blockquote class="ev"><p>«Raccontare i 20 anni di storia attraverso le parole [dei fondatori]: emozione, aneddoti, valori e visione futura.»</p><footer class="small">Piano di produzione video · documento interno · aprile – agosto 2026</footer></blockquote></div></div></article>
+</div></div>
+</div></div></section>
+
+<!-- IO, TEAM, CLIENTE -->
+<section class="sec who-s" id="chi"><div class="wrap">
+<h2>Chi ha fatto cosa.</h2>
+<div class="rows"><div class="row io"><b>Io</b><p>Strategia, piani editoriali mensili, testi per LinkedIn, Instagram e Facebook, grafiche e video in motion graphic, format e sceneggiature degli shooting, direzione sul set, report trimestrali.</p></div><div class="row"><b>Team foto e video Appress</b><p>Riprese.</p></div><div class="row"><b>Cliente</b><p>Nessun budget pubblicitario: tutto organico.</p></div></div>
+<p class="small note">Incarico svolto come dipendente di Appress Studio, nel reparto social.</p>
+</div></section>
+
+<!-- IL NUMERO -->
+<section class="tr num-tr dark" id="numero"><div class="pin"><div class="wrap num-s">
+<div class="g12" style="align-items: end">
+<div class="c1-6"><h2>Il numero.</h2><p class="big n" role="img" aria-label="dieci volte"></p><p class="lede nl">«Mi piace» per post su Facebook, con un terzo dei post.</p></div>
+<div class="c7-12"><div class="cmp" aria-label="Confronto tra i due periodi"><div class="cr"><span>nov 2023 – ott 2024 · 237 post</span><b>0,9 a post</b><span class="cb"><i style="--w: 9.8%"></i></span></div><div class="cr new"><span>nov 2025 – ott 2026 · 79 post</span><b>9,2 a post</b><span class="cb"><i style="--w: 100%"></i></span></div></div><dl class="srcs"><dt>Fonte</dt><dd>Meta Business Suite (letti il 5 novembre 2026) e report del terzo trimestre 2026.</dd><dt>Limite</dt><dd>Le visualizzazioni Facebook prima di settembre 2024 non sono disponibili, per questo il confronto usa i «Mi piace». Nessun post sponsorizzato nei periodi analizzati. Non attribuibile in modo esclusivo al mio lavoro.</dd></dl></div>
+</div>
+<div class="mets"><div><b>6.547</b><span>impressioni su LinkedIn nel terzo trimestre 2026, +29% sul trimestre prima</span></div><div><b>30,8%</b><span>tasso di clic medio dei documenti PDF su LinkedIn</span></div><div><b>21.194</b><span>visualizzazioni su Instagram nel terzo trimestre 2026, +48%</span></div></div>
+</div></div></section>
+
+<!-- I POST COME STORIE -->
+<section class="sec mg-s dark" id="motion"><div class="wrap"><p class="eyebrow" style="color:#b3a9ff">MOTION GRAPHIC CON L'IA · FATTI DA ME</p><h2 class="mgh">Ideati, scritti, animati e montati da me, dall'inizio alla fine.</h2><p class="mgp">Idea, copione, grafica, animazione e montaggio: tutto mio, con strumenti di IA (HyperFrames) e la mia revisione a ogni passaggio. Qui i primi 15 secondi di ciascuno.</p><div class="mgrid"><figure class="mgv"><video src="./assets/26683f0e282d84e184eb41820a5a3190.mp4" poster="./assets/e18d52334b595afed19aaa31baf6ea49.jpg" autoplay="" muted="" loop="" playsinline="" aria-label="Una batteria PLUS per ogni motore"></video><figcaption><b>Una batteria PLUS per ogni motore</b><span>Settembre 2026 · la gamma su livrea rossa</span></figcaption></figure><figure class="mgv"><video src="./assets/09a23220f7ce090b7b6d4aeddf07612a.mp4" poster="./assets/38c82ca8bc86d75c47756d8b7b16df4a.jpg" autoplay="" muted="" loop="" playsinline="" aria-label="Ufficiale o falso?"></video><figcaption><b>Ufficiale o falso?</b><span>Settembre 2026 · un olio su dieci è falso</span></figcaption></figure><figure class="mgv"><video src="./assets/4816fd0f87b68f401b76028f429744c3.mp4" poster="./assets/803504f4ac3a60b83e3b0a394492b3bd.jpg" autoplay="" muted="" loop="" playsinline="" aria-label="TG Due Ruote"></video><figcaption><b>TG Due Ruote</b><span>Ottobre 2026 · ELF a EICMA</span></figcaption></figure><figure class="mgv"><video src="./assets/f790dffc82884ab08212e99e9d4162e4.mp4" poster="./assets/efea8f38af6c398a2a8fb0779ec4d1ff.jpg" autoplay="" muted="" loop="" playsinline="" aria-label="Shell, vent'anni insieme"></video><figcaption><b>Shell, vent'anni insieme</b><span>Ottobre 2026 · i numeri di Shell</span></figcaption></figure></div></div></section>
+<section class="sec st-s" id="post"><div class="wrap"><div class="g12" style="align-items: center">
+<div class="c1-6"><h2>I post.</h2><p class="lede" style="margin-top: 20px">Tocca un cerchio: il post si apre come una storia, a tutto schermo e senza tagli.</p>
+<div class="rings"><button class="ring" onClick="{{open0}}" aria-label="Apri il post: Post di luglio 2026: «Big Announcement», 20 anni di Plus Italia e la partnership"><span><img src="./assets/a6ad7045ad2e60a4b822484a638e3474.jpg" alt=""></span><small>Luglio</small></button><button class="ring" onClick="{{open1}}" aria-label="Apri il post: Copertina reel di agosto 2026: «Il nemico della batteria?»"><span><img src="./assets/2a8343c99c09649c6b54bb4b770663c2.jpg" alt=""></span><small>Agosto</small></button><button class="ring" onClick="{{open2}}" aria-label="Apri il post: Post di ottobre 2026: Plus Italia alla convention TotalEnergies"><span><img src="./assets/6a0734b0fd3daec089019a57d92e05ea.jpg" alt=""></span><small>Ottobre</small></button><button class="ring" onClick="{{open3}}" aria-label="Apri il post: Copertina reel di novembre 2026: nel 1958 il 90% del petrolio italiano si estraeva in Sicilia"><span><img src="./assets/7aadd25380d4a32768df43be2bfa405d.jpg" alt=""></span><small>Novembre</small></button><button class="ring" onClick="{{open4}}" aria-label="Apri il post: Copertina reel di novembre 2026: cosa scorre dentro un'auto elettrica?"><span><img src="./assets/924861239beb52ac5af199e057787cba.jpg" alt=""></span><small>Novembre</small></button><button class="ring" onClick="{{open5}}" aria-label="Apri il post: Post di novembre 2026: corso TotalEnergies TAcademy sui veicoli ibridi ed elettrici"><span><img src="./assets/1d252452915a81cb73c5e500af4510e6.jpg" alt=""></span><small>Novembre</small></button><button class="ring" onClick="{{open6}}" aria-label="Apri il post: Post Plus Italia"><span><img src="./assets/aa17e799214f803fc7b6ba0e0c0e938b.jpg" alt=""></span><small>Post</small></button><button class="ring" onClick="{{open7}}" aria-label="Apri il post: Video girato in sede"><span><img src="./assets/e3f19d615273d917e87b50bd2ae5ec2b.jpg" alt=""></span><small>In sede</small></button></div>
+<p class="small count">79 post su Facebook · novembre 2025 – ottobre 2026</p></div>
+<div class="c8-12"><button class="pv" onClick="{{open0}}" aria-label="Guarda i post come storie"><div class="pvi"><img class="ph" src="./assets/a6ad7045ad2e60a4b822484a638e3474.jpg" alt="Post di luglio 2026: «Big Announcement», 20 anni di Plus Italia e la partnership"></div><span class="pvh"><span>Guarda le storie</span><span>8 post ▸</span></span></button></div>
+</div></div></section>
+
+<!-- CHIUSURA -->
+<section class="closing" id="fine"><div class="wrap">
+<h2>In una frase.</h2>
+<blockquote style="margin-top: 28px"><p>«Nel B2B la fiducia non nasce dal catalogo, ma dal far vedere chi c'è dietro ogni consegna.»</p></blockquote>
+<div class="acts"><a class="btn" href="./Costruzione.dc.html">← Torna al portfolio</a><a class="btn ghost" href="./Caso_TheYard.dc.html">Prossimo caso: The Yard Hostel →</a><a class="small" href="mailto:g.santuccio7@gmail.com?subject=Plus Italia%20·%20dettagli%20del%20caso">Vuoi i dettagli del confronto? Scrivimi.</a></div>
+<p class="name" aria-hidden="true" style="font-size: 10cqw">Plus Italia</p>
+<div class="foot small"><span>Giovanni Santuccio · caso studio</span><span>Numeri con fonte e limite. Gli appunti sono scritti per questo sito.</span></div>
+</div></section>
+
+</div>
+
+<sc-if value="{{open}}" hint-placeholder-val="{{false}}">
+<div class="sv" role="dialog" aria-modal="true" aria-label="Post di Plus Italia come storie">
+<div class="sv-in">
+<div class="sbars"><span class="sb {{sb0}}"><i></i></span><span class="sb {{sb1}}"><i></i></span><span class="sb {{sb2}}"><i></i></span><span class="sb {{sb3}}"><i></i></span><span class="sb {{sb4}}"><i></i></span><span class="sb {{sb5}}"><i></i></span><span class="sb {{sb6}}"><i></i></span><span class="sb {{sb7}}"><i></i></span></div>
+<div class="svh"><span><b>Plus Italia</b> · {{curN}}</span><button class="svx" onClick="{{close}}" aria-label="Chiudi">✕</button></div>
+<div class="stage4"><img src="{{curSrc}}" alt="{{curAlt}}"><button class="tap l" onClick="{{prev}}" aria-label="Post precedente"></button><button class="tap r" onClick="{{next}}" aria-label="Post successivo"></button></div>
+<p class="svc">{{curAlt}}</p>
+<button class="arr l" onClick="{{prev}}" aria-label="Post precedente">‹</button><button class="arr r" onClick="{{next}}" aria-label="Post successivo">›</button>
+</div>
+</div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { open: false, i: 0 };
+    this.posts = [{"src": "./assets/a6ad7045ad2e60a4b822484a638e3474.jpg", "alt": "Post di luglio 2026: «Big Announcement», 20 anni di Plus Italia e la partnership"}, {"src": "./assets/2a8343c99c09649c6b54bb4b770663c2.jpg", "alt": "Copertina reel di agosto 2026: «Il nemico della batteria?»"}, {"src": "./assets/6a0734b0fd3daec089019a57d92e05ea.jpg", "alt": "Post di ottobre 2026: Plus Italia alla convention TotalEnergies"}, {"src": "./assets/7aadd25380d4a32768df43be2bfa405d.jpg", "alt": "Copertina reel di novembre 2026: nel 1958 il 90% del petrolio italiano si estraeva in Sicilia"}, {"src": "./assets/924861239beb52ac5af199e057787cba.jpg", "alt": "Copertina reel di novembre 2026: cosa scorre dentro un'auto elettrica?"}, {"src": "./assets/1d252452915a81cb73c5e500af4510e6.jpg", "alt": "Post di novembre 2026: corso TotalEnergies TAcademy sui veicoli ibridi ed elettrici"}, {"src": "./assets/aa17e799214f803fc7b6ba0e0c0e938b.jpg", "alt": "Post Plus Italia"}, {"src": "./assets/e3f19d615273d917e87b50bd2ae5ec2b.jpg", "alt": "Video girato in sede"}];
+  }
+  go(i) {
+    clearTimeout(this.t);
+    const n = this.posts.length;
+    if (i < 0) i = 0;
+    if (i >= n) { this.setState({ open: false }); return; }
+    this.setState({ open: true, i });
+    this.t = setTimeout(() => this.go(i + 1), 6000);
+  }
+  renderVals() {
+    const s = this.state, p = this.posts, cur = p[s.i] || p[0];
+    const v = {
+      open: s.open,
+      curSrc: cur.src, curAlt: cur.alt,
+      curN: (s.i + 1) + ' di ' + p.length,
+      next: () => this.go(s.i + 1),
+      prev: () => this.go(s.i - 1),
+      close: () => { clearTimeout(this.t); this.setState({ open: false }); }
+    };
+    p.forEach((_, k) => {
+      v['open' + k] = () => this.go(k);
+      v['sb' + k] = k < s.i ? 'done' : (k === s.i ? 'on' : '');
+    });
+    return v;
+  }
+}
+</script>
+</body>
+</html>

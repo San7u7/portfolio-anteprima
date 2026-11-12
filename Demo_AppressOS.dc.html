@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<style>html body .pg{--h:100dvh}</style>
+<title>Demo Appress OS</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0;background:#0b0b10}
+.dm{--v:#5c4bff;--g:#7cf29a;width:1440px;height:900px;position:relative;overflow:hidden;background:radial-gradient(120% 90% at 50% 0%,#1b1736 0%,#0b0b10 60%);color:#fff;font-family:'Söhne',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:16px;line-height:1.5}
+.dm *{box-sizing:border-box}
+.dtop{position:absolute;left:0;right:0;top:0;height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 96px;border-bottom:1px solid rgba(255,255,255,.08)}
+.dtop b{font-size:16px;font-weight:600}
+.dtop .lab{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:13px;color:var(--g);margin-left:12px}
+.dtop a{color:#c9c5ea;font-size:14px;text-decoration:none}
+.dtop a:hover{color:#fff}
+.dbar{display:flex;gap:6px;align-items:center}
+.dbar i{width:22px;height:4px;border-radius:2px;background:rgba(255,255,255,.15);transition:background-color .4s}
+.dbar i.on{background:var(--g)}
+.dbar i.done{background:rgba(124,242,154,.45)}
+.dbar span{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:13px;color:#a9a9b8;margin-left:10px;min-width:96px}
+.dfr{position:absolute;left:120px;top:104px;width:1200px;height:750px;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.12);box-shadow:0 30px 80px rgba(0,0,0,.5);background:#0d0b1a}
+.dimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:0;transform:scale(1.04);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform 1.2s cubic-bezier(.22,1,.36,1)}
+.dimg.on{opacity:1;transform:none}
+.dfr.go .dimg.on{transform:scale(1.1);transition:transform .45s cubic-bezier(.4,0,.2,1)}
+.dhot{position:absolute;appearance:none;border:0;padding:0;margin:0;background:transparent;cursor:pointer;border-radius:999px;box-shadow:0 0 0 2px var(--g),0 0 0 9999px rgba(8,8,14,.55);z-index:3;transition:left .6s cubic-bezier(.22,1,.36,1),top .6s cubic-bezier(.22,1,.36,1),width .6s cubic-bezier(.22,1,.36,1),height .6s cubic-bezier(.22,1,.36,1),border-radius .6s}
+.dfr.go .dhot{box-shadow:0 0 0 2px var(--g),0 0 0 9999px rgba(8,8,14,0)}
+.dhot::after{content:'';position:absolute;inset:-6px;border-radius:inherit;box-shadow:0 0 0 2px var(--g);opacity:0;animation:dpulse 1.6s ease-out infinite}
+@keyframes dpulse{0%{opacity:.9;transform:scale(1)}100%{opacity:0;transform:scale(1.18)}}
+.dhot:focus-visible{outline:3px solid #fff;outline-offset:6px}
+.dcur{position:absolute;width:26px;height:26px;margin:-4px 0 0 -4px;z-index:5;pointer-events:none;transition:left .9s cubic-bezier(.22,1,.36,1),top .9s cubic-bezier(.22,1,.36,1)}
+.dcur svg{width:100%;height:100%;filter:drop-shadow(0 2px 6px rgba(0,0,0,.6))}
+.dfr.go .dcur{transform:scale(.8);transition:transform .15s}
+.dtips{position:absolute;inset:0;pointer-events:none;z-index:4}
+.dtip{position:absolute;width:380px;padding:18px 20px;border-radius:12px;background:#17171d;border:1px solid #2a2a33;box-shadow:0 16px 40px rgba(0,0,0,.45);opacity:0;transform:translateY(14px);transition:opacity .45s .25s,transform .6s .25s cubic-bezier(.22,1,.36,1)}
+.dtip.on{opacity:1;transform:none}
+.dfr.go .dtip.on{opacity:0;transition:opacity .2s}
+.dtip small{display:block;font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:12px;color:var(--g);margin-bottom:6px}
+.dtip b{display:block;font-size:20px;font-weight:600;line-height:1.3}
+.dtip p{font-size:16px;line-height:1.5;color:#c9c9d6;margin:8px 0 0}
+.dtip .hint{display:flex;align-items:center;gap:8px;margin-top:12px;font-size:14px;color:var(--g)}
+.dtip .hint i{width:8px;height:8px;border-radius:50%;background:var(--g)}
+.dend{position:absolute;inset:0;z-index:6;display:flex;align-items:center;justify-content:center;background:rgba(8,8,14,.72);animation:dfade .5s both}
+@keyframes dfade{from{opacity:0}to{opacity:1}}
+.dcard{width:600px;padding:36px 40px;border-radius:14px;background:#17171d;border:1px solid #2a2a33;animation:dup .6s cubic-bezier(.22,1,.36,1) both}
+@keyframes dup{from{transform:translateY(24px) scale(.97)}to{transform:none}}
+.dcard small{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:13px;color:var(--g)}
+.dcard h2{font-size:34px;line-height:1.15;font-weight:600;margin:10px 0 0;letter-spacing:-.02em}
+.dcard p{font-size:16px;color:#c9c9d6;margin:12px 0 0}
+.dcard ul{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:8px}
+.dcard li{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:14px;color:#e6e6ef}
+.dcard li::before{content:'✓ ';color:var(--g)}
+.dbtns{display:flex;gap:12px;margin-top:28px}
+.dbtn{appearance:none;border:0;font:inherit;cursor:pointer;display:inline-flex;align-items:center;height:48px;padding:0 22px;border-radius:24px;font-size:15px;font-weight:600;text-decoration:none}
+.dbtn.p{background:var(--g);color:#0b0b10}
+.dbtn.s{background:transparent;color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.3)}
+.dbtn:focus-visible{outline:3px solid #fff;outline-offset:3px}
+@media (prefers-reduced-motion: reduce){.dhot::after{animation:none}.dimg,.dtip,.dhot,.dcur{transition:none}}
+</style>
+</helmet>
+<div class="dm">
+<div class="dtop">
+<p style="margin: 0"><b>Appress OS</b><span class="lab">demo guidata · catture vere</span></p>
+<div class="dbar" aria-hidden="true"><sc-for list="{{bar}}" as="x" hint-placeholder-count="10"><i class="{{x.cls}}"></i></sc-for><span>{{label}}</span></div>
+<a href="Costruzione.dc.html#appress-os">Esci dalla demo ✕</a>
+</div>
+<div class="{{frCls}}">
+<sc-for list="{{imgs}}" as="m" hint-placeholder-count="10"><img class="{{m.cls}}" src="{{m.src}}" alt="{{m.alt}}"></sc-for>
+<sc-if value="{{play}}" hint-placeholder-val="{{true}}">
+<button class="dhot" type="button" onClick="{{next}}" aria-label="{{act}}" style="left: {{hl}}; top: {{ht}}; width: {{hw}}; height: {{hh}}; border-radius: {{hr}}"></button>
+<span class="dcur" aria-hidden="true" style="left: {{cx}}; top: {{cy}}"><svg viewBox="0 0 24 24"><path d="M4 2 L4 19 L8.5 15 L11.5 22 L14.5 20.7 L11.6 14 L18 14 Z" fill="#ffffff" stroke="#0b0b10" stroke-width="1.4" stroke-linejoin="round"></path></svg></span>
+</sc-if>
+<div class="dtips" role="status">
+<sc-for list="{{tips}}" as="p" hint-placeholder-count="10"><div class="{{p.cls}}" style="left: {{p.l}}; top: {{p.t}}"><small>{{p.lab}}</small><b>{{p.tit}}</b><p>{{p.txt}}</p><p class="hint"><i></i>{{p.act}}</p></div></sc-for>
+</div>
+</div>
+<sc-if value="{{end}}" hint-placeholder-val="{{false}}">
+<div class="dend">
+<div class="dcard" role="dialog" aria-label="Fine della demo">
+<small>fine della demo · 10 di 10</small>
+<h2>Hai fatto il giro di bordo.</h2>
+<p>In dieci tocchi hai visto come lavora lo studio ogni giorno: il sistema prepara, una persona decide.</p>
+<ul><li>sali a bordo e scegli il pianeta</li><li>parti dal piano di oggi</li><li>apri un cliente e il suo PED</li><li>scrivi e rivedi nello Studio Editoriale</li><li>decidi cosa esce sui social</li><li>chiudi il mese con Report &amp; Consegna</li></ul>
+<div class="dbtns"><a class="dbtn p" href="Costruzione.dc.html#appress-os">Torna al portfolio</a><button class="dbtn s" type="button" onClick="{{again}}">Rifai la demo</button></div>
+</div>
+</div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { s: 0, go: false };
+  }
+  renderVals() {
+    const S = [
+      { img: './assets/285d7fbed4051d37c1b4633dc1334ce8.jpg', alt: 'Schermata Benvenuto a bordo', h: [38.6, 57.5, 22.75, 5.3], r: '999px', t: [38.6, 65.5], tit: 'Benvenuto a bordo.', txt: 'Appress OS si apre come una navicella: il cursore è la nave. Un solo pulsante fa partire il viaggio.', act: 'Tocca «Sali al ponte di comando»' },
+      { img: './assets/9f47f379122c64c8005f11db1da8ecb3.jpg', alt: 'Il corridoio con il portello circolare', h: [38.6, 38.4, 22.9, 36.6], r: '50%', t: [64, 42], tit: 'Il corridoio.', txt: 'In fondo al corridoio si apre un portello circolare. Dietro c’è la rotta con i pianeti dello studio.', act: 'Tocca il portello' },
+      { img: './assets/1b59eb6b0937f9fa18584aeed1ea0057.jpg', alt: 'Il pianeta Taskboard sulla rotta', h: [46, 75.5, 8, 4.3], r: '999px', t: [57, 58], tit: 'Sette pianeti, uno per lavoro.', txt: 'Sei sono attivi, Controllo & Performance è in arrivo. Si scorre con frecce, rotella o pallini; «Entra» parte con un salto.', act: 'Tocca «Entra →» su Taskboard' },
+      { img: './assets/3344f38c4c90b2c232776b814294acb5.jpg', alt: 'Taskboard con il piano di oggi', h: [31.6, 2.8, 9.4, 3.4], r: '999px', t: [43, 8], tit: 'Taskboard: il piano di oggi.', txt: 'Stato del carico e piano del giorno: fascia oraria, cliente, attività del PED, ore e chi lo fa. Tre livelli di lettura: Orienta, Capisci, Opera.', act: 'Apri il menu del pianeta e vai a Clienti' },
+      { img: './assets/4ab81e92b48061798f90be0783f8be16.jpg', alt: 'Pianeta Clienti con la scheda AuraDigital', h: [37, 73.6, 25.8, 4.6], r: '10px', t: [64, 50], tit: 'Clienti.', txt: '22 clienti in un carosello di pianeti. Per ognuno lo stato del PED e l’attività in corso, a colpo d’occhio.', act: 'Tocca «Apri workspace» su AuraDigital' },
+      { img: './assets/607e81ff3d7f0ae86fe8bd4eebb6e4a7.jpg', alt: 'Workspace AuraDigital, scheda Panoramica', h: [27.4, 23.8, 6.2, 3.4], r: '8px', t: [37, 30], tit: 'Il workspace del cliente.', txt: 'Sei schede: Panoramica, Memoria, PED & Copy, Attività, Asset, Workflow. La Panoramica dice la prossima azione utile.', act: 'Apri la scheda «PED & Copy»' },
+      { img: './assets/1f4ce12b12534dec86cae6f8fe50f4b3.jpg', alt: 'Workspace AuraDigital, scheda PED & Copy', h: [16, 51, 11.2, 4.4], r: '8px', t: [30, 44], tit: 'PED & Copy.', txt: 'Lo stato dei contenuti del mese e l’ultima richiesta di testi. Il lavoro editoriale vero si fa nello Studio.', act: 'Tocca «Apri in Studio Editoriale»' },
+      { img: './assets/6b52445db72944596270a5976ce0263d.jpg', alt: 'Studio Editoriale per AuraDigital, modalità Crea', h: [24.6, 2.4, 13.2, 3.8], r: '999px', t: [40, 8], tit: 'Studio Editoriale.', txt: 'Quattro modalità: Crea, Revisione, PED, Chat. Il sistema prepara le opzioni, una persona sceglie. Approvare un testo e promuoverlo sono due consensi separati.', act: 'Dal menu del pianeta passa a Social' },
+      { img: './assets/6392b5671f18682e842d0fda33ad4917.jpg', alt: 'Social: le cose da decidere', h: [20, 23, 16.8, 4.6], r: '8px', t: [40, 18], tit: 'Social: cosa decidere oggi.', txt: 'Uscite fallite, da approvare, da confermare, grafiche mancanti, in ordine di urgenza (urgente vuol dire entro 72 ore). Nulla viene programmato senza approvazione.', act: 'Rimetti in coda l’uscita fallita' },
+      { img: './assets/ae59940e056ebd47a02eb70394db1e6c.jpg', alt: 'Report & Consegna per Plus Italia', h: [50.8, 17, 5.4, 3.6], r: '8px', t: [51, 24], tit: 'Report & Consegna.', txt: 'Cinque passi: Preparazione, Verifica, Report, Consegna, Storico. Il sistema prepara lo stato, senza associazioni inventate; il passo lo decide una persona.', act: 'Passa a «Verifica»' }
+    ];
+    const st = this.state;
+    const s = st.s;
+    const N = S.length;
+    const end = s >= N;
+    const k = Math.min(s, N - 1);
+    const c = S[k];
+    const pc = (v) => v + '%';
+    return {
+      frCls: st.go ? 'dfr go' : 'dfr',
+      imgs: S.map((x, i) => ({ src: x.img, alt: i === k ? x.alt : '', cls: i === k ? 'dimg on' : 'dimg' })),
+      tips: S.map((x, i) => ({ cls: (i === k && !end) ? 'dtip on' : 'dtip', l: pc(x.t[0]), t: pc(x.t[1]), lab: 'passo ' + (i + 1) + ' di ' + N, tit: x.tit, txt: x.txt, act: x.act })),
+      act: c.act,
+      hl: pc(c.h[0]), ht: pc(c.h[1]), hw: pc(c.h[2]), hh: pc(c.h[3]), hr: c.r,
+      cx: pc(c.h[0] + c.h[2] * 0.6), cy: pc(c.h[1] + c.h[3] * 0.6),
+      label: end ? 'fatto' : ('passo ' + (s + 1) + ' di ' + N),
+      bar: S.map((x, i) => ({ cls: i < s ? 'done' : (i === s ? 'on' : '') })),
+      play: !end, end: end,
+      next: () => {
+        if (st.go) return;
+        this.setState({ go: true });
+        setTimeout(() => this.setState({ s: s + 1, go: false }), 450);
+      },
+      again: () => this.setState({ s: 0, go: false })
+    };
+  }
+}
+</script>
+</body>
+</html>

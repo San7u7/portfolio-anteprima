@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<style>html body .pg{--h:100dvh}</style>
+<title>Demo Askesis</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0;background:#0b0b10}
+.dm{--g:#7cf29a;width:1440px;height:900px;position:relative;overflow:hidden;background:radial-gradient(120% 90% at 50% 0%,#1b1736 0%,#0b0b10 60%);color:#fff;font-family:'Söhne',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:16px;line-height:1.5}
+.dm *{box-sizing:border-box}
+.dtop{position:absolute;left:0;right:0;top:0;height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 96px;border-bottom:1px solid rgba(255,255,255,.08)}
+.dtop b{font-size:16px;font-weight:600}
+.dtop .lab{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:13px;color:var(--g);margin-left:12px}
+.dtop a{color:#c9c5ea;font-size:14px;text-decoration:none}.dtop a:hover{color:#fff}
+.dbar{display:flex;gap:6px;align-items:center}
+.dbar i{width:22px;height:4px;border-radius:2px;background:rgba(255,255,255,.15);transition:background-color .4s}
+.dbar i.on{background:var(--g)}.dbar i.done{background:rgba(124,242,154,.45)}
+.dbar span{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:13px;color:#a9a9b8;margin-left:10px;min-width:96px}
+.dfr{position:absolute;left:300px;top:110px;width:356px;height:770px;border-radius:44px;overflow:hidden;border:10px solid #000;box-shadow:0 0 0 1px rgba(255,255,255,.18),0 30px 80px rgba(0,0,0,.55);background:#000}
+.dimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;display:block;opacity:0;transform:scale(1.04);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform 1.2s cubic-bezier(.22,1,.36,1)}
+.dimg.on{opacity:1;transform:none}
+.dfr.go .dimg.on{transform:scale(1.1);transition:transform .45s cubic-bezier(.4,0,.2,1)}
+.dhot{position:absolute;appearance:none;border:0;padding:0;margin:0;background:transparent;cursor:pointer;box-shadow:0 0 0 2px var(--g),0 0 0 9999px rgba(8,8,14,.5);z-index:3;transition:left .6s cubic-bezier(.22,1,.36,1),top .6s cubic-bezier(.22,1,.36,1),width .6s cubic-bezier(.22,1,.36,1),height .6s cubic-bezier(.22,1,.36,1)}
+.dfr.go .dhot{box-shadow:0 0 0 2px var(--g),0 0 0 9999px rgba(8,8,14,0)}
+.dhot::after{content:'';position:absolute;inset:-6px;border-radius:inherit;box-shadow:0 0 0 2px var(--g);opacity:0;animation:dpulse 1.6s ease-out infinite}
+@keyframes dpulse{0%{opacity:.9;transform:scale(1)}100%{opacity:0;transform:scale(1.18)}}
+.dhot:focus-visible{outline:3px solid #fff;outline-offset:6px}
+.dcur{position:absolute;width:26px;height:26px;margin:-4px 0 0 -4px;z-index:5;pointer-events:none;transition:left .9s cubic-bezier(.22,1,.36,1),top .9s cubic-bezier(.22,1,.36,1)}
+.dcur svg{width:100%;height:100%;filter:drop-shadow(0 2px 6px rgba(0,0,0,.6))}
+.dside{position:absolute;left:740px;top:150px;width:440px}
+.dtip{padding:22px 24px;border-radius:14px;background:#17171d;border:1px solid #2a2a33;box-shadow:0 16px 40px rgba(0,0,0,.45);animation:dtin .6s .15s cubic-bezier(.22,1,.36,1) both}
+@keyframes dtin{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.dtip small{display:block;font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:12px;color:var(--g);margin-bottom:8px}
+.dtip b{display:block;font-size:24px;font-weight:600;line-height:1.25}
+.dtip p{font-size:16px;line-height:1.5;color:#c9c9d6;margin:10px 0 0}
+.dtip .hint{display:flex;align-items:center;gap:8px;margin-top:14px;font-size:15px;color:var(--g)}
+.dtip .hint i{width:8px;height:8px;border-radius:50%;background:var(--g)}
+.dcard ul{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:8px}
+.dcard li{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:14px;color:#e6e6ef}
+.dcard li::before{content:'✓ ';color:var(--g)}
+.dbtns{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap}
+.dbtn{appearance:none;border:0;font:inherit;cursor:pointer;display:inline-flex;align-items:center;height:48px;padding:0 22px;border-radius:24px;font-size:15px;font-weight:600;text-decoration:none}
+.dbtn.p{background:var(--g);color:#0b0b10}.dbtn.s{background:transparent;color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.3)}
+.dbtn:focus-visible{outline:3px solid #fff;outline-offset:3px}
+@media (prefers-reduced-motion: reduce){.dhot::after{animation:none}.dimg,.dhot,.dcur{transition:none}.dtip{animation:none}}
+</style>
+</helmet>
+<div class="dm">
+<div class="dtop">
+<p style="margin: 0"><b>Askesis</b><span class="lab">demo guidata · catture vere</span></p>
+<div class="dbar" aria-hidden="true"><sc-for list="{{bar}}" as="x" hint-placeholder-count="9"><i class="{{x.cls}}"></i></sc-for><span>{{label}}</span></div>
+<a href="Costruzione.dc.html#askesis">Esci dalla demo ✕</a>
+</div>
+<div class="{{frCls}}">
+<sc-for list="{{imgs}}" as="m" hint-placeholder-count="10"><img class="{{m.cls}}" src="{{m.src}}" alt="{{m.alt}}"></sc-for>
+<sc-if value="{{play}}" hint-placeholder-val="{{true}}">
+<button class="dhot" type="button" onClick="{{next}}" aria-label="{{act}}" style="left: {{hl}}; top: {{ht}}; width: {{hw}}; height: {{hh}}; border-radius: {{hr}}"></button>
+<span class="dcur" aria-hidden="true" style="left: {{cx}}; top: {{cy}}"><svg viewBox="0 0 24 24"><path d="M4 2 L4 19 L8.5 15 L11.5 22 L14.5 20.7 L11.6 14 L18 14 Z" fill="#ffffff" stroke="#0b0b10" stroke-width="1.4" stroke-linejoin="round"></path></svg></span>
+</sc-if>
+</div>
+<div class="dside" role="status">
+<sc-for list="{{tip}}" as="p" hint-placeholder-count="1"><div class="dtip" data-k="{{p.k}}"><small>{{p.lab}}</small><b>{{p.tit}}</b><p>{{p.txt}}</p><p class="hint"><i></i>{{p.act}}</p></div></sc-for>
+<sc-if value="{{end}}" hint-placeholder-val="{{false}}">
+<div class="dtip dcard"><small>fine della demo · 9 di 9</small><b>{{endTit}}</b><p>{{endTxt}}</p><ul><li>parti da Oggi</li><li>segui la seduta esercizio per esercizio</li><li>recupero cronometrato</li><li>salvi la seduta nei progressi</li><li>passi al cibo</li></ul>
+<div class="dbtns"><a class="dbtn p" href="Costruzione.dc.html#askesis">Torna al portfolio</a><button class="dbtn s" type="button" onClick="{{again}}">Rifai la demo</button></div></div>
+</sc-if>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { s: 0, go: false }; }
+  renderVals() {
+    const S = [{"img": "./assets/e478f179a608e42759da9b683038f896.jpg", "alt": "Parti da Oggi", "h": [4.1, 32.4, 91.8, 8.5], "r": "12px", "tit": "Parti da Oggi", "txt": "Qui trovi la tua giornata: il pasto del momento e la seduta in programma.", "act": "Tocca «Seduta A oggi»"}, {"img": "./assets/3e74b1ad9c32a764e70c65e558fc5bf4.jpg", "alt": "La seduta di oggi", "h": [8.2, 33.8, 83.6, 5.7], "r": "12px", "tit": "La seduta di oggi", "txt": "Palestra mostra la seduta prevista e la tua scheda.", "act": "Tocca «Inizia la seduta»"}, {"img": "./assets/364e51b4db249b4c57b71e9b6c39adb9.jpg", "alt": "Il riscaldamento", "h": [43.2, 6.6, 52.7, 5.7], "r": "12px", "tit": "Il riscaldamento", "txt": "Dieci movimenti guidati, uno per schermata. Si possono saltare.", "act": "Tocca «Salta il riscaldamento»"}, {"img": "./assets/8ba036efc7f400be01871b2721664743.jpg", "alt": "Il primo esercizio", "h": [4.1, 69.4, 91.8, 5.7], "r": "12px", "tit": "Il primo esercizio", "txt": "Carico e ripetizioni sono già pronti. Quando hai finito la serie, segnala.", "act": "Tocca «Serie fatta»"}, {"img": "./assets/199330f0c43b0dbe7b319c9f49fd3569.jpg", "alt": "Il recupero", "h": [4.1, 75.7, 91.8, 6.6], "r": "12px", "tit": "Il recupero", "txt": "Il cronometro conta il riposo e ti dice cosa viene dopo.", "act": "Tocca «Tocca per terminare la pausa»"}, {"img": "./assets/bc592fbd6b2e26d8beb6e835456a4269.jpg", "alt": "La serie è segnata", "h": [54.3, 92.4, 41.6, 5.7], "r": "12px", "tit": "La serie è segnata", "txt": "La prima serie è salvata e puoi annullarla. Per la demo chiudiamo qui.", "act": "Tocca «Concludi la seduta»"}, {"img": "./assets/a030e3e17713217eba094710aa8e5b7d.jpg", "alt": "Com'è andata?", "h": [4.1, 77.3, 91.8, 6.2], "r": "12px", "tit": "Com'è andata?", "txt": "Durata, fatica e note: si salvano solo le serie segnate come fatte.", "act": "Tocca «Salva la seduta nei progressi»"}, {"img": "./assets/fd30fcdbb1c947f00375707bb2523189.jpg", "alt": "Seduta salvata", "h": [4.1, 91.0, 91.8, 6.2], "r": "12px", "tit": "Seduta salvata", "txt": "Il riepilogo dice cosa provare la prossima volta, esercizio per esercizio.", "act": "Tocca «Fatto»"}, {"img": "./assets/a44dd43d0656286799dece763c02e902.jpg", "alt": "Di nuovo in Oggi", "h": [50.0, 91.1, 24.0, 6.3], "r": "999px", "tit": "Di nuovo in Oggi", "txt": "La seduta risulta fatta e il conteggio della settimana sale a 1 su 2.", "act": "Tocca «Cibo»"}];
+    const E = {"img": "./assets/e25f33e854edc7c4d9d770b823edc5bc.jpg", "tit": "Il cibo", "txt": "Qui segni i pasti della giornata: colazione e pranzo sono già segnati. Fine del giro."};
+    const st = this.state, s = st.s, N = S.length, end = s >= N;
+    const k = Math.min(s, N - 1), c = S[k];
+    const pc = (v) => v + '%';
+    const all = S.map(x => x.img).concat(E ? [E.img] : []);
+    const cur = end && E ? all.length - 1 : k;
+    return {
+      frCls: st.go ? 'dfr go' : 'dfr',
+      imgs: all.map((src, i) => ({ src: src, alt: i === cur ? 'Schermata vera dell’app' : '', cls: i === cur ? 'dimg on' : 'dimg' })),
+      tip: end ? [] : [{ k: 'p' + s, lab: 'passo ' + (s + 1) + ' di ' + N, tit: c.tit, txt: c.txt, act: c.act }],
+      act: c.act, hl: pc(c.h[0]), ht: pc(c.h[1]), hw: pc(c.h[2]), hh: pc(c.h[3]), hr: c.r,
+      cx: pc(c.h[0] + c.h[2] * 0.6), cy: pc(c.h[1] + c.h[3] * 0.6),
+      label: end ? 'fatto' : ('passo ' + (s + 1) + ' di ' + N),
+      bar: S.map((x, i) => ({ cls: i < s ? 'done' : (i === s ? 'on' : '') })),
+      play: !end, end: end, endTit: E ? E.tit : 'Fatto.', endTxt: E ? E.txt : '',
+      next: () => { if (st.go) return; this.setState({ go: true }); setTimeout(() => this.setState({ s: s + 1, go: false }), 450); },
+      again: () => this.setState({ s: 0, go: false })
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<style>html body .pg{--h:100dvh}</style>
+<title>Calculon, caso studio e demo</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+@property --na{syntax:'<integer>';inherits:true;initial-value:877}
+@property --nb{syntax:'<integer>';inherits:true;initial-value:2}
+body{margin:0;background:#fcfcfd}
+.gs{--v:#5c4bff;--ink:#121214;--mut:#52586e;--lav:#ece9ff;--sk:#e4e0ff;--line:#ebebf0;--h:var(--gh,900px);height:var(--h);overflow-y:auto;overflow-x:clip;background:#fcfcfd;color:var(--ink);font-family:'Söhne',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:17px;line-height:1.5;container-type:inline-size;scroll-behavior:smooth}
+.gs *{box-sizing:border-box}
+.gs a{color:inherit}
+.bar{position:sticky;top:0;z-index:40;height:48px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;padding:0 32px;background:#fcfcfd;border-bottom:1px solid var(--line);font-size:14px}
+.bar a{text-decoration:none;padding:12px 0}
+.bar .back{font-weight:600}
+.bar .back:hover{color:var(--v)}
+.bar b{font-weight:600}
+.bar .cv{color:var(--v);font-weight:600;justify-self:end}
+.wrap{max-width:1240px;margin:0 auto;padding:0 32px;position:relative}
+.stage{position:relative;padding:120px 0}
+.g12{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:start}
+.c1-7{grid-column:1/8}.c8-12{grid-column:8/13}.c1-6{grid-column:1/7}.c7-12{grid-column:7/13}.c1-5{grid-column:1/6}.c6-12{grid-column:6/13}
+.eyebrow{font-size:14px;color:var(--mut);margin:0 0 14px}
+h1,h2,h3{margin:0;font-weight:600;letter-spacing:-.02em;line-height:1.05}
+h1{font-size:168px;letter-spacing:-.05em;line-height:.9}h2{font-size:52px}h3{font-size:34px;letter-spacing:-.015em;line-height:1.1}
+p{margin:0}
+.lede{font-size:26px;line-height:1.3;max-width:24ch;letter-spacing:-.01em;margin-top:24px}
+.small{font-size:13px;color:var(--mut)}
+.src{font-size:13px;color:var(--mut);margin-top:14px}
+.btn{appearance:none;border:0;background:var(--v);font:inherit;font-weight:600;min-height:48px;padding:0 20px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:transform .15s ease,background-color .15s ease}
+.gs .btn{color:#fff}.gs .btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.gs .btn:hover{background:#4a3ae6}.gs .btn.ghost:hover{background:var(--lav)}
+.btn:active{transform:scale(.97)}
+.btn:focus-visible,.gs a:focus-visible{outline:3px solid var(--v);outline-offset:3px}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+.tag{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.06em;color:var(--v);box-shadow:inset 0 0 0 1.5px var(--v);padding:2px 8px}
+.dark{background:#0b0b0c;color:#fff}
+.dark .small,.dark .src,.dark .eyebrow{color:#a9a8b8}
+
+/* telefono */
+.phone{--pw:320px;--sc:.759;width:var(--pw);height:660px;border-radius:46px;background:#0b0b0c;padding:12px;margin:0 auto;box-shadow:0 40px 80px -30px rgba(18,18,20,.55);position:relative;flex:none}
+.screen{width:100%;height:100%;border-radius:36px;overflow:hidden;position:relative;background:#f4f2ff}
+.screen img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top}
+.screen iframe{position:absolute;left:0;top:0;width:390px;height:calc(100% / var(--sc));border:0;background:transparent;z-index:3;transform:scale(var(--sc));transform-origin:0 0}
+.pcap{text-align:center;margin-top:18px;font-size:14px;color:var(--mut);position:relative;height:22px}
+.pcap span{position:absolute;inset:0}
+.pcap span+span{opacity:0}
+
+/* apertura */
+.open{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:center;min-height:calc(var(--h) - 48px);padding:40px 0}
+.open .txt{grid-column:1/8}
+.open .dev{grid-column:8/13;position:relative}
+.open.flip .txt{grid-column:6/13;order:2}
+.open.flip .dev{grid-column:1/6;order:1}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.chips span{font-size:14px;padding:6px 12px;background:var(--lav);color:var(--v);font-weight:600}
+
+/* problema */
+.say{font-size:44px;line-height:1.18;letter-spacing:-.02em;font-weight:500;max-width:26ch}
+.say span{color:var(--ink)}
+.aside{font-size:18px;max-width:40ch;margin-top:32px;color:#2b2d36}
+.prob{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:end}
+.prob .l{grid-column:1/9}
+.prob .r{grid-column:9/13;background:var(--lav);padding:28px}
+.prob .r b{display:block;font-size:20px;margin-bottom:8px}
+.prob .r p{font-size:16px}
+
+/* scelte */
+.dlist{list-style:none;margin:32px 0 0;padding:0;display:grid;gap:4px}
+.dlist li{font-size:20px;font-weight:600;padding:10px 0 10px 16px;box-shadow:inset 3px 0 0 var(--sk);color:var(--ink)}
+.dstack{display:grid;gap:20px}
+.dcard{background:var(--lav);padding:44px 44px 40px;display:flex;flex-direction:column;gap:18px}
+.dcard p{font-size:19px;max-width:44ch}
+.dcard .src{margin-top:auto;padding-top:10px}
+.dcard .when{font-size:14px;font-weight:600;color:var(--v)}
+
+/* numeri */
+.nums{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:48px}
+.nums>div{background:#17171b;padding:24px 22px 26px}
+.big{font-size:84px;font-weight:600;letter-spacing:-.04em;line-height:1;color:#b3a9ff;font-variant-numeric:tabular-nums;white-space:nowrap}
+.big.na{counter-reset:na var(--na)}.big.na::after{content:counter(na)}
+.big.nb{counter-reset:nb var(--nb)}.big.nb::after{content:counter(nb)}
+.nums p{margin-top:12px;font-size:16px;color:#d9d8e4}
+.lims{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;margin-top:40px;align-items:start}
+.lims h3{grid-column:1/4;font-size:26px;color:#fff}
+.lims ul{grid-column:4/13;margin:0;padding:0;list-style:none;display:grid;gap:12px}
+.lims li{font-size:18px;padding:14px 18px;background:#1d1220;box-shadow:inset 3px 0 0 #ff8a8a;color:#f1eff7}
+
+/* demo */
+.demo{background:var(--lav);padding:64px 0}
+.demo h2{font-size:48px}
+.gs [id]{scroll-margin-top:48px}
+.demo .g12{align-items:center}
+.segs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:28px 0 18px}
+.segs i{height:6px;background:#d6d1ff;display:block;transition:background-color .3s ease}
+.segs i.on{background:var(--v)}
+.stp{display:none}
+.stp.on{display:block;animation:st-in .45s cubic-bezier(.2,.7,.2,1) both}
+.stp .k{font-size:14px;font-weight:600;color:var(--v)}
+.stp h3{margin-top:8px}
+.stp p.do{font-size:20px;line-height:1.4;margin-top:16px;max-width:36ch}
+.hint{margin-top:22px;background:#fff;padding:18px 20px;font-size:16px;max-width:44ch}
+.hint b{display:block;font-size:13px;color:var(--v);margin-bottom:4px}
+.priv{margin-top:28px;font-size:14px;color:#2b2d36;max-width:48ch;padding-left:14px;box-shadow:inset 3px 0 0 var(--v)}
+.dside{display:flex;flex-direction:column;align-items:center}
+.dside .phone{box-shadow:0 30px 70px -30px rgba(40,30,120,.45)}
+.under{display:flex;gap:18px;align-items:center;margin-top:20px;font-size:15px;flex-wrap:wrap;justify-content:center}
+.under a{font-weight:600;color:var(--v)}
+.ring{position:absolute;z-index:5;width:54px;height:54px;margin:-27px 0 0 -27px;border-radius:50%;border:3px solid var(--v);pointer-events:none;animation:ring 1.4s ease-out infinite}
+@keyframes ring{0%{transform:scale(.6);opacity:1}100%{transform:scale(1.5);opacity:0}}
+@keyframes st-in{0%{opacity:0;transform:translateX(24px)}100%{opacity:1;transform:none}}
+
+/* chiusura */
+.next{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:12px}
+.next li{font-size:22px;font-weight:500;padding:16px 20px;background:var(--lav)}
+.endbig{font-size:120px;font-weight:600;letter-spacing:-.05em;line-height:.9}
+
+/* ===== scorrimento stile Apple ===== */
+@supports (animation-timeline: view()){
+@media (prefers-reduced-motion: no-preference){
+.tr{view-timeline:--t block;height:calc(var(--len,2) * var(--h))}
+.tr>.pin{position:sticky;top:48px;height:calc(var(--h) - 48px);overflow:hidden;display:flex;align-items:center}
+.tr>.pin>.wrap{width:100%}
+.tr *{animation-timeline:--t;animation-range:contain 0% contain 100%;animation-fill-mode:both;animation-timing-function:linear;animation-duration:1ms}
+
+/* apertura: il telefono entra dal basso, la schermata cambia */
+.open-tr h1{animation-name:k-title;animation-range:contain 0% contain 30%;transform-origin:left bottom}
+.open-tr .phone{animation-name:k-phin;animation-range:contain 0% contain 42%}
+.open-tr .s2{animation-name:k-open-l;animation-range:contain 52% contain 70%}
+.open-tr .pcap span:first-child{animation-name:k-out;animation-range:contain 52% contain 60%}
+.open-tr .pcap span+span{animation-name:k-fade;animation-range:contain 60% contain 70%}
+.open-tr .chips span{animation-name:k-pop}
+.open-tr .hint-scroll{animation-name:k-out;animation-range:contain 0% contain 14%}
+
+/* problema: le parole si accendono */
+.prob-tr h2{animation-name:k-in;animation-range:contain 0% contain 10%}
+.prob-tr .say span{animation-name:k-lit}
+.prob-tr .aside{animation-name:k-in;animation-range:contain 70% contain 84%}
+.prob-tr .r{animation-name:k-slide;animation-range:contain 74% contain 90%}
+
+/* scelte: una alla volta */
+.dec-tr .dstack{position:relative;height:400px;display:block}
+.dec-tr .dcard{position:absolute;inset:0;animation-name:k-card}
+.dec-tr .dcard:last-child{animation-name:k-card-last}
+.dec-tr .dlist li{animation-name:k-hl}
+.dec-tr .dlist li:last-child{animation-name:k-hl-last}
+.dec-tr .dl1{animation-range:contain 0% contain 27%}
+.dec-tr .dl2{animation-range:contain 25% contain 52%}
+.dec-tr .dl3{animation-range:contain 50% contain 77%}
+.dec-tr .dl4{animation-range:contain 75% contain 100%}
+
+/* numeri che contano */
+.num-tr h2{animation-name:k-in;animation-range:contain 0% contain 12%}
+.num-tr .nums>div:nth-child(1){animation-name:k-in;animation-range:contain 8% contain 22%}
+.num-tr .nums>div:nth-child(2){animation-name:k-in;animation-range:contain 14% contain 28%}
+.num-tr .nums>div:nth-child(3){animation-name:k-in;animation-range:contain 20% contain 34%}
+.num-tr .nums>div:nth-child(4){animation-name:k-in;animation-range:contain 26% contain 40%}
+.num-tr .na{animation-name:k-na;animation-range:contain 12% contain 50%}
+.num-tr .nb{animation-name:k-nb;animation-range:contain 18% contain 56%}
+.num-tr .lims h3{animation-name:k-in;animation-range:contain 52% contain 64%}
+.num-tr .lims li:nth-child(1){animation-name:k-in;animation-range:contain 58% contain 70%}
+.num-tr .lims li:nth-child(2){animation-name:k-in;animation-range:contain 64% contain 76%}
+.num-tr .lims li:nth-child(3){animation-name:k-in;animation-range:contain 70% contain 82%}
+.num-tr .src{animation-name:k-in;animation-range:contain 78% contain 90%}
+
+/* telefono: mobile senza scene fissate, entrate morbide */
+@container (max-width:640px){
+.tr{height:auto}
+.tr>.pin{position:static;height:auto;overflow:visible;display:block}
+.gs .tr *:not(#z){animation-name:none}
+.gs .tr .rv:not(#z){animation-name:k-in;animation-timeline:view();animation-range:entry 0% cover 30%}
+.gs .tr .phone.rv:not(#z){animation-name:k-phin-m}
+.dec-tr .dstack{height:auto;display:grid}
+.dec-tr .dcard{position:relative;inset:auto}
+}
+}}
+@keyframes k-title{0%{transform:scale(1.14)}100%{transform:none}}
+@keyframes k-phin{0%{transform:translateY(44%) rotate(-8deg) scale(.86)}100%{transform:none}}
+@keyframes k-phin-m{0%{transform:translateY(80px) scale(.9);opacity:.3}100%{transform:none;opacity:1}}
+@keyframes k-open-l{0%{clip-path:inset(0 0 0 100%)}100%{clip-path:inset(0 0 0 0)}}
+@keyframes k-out{0%{opacity:1}100%{opacity:0}}
+@keyframes k-fade{0%{opacity:0}100%{opacity:1}}
+@keyframes k-pop{0%{opacity:0;transform:translateY(18px) scale(.9)}100%{opacity:1;transform:none}}
+@keyframes k-in{0%{opacity:0;transform:translateY(24px)}100%{opacity:1;transform:none}}
+@keyframes k-slide{0%{opacity:0;transform:translateX(80px)}100%{opacity:1;transform:none}}
+@keyframes k-lit{0%{color:#d8d6e4}100%{color:#121214}}
+@keyframes k-card{0%{opacity:0;transform:translateY(60px) scale(.96)}16%,84%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-60px) scale(.96)}}
+@keyframes k-card-last{0%{opacity:0;transform:translateY(60px) scale(.96)}16%,100%{opacity:1;transform:none}}
+@keyframes k-hl{0%{color:#b9b8c6;box-shadow:inset 3px 0 0 var(--sk)}16%,84%{color:#121214;box-shadow:inset 6px 0 0 var(--v)}100%{color:#b9b8c6;box-shadow:inset 3px 0 0 var(--sk)}}
+@keyframes k-hl-last{0%{color:#b9b8c6;box-shadow:inset 3px 0 0 var(--sk)}16%,100%{color:#121214;box-shadow:inset 6px 0 0 var(--v)}}
+
+/* mobile 390 */
+@container (max-width:640px){
+.bar{padding:0 16px;grid-template-columns:auto 1fr auto}
+.bar b{display:none}
+.wrap{padding:0 16px}
+.stage{padding:72px 0}
+.g12{grid-template-columns:1fr;gap:20px}
+.g12>*{grid-column:1/-1 !important}
+h1{font-size:72px}h2{font-size:34px}h3{font-size:26px}
+.lede{font-size:20px;margin-top:16px}
+.open,.open.flip{grid-template-columns:1fr;min-height:0;padding:32px 0 56px;gap:36px}
+.open .txt,.open .dev,.open.flip .txt,.open.flip .dev{grid-column:1/-1;order:0}
+.phone{--pw:250px;--sc:.595;height:515px;border-radius:38px;padding:9px}.screen{border-radius:30px}
+.say{font-size:26px}
+.prob{grid-template-columns:1fr}.prob .l,.prob .r{grid-column:1/-1}
+.prob .r{padding:20px}
+.dcard{padding:24px}.dcard p{font-size:17px}
+.dlist{display:none}
+.nums{grid-template-columns:1fr 1fr;gap:10px;margin-top:28px}
+.nums>div{padding:16px}
+.big{font-size:44px}
+.nums p{font-size:14px}
+.lims{grid-template-columns:1fr;gap:14px}.lims h3,.lims ul{grid-column:1/-1}
+.lims li{font-size:16px}
+.stp p.do{font-size:18px}
+.endbig{font-size:56px}
+.next li{font-size:18px}
+.btns .btn{flex:1 1 auto;justify-content:center}
+}
+@keyframes k-na{from{--na:0}to{--na:877}}
+@keyframes k-nb{from{--nb:0}to{--nb:2}}
+</style>
+</helmet>
+<div class="gs">
+
+<header class="bar">
+<a class="back" href="./Costruzione.dc.html">← Torna al portfolio</a>
+<b>Calculon · caso studio</b>
+<a class="cv" href="./Costruzione.dc.html#percorso">CV ↓</a>
+</header>
+
+<!-- APERTURA: il telefono entra -->
+<section class="tr open-tr" style="--len: 2">
+<div class="pin"><div class="wrap">
+<div class="open flip">
+<div class="txt">
+<p class="eyebrow rv">Progetto 3 · caso studio e demo · online dal 7 settembre 2026</p>
+<h1 class="rv">Calculon.</h1>
+<p class="lede rv">Le spese in comune, senza che il server sappia chi deve cosa.</p>
+<div class="btns rv"><a class="btn" href="#demo">Provala qui ↓</a><a class="btn ghost" href="#problema">Leggi il caso</a></div>
+<div class="chips" aria-label="Cosa fa l'app">
+<span style="animation-range: contain 70% contain 78%">Spese</span><span style="animation-range: contain 74% contain 82%">Entrate</span><span style="animation-range: contain 78% contain 86%">Saldi</span><span style="animation-range: contain 82% contain 90%">Anche offline</span><span style="animation-range: contain 86% contain 94%">Spazi cifrati</span>
+</div>
+</div>
+<div class="dev">
+<div class="phone rv"><div class="screen">
+<img src="./assets/cb7fe97da9f8d9ce38919f1f1e0a96f9.jpg" alt="Calculon, schermata Aggiungi: si scrive 34,20 spesa conad carta e l'app compila i campi">
+<img class="s2" src="./assets/6b9461ffff363a87404da9e4eff17465.jpg" alt="Calculon, schermata Home con entrate, uscite e ultimi movimenti">
+</div></div>
+<p class="pcap"><span>Schermata vera · scrivi come parli</span><span>Schermata vera · il mese in una schermata</span></p>
+</div>
+</div>
+</div></div>
+</section>
+
+<!-- IL PROBLEMA -->
+<section class="tr prob-tr" style="--len: 1.8" id="problema">
+<div class="pin"><div class="wrap">
+<h2 class="rv" style="font-size: 22px; letter-spacing: 0; color: var(--v); margin-bottom: 28px">Il problema · perché l'ho costruita</h2>
+<div class="prob">
+<div class="l">
+<p class="say rv"><span style="animation-range: contain 6% contain 18%">Chi ha pagato la pizza?</span> <span style="animation-range: contain 14% contain 26%">Problema antico.</span> <span style="animation-range: contain 24% contain 38%">Volevo un'app per dividere le spese</span> <span style="animation-range: contain 34% contain 48%">che funzionasse anche senza rete,</span> <span style="animation-range: contain 44% contain 58%">con un server che vede solo testo cifrato.</span> <span style="animation-range: contain 54% contain 68%">Crittografia moderna per un conto al ristorante.</span></p>
+<p class="aside rv">L'app si presenta così: «Divide le spese della vacanza mentre siete ancora in giro».</p>
+</div>
+<div class="r rv">
+<b>Cosa ho fatto io</b>
+<p>Ho deciso il prodotto e i suoi confini, ho approvato ogni passaggio dopo una revisione e ho fatto scrivere un audit di privacy e interfaccia, punti deboli compresi.</p>
+</div>
+</div>
+</div></div>
+</section>
+
+<!-- LE SCELTE -->
+<section class="tr dec-tr" style="--len: 3" id="scelte">
+<div class="pin"><div class="wrap">
+<div class="g12" style="align-items: center">
+<div class="c1-5">
+<h2 class="rv">Le scelte. Decise da me, un confine alla volta.</h2>
+<p class="rv" style="margin-top: 20px; font-size: 18px; max-width: 40ch">Prima i confini, poi le funzioni. Il codice l'ha scritto un assistente di IA, sotto la mia revisione: nessun passaggio è entrato senza il mio sì.</p>
+<ol class="dlist" aria-hidden="true">
+<li class="dl1">Il server non sa chi deve cosa</li>
+<li class="dl2">Scrivi come parli</li>
+<li class="dl3">Funziona senza rete</li>
+<li class="dl4">Il vecchio sistema, fuori</li>
+</ol>
+</div>
+<div class="c6-12">
+<div class="dstack">
+<article class="dcard dl1 rv">
+<span class="when">Scelta · architettura</span>
+<h3>Il server non sa chi deve cosa.</h3>
+<p>Gli spazi condivisi si cifrano sul dispositivo prima di partire. Al server arriva solo testo cifrato; spese e saldi si leggono soltanto sui telefoni di chi partecipa.</p>
+<p class="src">Cifratura da un capo all'altro, verificata nella prova dal vivo del 7 settembre 2026.</p>
+</article>
+<article class="dcard dl2 rv">
+<span class="when">Scelta · interfaccia</span>
+<h3>Scrivi come parli.</h3>
+<p>Una riga sola: «34,20 spesa conad carta». L'app capisce importo, conto e descrizione e compila i campi mentre scrivi. Il resto si corregge a mano, se serve.</p>
+<p class="src">È il primo passo della demo qui sotto.</p>
+</article>
+<article class="dcard dl3 rv">
+<span class="when">Scelta · uso reale</span>
+<h3>Funziona senza rete.</h3>
+<p>In vacanza la connessione va e viene. Le spese segnate offline aspettano sul telefono e partono quando la rete torna, senza doppioni.</p>
+<p class="src">Provato dal vivo: un passaggio offline, nessuna spesa doppia.</p>
+</article>
+<article class="dcard dl4 rv">
+<span class="when">Scelta · versione 1</span>
+<h3>Il vecchio sistema, fuori.</h3>
+<p>La prima versione dei gruppi non era cifrata. Nella versione 1 l'ho tolta dall'interfaccia: dall'app si creano solo spazi cifrati. Le funzioni nuove aspettano che i limiti di sicurezza siano chiusi.</p>
+<p class="src">Revisione umana e tecnica superate prima del rilascio.</p>
+</article>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+
+<!-- STATO REALE -->
+<section class="tr num-tr dark" style="--len: 2">
+<div class="pin"><div class="wrap">
+<h2 class="rv">Stato reale, dal 7 settembre 2026.</h2>
+<div class="nums">
+<div class="rv"><div class="big">7/9</div><p>Versione 1 online dal 7 settembre 2026.</p></div>
+<div class="rv"><div class="big na"></div><p>Test automatici superati, su 877.</p></div>
+<div class="rv"><div class="big nb"></div><p>Dispositivi sincronizzati dal vivo sul server di produzione: spese create da entrambi.</p></div>
+<div class="rv"><div class="big">0</div><p>Doppioni dopo un passaggio offline, con tre spese uguali sui due lati.</p></div>
+</div>
+<div class="lims">
+<h3 class="rv">Limiti, detti da me.</h3>
+<ul>
+<li class="rv">Sul telefono i dati non sono ancora cifrati a riposo.</li>
+<li class="rv">Togliere una persona da uno spazio non le revoca la chiave: manca il cambio di chiave.</li>
+<li class="rv">Tutti e due sono nella lista come prerequisito, prima di qualsiasi funzione sui documenti.</li>
+</ul>
+</div>
+<p class="src rv">Fonte: diario di progetto di Calculon (rilascio e prova reale del 07/09/2026, suite di test 877 su 877, audit di privacy).</p>
+</div></div>
+</section>
+
+<!-- DEMO TUTORIAL -->
+<section class="stage demo" id="demo">
+<div class="wrap">
+<div class="g12">
+<div class="c1-6">
+<h2>Provala qui. Quattro passi.</h2>
+<p style="margin-top: 16px; font-size: 18px; max-width: 42ch">A destra c'è l'app vera, non un video. Segui i passi e toccala con il mouse o con il dito.</p>
+<div class="segs" aria-hidden="true"><sc-for list="{{segs}}" as="g" hint-placeholder-count="4"><i class="{{g.cls}}"></i></sc-for></div>
+<div aria-live="polite">
+<sc-for list="{{steps}}" as="s" hint-placeholder-count="1">
+<div class="stp {{s.cls}}">
+<span class="k">{{s.k}}</span>
+<h3>{{s.t}}</h3>
+<p class="do">{{s.d}}</p>
+<p class="hint"><b>{{s.hl}}</b>{{s.h}}</p>
+</div>
+</sc-for>
+</div>
+<div class="btns" style="margin-top: 28px">
+<sc-if value="{{notDone}}" hint-placeholder-val="{{true}}"><button class="btn" onClick="{{next}}">{{nextLabel}}</button></sc-if>
+<sc-if value="{{canBack}}" hint-placeholder-val="{{false}}"><button class="btn ghost" onClick="{{prev}}">Passo precedente</button></sc-if>
+<sc-if value="{{isDone}}" hint-placeholder-val="{{false}}"><button class="btn ghost" onClick="{{restart}}">Rifai il tutorial</button></sc-if>
+</div>
+<p class="priv">Quello che scrivi resta nel browser di chi prova. Non creare uno Spazio condiviso dalla voce «Spazi»: quello parte davvero verso il server (cifrato, ma reale). Per la demo basta la Home.</p>
+</div>
+<div class="c7-12 dside">
+<div class="phone"><div class="screen">
+<img src="./assets/6b9461ffff363a87404da9e4eff17465.jpg" alt="Calculon, schermata Home (immagine di ripiego se l'app non si carica)">
+<iframe src="https://san7u7.github.io/Calculon/cassa-comune/" title="Calculon, l'app vera da provare" loading="lazy"></iframe>
+<sc-if value="{{ring}}" hint-placeholder-val="{{true}}"><i class="ring" style="left: 50%; top: 95.6%" aria-hidden="true"></i></sc-if>
+</div></div>
+<div class="under"><a href="https://san7u7.github.io/Calculon/cassa-comune/" target="_blank" rel="noopener">Apri in una scheda ↗</a><span class="small">Se il telefono resta vuoto, aprila in una scheda.</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CHIUSURA -->
+<section class="stage">
+<div class="wrap">
+<div class="g12" style="align-items: end">
+<div class="c1-7">
+<p class="endbig">Cosa viene dopo.</p>
+<ul class="next">
+<li>Cifrare i dati anche a riposo, sul telefono.</li>
+<li>Cambiare la chiave quando qualcuno esce da uno spazio.</li>
+<li>Solo dopo, le funzioni sui documenti.</li>
+</ul>
+</div>
+<div class="c8-12">
+<p style="font-size: 18px; max-width: 30ch">L'ordine non è casuale: prima chiudo i limiti che ho dichiarato, poi aggiungo funzioni.</p>
+<div class="btns" style="flex-direction: column; align-items: stretch"><a class="btn" href="./Costruzione.dc.html">← Torna al portfolio</a><a class="btn ghost" href="./Progetto_Askesis.dc.html">Il progetto prima: Askesis →</a></div>
+</div>
+</div>
+</div>
+</section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { step: 0 };
+  }
+  renderVals() {
+    const STEPS = [{"t": "Tocca «+»", "d": "Il pulsante rotondo in basso al centro apre la schermata «Aggiungi». Il cerchio viola te lo indica.", "hl": "Se vedi solo il logo", "h": "All'apertura c'è un secondo di logo animato: aspetta che compaia la Home."}, {"t": "Scrivi come parli", "d": "Nella prima riga scrivi: 34,20 spesa conad carta. Guarda importo, conto e descrizione compilarsi da soli mentre scrivi.", "hl": "Prova anche", "h": "Un tuo importo, con «contanti» o «banca» al posto di «carta»."}, {"t": "Tocca «Salva»", "d": "Il pulsante si accende quando i campi sono pronti. In basso compare «Movimento salvato».", "hl": "Se hai sbagliato", "h": "Accanto al messaggio c'è «Annulla»: la spesa sparisce."}, {"t": "Guarda saldo e movimenti", "d": "Sei di nuovo in Home: il saldo del mese, le uscite e la tua spesa in «Ultimi movimenti».", "hl": "Da notare", "h": "La frase sopra il saldo cambia con i numeri. Con una spesa sola, è un po' severa."}];
+    const DONE = {"t": "Fatto. Hai segnato la prima spesa.", "d": "Prova a toccare la spesa per correggerla, o «Vedi il mese» per il riepilogo. Tutto resta nel tuo browser.", "hl": "Una cosa da non fare", "h": "Non creare uno Spazio condiviso: è la parte che parla con il server vero."};
+    const n = this.state.step, tot = STEPS.length, done = n >= tot;
+    const all = STEPS.map((s, i) => Object.assign({}, s, { k: 'Passo ' + (i + 1) + ' di ' + tot, cls: i === n ? 'on' : '' }));
+    all.push(Object.assign({}, DONE, { k: 'Tutorial completato', cls: done ? 'on' : '' }));
+    return {
+      steps: all,
+      segs: STEPS.map((s, i) => ({ cls: i <= n ? 'on' : '' })),
+      notDone: !done, isDone: done, canBack: n > 0 && !done,
+      ring: true && n === 0,
+      nextLabel: n === tot - 1 ? 'Fatto, ho finito' : 'Fatto, passo successivo',
+      next: () => this.setState({ step: Math.min(n + 1, tot) }),
+      prev: () => this.setState({ step: Math.max(n - 1, 0) }),
+      restart: () => this.setState({ step: 0 })
+    };
+  }
+}
+</script>
+</body>
+</html>

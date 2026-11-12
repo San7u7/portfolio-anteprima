@@ -1,0 +1,1452 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<style>html body .pg{--h:100dvh}</style>
+<title>Il sito si costruisce · v32</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0;background:#fcfcfd}
+.pg{--v:#5c4bff;--v2:#4636d9;--ind:#15112e;--lav:#ece9ff;--ink:#121214;--mut:#52586e;--line:#ebebf0;--h:var(--gh,900px);--ease:cubic-bezier(.22,1,.36,1);width:100%;min-width:320px;container-type:inline-size;container-name:pg;height:var(--h);overflow-y:auto;overflow-x:clip;position:relative;background:#fcfcfd;color:var(--ink);font-family:'Söhne',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:16px;line-height:1.5}
+.pg *{box-sizing:border-box}
+.pg p,.pg h1,.pg h2,.pg h3,.pg ol,.pg ul,.pg figure{margin:0}
+.pg a{color:inherit}
+.sec{padding-left:96px;padding-right:96px;position:relative}
+.g12{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px}
+.disp{font-size:160px;line-height:.92;font-weight:600;letter-spacing:-.04em}
+.h1{font-size:112px;line-height:.95;font-weight:600;letter-spacing:-.035em}
+.h2{font-size:44px;line-height:1.08;font-weight:600;letter-spacing:-.02em}
+.num{font-size:72px;line-height:1;font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.nums{font-size:44px;line-height:1;font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.lead{font-size:20px;line-height:1.5}
+.body{font-size:16px;line-height:1.5}
+.sm{font-size:13px;line-height:1.45}
+.mut{color:var(--mut)}
+.eye{font-size:13px;line-height:1.45;font-weight:500;color:var(--v)}
+.img{display:block;width:100%;height:100%;object-fit:cover;border-radius:4px}
+.btn{display:inline-flex;align-items:center;justify-content:center;height:48px;padding:0 20px;font-size:16px;font-weight:600;text-decoration:none;background:var(--v);color:#fff;white-space:nowrap}
+.pg .btn{color:#fff}
+.pg button.btn{appearance:none;border:0;font-family:inherit;cursor:pointer}
+.pg .btn.gh{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.more{font-size:16px;font-weight:600;color:var(--v);text-decoration:none;border-bottom:2px solid var(--v);padding-bottom:2px}
+.foot{display:flex;justify-content:space-between;align-items:baseline;margin-top:40px}
+.rule{border-top:1px solid var(--line)}
+.pg :is(.btn,.more,.cta,.cbtn,.pip,.bub,a):focus-visible{outline:3px solid var(--v);outline-offset:3px}
+.ind :is(.more,.cta,a):focus-visible{outline-color:#b3a9ff}
+@media (hover:hover) and (pointer:fine){
+.pg .btn{transition:background-color .2s var(--ease)}
+.pg .btn:hover{background:var(--v2)}
+.pg .btn.gh:hover{background:rgba(18,18,20,.05)}
+.pg .bar nav a{transition:color .2s var(--ease)}
+.pg .bar nav a:hover{color:var(--v)}
+}
+/* barra in alto */
+.bar{position:sticky;top:0;z-index:40;height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 96px;background:rgba(252,252,253,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line);font-size:13px}
+.bar b{font-size:16px}
+.bar nav{display:flex;gap:24px}
+.bar nav a{text-decoration:none;padding:14px 0}
+.bar .cv{color:var(--v);font-weight:600}
+/* sfondo di tutto il sito: luci sfocate che si muovono piano, sotto un velo smerigliato */
+.pg{isolation:isolate}
+.hglow{position:sticky;top:0;height:var(--h);margin-bottom:calc(-1 * var(--h));z-index:-1;pointer-events:none;overflow:hidden}
+.hglow::after{content:'';position:absolute;inset:0;background:rgba(252,252,253,.28);-webkit-backdrop-filter:blur(40px) saturate(140%);backdrop-filter:blur(40px) saturate(140%)}
+.hglow i{position:absolute;border-radius:50%;filter:blur(80px);will-change:transform}
+.hglow .b1{width:620px;height:620px;right:60px;top:20px;background:rgba(92,75,255,.30);animation:s1 26s ease-in-out infinite alternate}
+.hglow .b2{width:440px;height:440px;right:520px;top:380px;background:rgba(255,122,217,.18);animation:s2 32s ease-in-out infinite alternate}
+.hglow .b3{width:480px;height:480px;left:-120px;top:-60px;background:rgba(179,169,255,.30);animation:s3 38s ease-in-out infinite alternate}
+@keyframes s1{0%{transform:translate(0,0) scale(1)}33%{transform:translate(-220px,140px) scale(1.12)}66%{transform:translate(-80px,280px) scale(.92)}100%{transform:translate(-320px,60px) scale(1.06)}}
+@keyframes s2{0%{transform:translate(0,0) scale(1)}33%{transform:translate(260px,-160px) scale(.9)}66%{transform:translate(480px,40px) scale(1.15)}100%{transform:translate(140px,-260px) scale(1)}}
+@keyframes s3{0%{transform:translate(0,0) scale(1)}33%{transform:translate(300px,220px) scale(1.1)}66%{transform:translate(120px,460px) scale(.95)}100%{transform:translate(420px,300px) scale(1.08)}}
+@media (prefers-reduced-motion: reduce){.hglow i{animation:none}}
+/* «Avvia il contatore»: sta al posto del numero, al clic sparisce e il numero gira */
+.run{display:none;appearance:none;border:0;font:inherit;cursor:pointer;align-items:center;gap:12px;height:72px;padding:0 28px;border-radius:36px;font-size:20px;font-weight:600;background:var(--v);color:#fff;white-space:nowrap}
+.run svg{width:14px;height:14px}
+.ind .run,.k2 .run,.k3 .run{background:#ece9ff;color:#15112e}
+.kc .cb{margin-top:auto}.kc .kd{margin-top:0}
+@media (hover:hover) and (pointer:fine){.run{transition:background-color .2s var(--ease)}.run:hover{background:var(--v2)}.ind .run:hover,.k2 .run:hover,.k3 .run:hover{background:#ffffff}}
+/* parole chiave sottolineate, per ultime */
+.kw{white-space:nowrap}
+.ind .u::after{background:#b3a9ff}
+.kc .u::after{background:var(--ka)}
+/* card indice: tre copertine di capitolo */
+.kc{display:flex;flex-direction:column;height:560px;padding:24px;border-radius:4px;text-decoration:none;--kb:#ece9ff;--kf:#121214;--ka:#5c4bff;--kg:#52586e;background:var(--kb);color:var(--kf)}
+.pg a.kc{color:var(--kf)}
+.k2{--kb:#15112e;--kf:#ffffff;--ka:#b3a9ff;--kg:#c9c5ea}
+.k3{--kb:#5c4bff;--kf:#ffffff;--ka:#ece9ff;--kg:#ece9ff}
+.kl{font-size:13px;line-height:1.45;font-weight:600;color:var(--ka)}
+.kv{display:flex;flex-direction:column;margin-top:16px}
+.kim{display:block;height:260px;overflow:hidden;border-radius:4px 4px 0 0}
+.kim img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.k1 .kim img{object-position:50% 72%}
+.k2 .kim img{object-position:50% 100%;width:116%;margin-left:-12%}
+.k3 .kim img{height:110.8%;object-position:50% 0%}
+.ks{height:48px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 12px;background:#ffffff;color:#121214;font-size:13px;line-height:1.3;font-weight:600;border-radius:0 0 4px 4px}
+.k2 .ks{background:#f4f4f7}
+.kn{display:flex;align-items:center;gap:8px;white-space:nowrap}
+.kn .ring.rs{width:28px;height:28px;transition:transform .6s var(--ease)}
+.kn .ring.rs img{border-color:#ffffff;background:#ffffff}
+.ka{display:inline-flex;align-items:center;height:32px;padding:0 12px;background:#5c4bff;color:#ffffff;font-weight:700;white-space:nowrap;transition:background-color .2s var(--ease)}
+.kd{margin-top:auto;font-size:72px;line-height:1;font-weight:600;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.kt{margin-top:12px;font-size:16px;line-height:1.5;color:var(--kg);max-width:32ch}
+@media (hover:hover) and (pointer:fine){
+.kc:hover .kim img{transform:scale(1.03)}
+.kc:hover .kn .ring.rs{transform:rotate(90deg)}
+.kc:hover .ka{background:#4636d9;color:#ffffff}
+}
+/* chi ha fatto cosa: prima il mio lavoro, poi gli altri in una riga */
+.role{margin-top:24px;display:flex;flex-direction:column;gap:8px}
+.role .rl{font-size:13px;line-height:1.45;font-weight:600;color:var(--v)}
+.role .rw{font-size:13px;line-height:1.45;color:var(--mut)}
+.role .rw b{font-weight:600;color:var(--ink)}
+.role+*{margin-top:24px!important}
+/* casi Social: i testi arrivano uno alla volta. Il nuovo scende dall'alto, il precedente scivola giù e lascia il posto */
+.stk{display:flex;flex-direction:column;gap:24px;margin-top:24px}
+.stk .role{margin-top:0}
+@supports (animation-timeline: view()){
+@media (prefers-reduced-motion: no-preference){
+.case-soc{--P:calc(var(--h) * 1.2)}
+.tr.case-soc::after{height:var(--P)}
+.case-soc .ptext{justify-content:center}
+.case-soc .ptext>.foot,.case-soc .stk+*{margin-top:auto}
+.case-soc .stk{display:grid;align-items:start;margin-top:40px}
+.case-soc .st3{grid-area:1/1;animation-timeline:--t;animation-duration:1ms;animation-fill-mode:both;animation-timing-function:var(--ease)}
+.case-soc .s1{animation-name:k-outdn;animation-range:cover calc(var(--h) - 48px + .20 * var(--P)) cover calc(var(--h) - 48px + .29 * var(--P))}
+.case-soc .s2{animation-name:k-intop,k-outdn;animation-fill-mode:both,forwards;animation-range:cover calc(var(--h) - 48px + .31 * var(--P)) cover calc(var(--h) - 48px + .42 * var(--P)),cover calc(var(--h) - 48px + .58 * var(--P)) cover calc(var(--h) - 48px + .67 * var(--P))}
+.case-soc .s3{animation-name:k-intop;animation-range:cover calc(var(--h) - 48px + .69 * var(--P)) cover calc(var(--h) - 48px + .80 * var(--P))}
+.case-soc:focus-within .st3{animation:none}
+.case-soc:focus-within .stk{display:flex}
+}}
+@keyframes k-intop{from{transform:translateY(-56px);opacity:0}to{transform:none;opacity:1}}
+@keyframes k-outdn{from{transform:none;opacity:1}to{transform:translateY(56px);opacity:0;visibility:hidden}}
+/* casi Social: tutto il blocco centrato nello schermo, in verticale e in orizzontale */
+.case-soc>.pin{min-height:calc(var(--h) - 48px);display:flex;flex-direction:column;justify-content:center;padding-top:40px!important;padding-bottom:40px!important}
+.case-soc .g12{align-items:center}
+.case-soc .ptext{min-height:0;padding-right:16px}
+.case-soc .foot{margin-top:32px}
+.img.fit{object-fit:contain;background:#9b0f2c}
+/* carosello Nordal: si sfoglia con le frecce */
+.car .cfr{position:relative;width:100%;height:100%;overflow:hidden;border-radius:4px}
+.ctrk{display:flex;height:100%;transition:transform .5s var(--ease)}
+.ctrk img{flex:0 0 100%;width:100%;height:100%;object-fit:cover;display:block}
+.cbt{position:absolute;top:50%;margin-top:-22px;width:44px;height:44px;border-radius:50%;appearance:none;border:0;background:rgba(255,255,255,.88);color:#121214;display:grid;place-items:center;cursor:pointer;z-index:2}
+.cbt svg{width:20px;height:20px}
+.cl{left:12px}.cr{right:12px}
+.cdots{position:absolute;left:0;right:0;bottom:14px;display:flex;justify-content:center;gap:6px;z-index:2}
+.cdots i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.55)}
+.cdots i.on{background:#ffffff}
+.ccnt{position:absolute;top:12px;right:12px;z-index:2;font-size:13px;line-height:1;padding:6px 10px;border-radius:12px;background:rgba(18,18,20,.6);color:#fff}
+@media (hover:hover) and (pointer:fine){.cbt{transition:background-color .2s var(--ease)}.cbt:hover{background:#ffffff}}
+.pg .cbt:focus-visible{outline:3px solid var(--v);outline-offset:2px}
+@media (prefers-reduced-motion: reduce){.ctrk{transition:none}}
+/* storie */
+.stories{display:grid;grid-template-columns:repeat(11,minmax(0,1fr));margin-top:40px}
+.bub{appearance:none;border:0;background:none;padding:0;font:inherit;color:inherit;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
+.ring{width:96px;height:96px;border-radius:50%;padding:4px;background:conic-gradient(from 200deg,#5c4bff,#b3a9ff,#ff7ad9,#5c4bff);display:block}
+.ring img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block;border:3px solid #fcfcfd;background:#fff}
+.bub b{font-size:15px;line-height:1.25;font-weight:600;max-width:112px}
+.bub small{font-size:13px;line-height:1.3;color:var(--mut);margin-top:-6px;white-space:nowrap}
+.pg .bub:focus-visible{outline:none}
+.bub:focus-visible .ring{outline:3px solid var(--v);outline-offset:4px}
+.ring.rs{width:36px;height:36px;padding:2px}.ring.rs img{border-width:2px;border-color:#000}
+.viewer{position:fixed;inset:0;z-index:50;background:rgba(11,11,12,.94);display:flex;align-items:center;justify-content:center;animation:vin .35s var(--ease) both}
+.sframe{width:min(400px,86%);aspect-ratio:9/16;max-height:92%;position:relative;overflow:hidden;border-radius:18px;background:#000;color:#fff}
+.sframe .bg{position:absolute;inset:-30px;width:calc(100% + 60px);height:calc(100% + 60px);object-fit:cover;filter:blur(26px) brightness(.55)}
+.sframe .fg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.bars{position:absolute;top:10px;left:10px;right:10px;display:flex;gap:4px;z-index:3}
+.bars i{flex:1;height:3px;border-radius:2px;background:rgba(255,255,255,.35);position:relative;overflow:hidden}
+.bars i.on{background:#fff}
+.bars i.cur::after{content:'';position:absolute;inset:0;background:#fff;transform-origin:left;animation:sfill 5s linear forwards}
+.shead{position:absolute;top:22px;left:12px;right:12px;display:flex;align-items:center;gap:8px;z-index:3;font-size:14px}
+.shead small{color:rgba(255,255,255,.8);font-size:12px}
+.scap{position:absolute;left:0;right:0;bottom:0;padding:40px 16px 18px;background:linear-gradient(transparent,rgba(0,0,0,.75));font-size:15px;z-index:3}
+.cnav{position:absolute;top:50%;margin-top:-24px;z-index:52;appearance:none;border:0;height:48px;padding:0 18px;border-radius:24px;background:rgba(255,255,255,.12);color:#fff;font:inherit;font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px;cursor:pointer;white-space:nowrap}
+.cnav svg{width:20px;height:20px;flex:0 0 auto}
+.cprev{right:calc(50% + min(200px,43%) + 24px)}
+.cnext{left:calc(50% + min(200px,43%) + 24px)}
+@media (hover:hover) and (pointer:fine){.cnav{transition:background-color .2s var(--ease)}.cnav:hover{background:rgba(255,255,255,.24)}}
+.pg .cnav:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.snd{position:absolute;top:54px;right:12px;z-index:5;appearance:none;border:0;width:44px;height:44px;border-radius:50%;background:rgba(0,0,0,.45);color:#fff;display:grid;place-items:center;cursor:pointer}
+.snd svg{width:22px;height:22px}
+.pg .snd:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.tap{position:absolute;top:0;bottom:0;width:50%;z-index:4;appearance:none;border:0;background:transparent;cursor:pointer}
+.tap.l{left:0}.tap.r{right:0}
+.sclose{position:absolute;top:18px;right:24px;appearance:none;border:0;background:rgba(255,255,255,.12);color:#fff;width:44px;height:44px;border-radius:50%;font-size:18px;cursor:pointer;z-index:51}
+@keyframes vin{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
+@keyframes sfill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+/* social, il profilo */
+.ptext{grid-column:1/5;min-height:500px;display:flex;flex-direction:column;justify-content:space-between}
+.pmedia{grid-column:5/13;height:500px;display:grid;grid-template-columns:400px 400px;column-gap:24px}
+.g22{display:grid;grid-template-columns:188px 188px;grid-template-rows:238px 238px;gap:24px}
+.who{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;font-size:13px;line-height:1.45}
+.who dt{font-weight:500}.who dd{margin:0;color:#2b2d36}
+.slot{position:relative}
+.lift{z-index:2}
+/* pubblicità */
+/* SNM: feed Instagram → clic → pagina Contatti che scorre */
+.igf{position:relative;width:400px;height:560px;background:#fff;color:#121214;border-radius:8px;overflow:hidden;transform-origin:50% 100%}
+.igs{position:absolute;left:0;right:0;top:0;transform:translateY(-1752px)}
+.igp header{height:44px;display:flex;align-items:center;gap:10px;padding:0 12px;font-size:13px;line-height:1.25}
+.igp header i{width:28px;height:28px;border-radius:50%;background:#0b2a5b;box-shadow:0 0 0 2px #fff,0 0 0 3px #c9c5ea;flex:0 0 auto}
+.igp header small{font-size:12px;color:#52586e}
+.igp img{display:block;width:400px;height:500px;object-fit:cover}
+.igv,.igp .igv{display:block;width:400px;height:440px;object-fit:cover;background:#0b2a5b}
+.igp footer{height:40px;display:flex;align-items:center;gap:14px;padding:0 12px}
+.igp footer svg{width:22px;height:22px;fill:none;stroke:#121214;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.igcta{height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;background:var(--v);color:#fff;font-size:15px;font-weight:600}
+.tap{position:absolute;right:22px;top:488px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.5);box-shadow:0 0 0 2px #fff,0 4px 14px rgba(0,0,0,.35);opacity:0;z-index:3;pointer-events:none}
+.cbf{width:400px;height:560px;background:#fff;border-radius:8px;overflow:hidden;transform-origin:0 50%}
+.cbb{height:40px;display:flex;align-items:center;padding:0 14px;background:#f4f4f7;color:#52586e}
+.cbv{position:relative;height:520px;overflow:hidden}
+.cbs{position:absolute;left:0;top:0;width:400px}
+.cbs img{display:block;width:400px}
+.cbs .hot{box-shadow:inset 0 0 0 2px var(--v),0 0 0 4px rgba(92,75,255,.18)}
+.cbs .hot i{background:var(--v);color:#fff;top:24px;margin-top:0;left:-6px}
+.snc{border-top:1px solid #3a3466;padding-top:12px;margin-top:16px}
+.snc b{display:block;font-size:20px;line-height:1.3;font-weight:600;color:#ffffff;margin-bottom:4px}
+.snc .body{font-size:16px;line-height:1.5;color:#e4e0ff}
+.mfs{background:#fff;color:#121214}
+.mfa{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 24px}
+.mfa img{width:400px;height:210px;object-fit:cover;margin:0 -24px;display:block}
+.mfa i{width:56px;height:56px;border-radius:50%;background:#0b2a5b;box-shadow:0 0 0 3px #fff;margin-top:-28px}
+.mfn{font-size:13px;margin-top:8px;color:#52586e}
+.mft{font-size:20px;font-weight:600;line-height:1.3;margin-top:12px}
+.mfp{font-size:16px;line-height:1.5;color:#52586e;margin-top:8px}
+.mfb{display:flex;align-items:center;justify-content:center;align-self:stretch;height:44px;border-radius:8px;background:#1877f2;color:#fff;font-size:15px;font-weight:600;margin-top:20px}
+.mfq{display:flex;flex-direction:column;padding:16px 24px 16px 36px;border-top:8px solid #f0f2f5}
+.mfl{font-size:13px;color:#52586e;margin-top:16px}
+.mfi{height:44px;border:1px solid #ccd0d5;border-radius:8px;margin-top:6px}
+.mfo{height:44px;border:1px solid #ccd0d5;border-radius:8px;margin-top:8px;display:flex;align-items:center;padding:0 14px;font-size:15px}
+.mfd{display:flex;flex-direction:column;align-items:center;text-align:center;padding:40px 24px;border-top:8px solid #f0f2f5}
+.mfd i{width:56px;height:56px;border-radius:50%;background:#e7f3e8;color:#1e7b34;font-style:normal;font-size:26px;display:grid;place-items:center}
+.pip.pq{display:grid;place-items:center;cursor:default;background:#b3a9ff;color:#15112e}
+.ind{background:var(--ind);color:#fff}
+.ind .eye{color:#b3a9ff}.ind .mut{color:#c9c5ea}
+.ind .more{color:#b3a9ff;border-color:#b3a9ff}
+.ind .who dd{color:#e4e0ff}
+#pub-snm,#pub-adp{background:#1d1840}
+#pub-snm{border-top:1px solid #3a3466}
+.cif{border-top:1px solid #3a3466;padding-top:16px;display:flex;flex-direction:column;gap:8px}
+.ad{background:#fff;color:var(--ink);display:flex;flex-direction:column;border-radius:4px;overflow:hidden}
+.ad header{height:56px;display:flex;align-items:center;gap:10px;padding:0 14px;font-size:13px;line-height:1.3}
+.ad header i{width:32px;height:32px;border-radius:50%;background:var(--v);display:block;flex:0 0 auto}
+.ad .adt{padding:10px 14px;font-size:16px;font-weight:600;line-height:1.3}
+.ad footer{height:56px;display:flex;justify-content:space-between;align-items:center;padding:0 14px;font-size:13px;background:#f4f4f7;color:var(--mut)}
+.ad .cta{display:inline-flex;align-items:center;height:36px;padding:0 14px;background:var(--v);color:#fff;font-size:13px;font-weight:700;text-decoration:none;white-space:nowrap}
+.pg .ad .cta{color:#fff}
+.pg a.ka{color:#ffffff;text-decoration:none}
+.dec{list-style:none;padding:0;display:grid;gap:16px;counter-reset:d}
+.stamp{display:inline-block;font-size:16px;font-weight:600;padding:8px 12px;--rot:-6deg;transform:rotate(var(--rot))}
+/* sistemi AI */
+.tstamp{display:inline-block;align-self:flex-start;font-size:13px;line-height:1.45;color:var(--v);box-shadow:inset 0 0 0 1px var(--v);padding:2px 8px;--rot:-2deg;transform:rotate(var(--rot))}
+.does{list-style:none;padding:0;display:grid;gap:16px}
+.does li{padding-left:14px;border-left:2px solid var(--v);font-size:16px;line-height:1.5}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:24px;margin-top:24px}
+.sth{display:flex;align-items:center;gap:12px;font-size:16px;font-weight:600;line-height:1.5}
+.sth i{width:32px;height:32px;border-radius:50%;background:var(--v);color:#fff;font-style:normal;font-size:13px;font-weight:600;display:grid;place-items:center;flex:0 0 auto}
+.screen{width:100%;height:100%;border-radius:40px;overflow:hidden;position:relative}
+.screen img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.screen iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#fff;z-index:3}
+.atext{grid-column:1/5;min-height:660px;display:flex;flex-direction:column}
+.panel{grid-column:5/13;height:660px;background:#f4f3fa;border-radius:8px;position:relative;overflow:hidden}
+.dev{position:absolute;left:40px;top:0;width:520px;height:660px;display:flex;align-items:center;justify-content:center}
+.awin{width:520px;height:325px;border-radius:8px;overflow:hidden;background:#17171b;box-shadow:0 1px 2px rgba(18,18,20,.06)}
+.aphone{width:290px;height:600px;border-radius:44px;background:#0b0b0c;padding:10px}
+.aphone .screen{border-radius:34px}
+.anote{position:absolute;left:440px;width:360px;display:flex;align-items:center;z-index:2}
+.anote .ln{width:136px;flex:0 0 136px;height:1px;background:#5c4bff;position:relative}
+.anote .ln::before{content:'';position:absolute;left:-4px;top:-4px;width:9px;height:9px;border-radius:50%;background:#5c4bff;box-shadow:0 0 0 3px #ffffff}
+.anote p{padding-left:12px;font-size:13px;line-height:1.45}
+.n1{top:188px}.n2{top:408px}
+.astep{display:flex;flex-direction:column}
+.astep .tx{height:72px;margin-top:8px}
+/* CV */
+.sheet{border:1px solid var(--line);background:#fff;padding:40px;box-shadow:0 1px 2px rgba(18,18,20,.06);position:relative}
+.sheet>.veil{position:absolute;inset:0;background:var(--lav);z-index:0;pointer-events:none;opacity:0}
+.sheet>:not(.veil){position:relative;z-index:1}
+.cvrow{display:grid;grid-template-columns:120px 1fr 140px;column-gap:16px;padding:8px 0;border-top:1px solid var(--line);font-variant-numeric:tabular-nums}
+.sk3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:24px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{font-size:13px;line-height:1.45;padding:4px 10px;background:var(--lav);color:var(--v2);font-weight:500}
+.cbtn{display:flex;align-items:center;justify-content:space-between;height:48px;padding:0 20px;font-size:16px;font-weight:600;text-decoration:none}
+/* contatori: il valore vero è il valore iniziale; senza supporto o con movimento ridotto si vede subito */
+@counter-style z3{system:extends decimal;pad:3 "0"}
+@counter-style z2{system:extends decimal;pad:2 "0"}
+@property --c1k{syntax:'<integer>';inherits:false;initial-value:6}
+@property --c1r{syntax:'<integer>';inherits:false;initial-value:107}
+@property --c2{syntax:'<integer>';inherits:false;initial-value:573}
+@property --c3{syntax:'<integer>';inherits:false;initial-value:9}
+@property --c6{syntax:'<integer>';inherits:false;initial-value:55}
+@property --c5{syntax:'<integer>';inherits:false;initial-value:149}
+@property --c4{syntax:'<integer>';inherits:false;initial-value:235}
+@property --c10{syntax:'<integer>';inherits:false;initial-value:282}
+@property --c11k{syntax:'<integer>';inherits:false;initial-value:4}
+@property --c11r{syntax:'<integer>';inherits:false;initial-value:47}
+@property --c12{syntax:'<integer>';inherits:false;initial-value:13}
+@keyframes a10{from{--c10:0}to{--c10:282}}
+@keyframes a11{from{--c11k:0;--c11r:0}to{--c11k:4;--c11r:47}}
+@keyframes a12{from{--c12:0}to{--c12:13}}
+@property --c16{syntax:'<integer>';inherits:false;initial-value:177}
+@keyframes a16{from{--c16:0}to{--c16:177}}
+@property --c13{syntax:'<integer>';inherits:false;initial-value:4}
+@property --c14{syntax:'<integer>';inherits:false;initial-value:7}
+@property --c15{syntax:'<integer>';inherits:false;initial-value:33}
+@keyframes a13{from{--c13:0}to{--c13:4}}
+@keyframes a14{from{--c14:0}to{--c14:7}}
+@keyframes a15{from{--c15:0}to{--c15:33}}
+@property --c7k{syntax:'<integer>';inherits:false;initial-value:21}
+@property --c7r{syntax:'<integer>';inherits:false;initial-value:0}
+@property --c8k{syntax:'<integer>';inherits:false;initial-value:12}
+@property --c8r{syntax:'<integer>';inherits:false;initial-value:8}
+@property --c9k{syntax:'<integer>';inherits:false;initial-value:165}
+@property --c9r{syntax:'<integer>';inherits:false;initial-value:0}
+@keyframes a7{from{--c7k:0;--c7r:0}92%{--c7r:999}to{--c7k:21;--c7r:0}}
+@keyframes a8{from{--c8k:0;--c8r:0}to{--c8k:12;--c8r:8}}
+@keyframes a9{from{--c9k:0;--c9r:0}92%{--c9r:999}to{--c9k:165;--c9r:0}}
+@keyframes a1{from{--c1k:0;--c1r:0}to{--c1k:6;--c1r:107}}
+@keyframes a2{from{--c2:0}to{--c2:573}}
+@keyframes a3{from{--c3:0}to{--c3:9}}
+@keyframes a5{from{--c5:0}to{--c5:149}}
+@keyframes a1b{from{--c1k:0;--c1r:0}to{--c1k:6;--c1r:107}}
+@keyframes a2b{from{--c2:0}to{--c2:573}}
+@keyframes a3b{from{--c3:0}to{--c3:9}}
+@keyframes a4b{from{--c4:0}to{--c4:235}}
+@keyframes a6{from{--c6:0}to{--c6:55}}
+@keyframes a6b{from{--c6:0}to{--c6:55}}
+@keyframes a5b{from{--c5:0}to{--c5:149}}
+@keyframes a4{from{--c4:0}to{--c4:235}}
+.ctr{font-size:72px;line-height:1;font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.02em;position:relative;white-space:nowrap}
+.ctr .dyn{display:none}
+.csrc{font-size:13px;line-height:1.45;color:#c9c5ea;margin-top:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.csrc .c1,.csrc .c2{display:block;white-space:normal}
+.csrc{white-space:normal;overflow:visible;text-overflow:clip}
+.ind .csrc .c1{color:#e4e0ff}
+#ai .cif{border-top-color:rgba(255,255,255,.35)}
+#ai .csrc,#ai .csrc .c2{color:#e4e0ff}#ai .csrc .c1{color:#ffffff}
+#ai .run{background:#ffffff;color:#15112e}
+.aty{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-weight:500;letter-spacing:-.06em}
+.aty .caret{display:inline-block;width:.08em;height:.8em;background:#7cf29a;margin-left:.04em;vertical-align:-.02em;animation:k-blink 1s steps(1) infinite}
+@keyframes k-blink{50%{opacity:0}}
+@media (prefers-reduced-motion: reduce){.aty .caret{animation:none}}
+.edw{display:flex;flex-direction:column;background:#17171d;border:1px solid #2a2a33;border-radius:10px;overflow:hidden;font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace}
+.edh{display:flex;align-items:center;gap:8px;height:40px;padding:0 14px;border-bottom:1px solid #2a2a33;font-size:13px;color:#8b8b98}
+.edh i{width:10px;height:10px;border-radius:50%;background:#3a3a45}
+.edh span{margin-left:8px}
+.edb{flex:1;padding:20px 22px 24px;display:flex;flex-direction:column;justify-content:space-between;font-size:16px;line-height:1.4}
+.ln{white-space:pre;color:#e6e6ef}
+.ln .pr{color:#8f84ff}
+.ln .dots{color:#4a4a57}
+.ln .ok{display:inline-block;color:#7cf29a;font-weight:600}
+.ln .sum{color:#8f84ff}
+.tcs{display:grid;gap:12px}
+.tc{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:16px;min-height:76px;padding:12px 18px;border:1px solid #2a2a33;border-radius:10px;background:#17171d;color:#fff;text-decoration:none;transform-origin:50% 100%}
+.tcn{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:13px;color:#7cf29a}
+.tcb b{display:block;font-size:20px;font-weight:600}
+.tcb small{display:block;font-size:16px;color:#a9a9b8;margin-top:2px}
+.tca{font-size:14px;color:#8f84ff}
+@media (hover:hover) and (pointer:fine){.tc{transition:border-color .2s var(--ease)}.tc:hover{border-color:#8f84ff}}
+#ai .u.kw::after{background:#7cf29a}
+.avid{position:relative;aspect-ratio:16/10;border-radius:12px;overflow:hidden;background:#0d0b1a;box-shadow:0 24px 60px rgba(21,17,46,.25)}
+.afr{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:0}
+.afr.fl{opacity:1}
+.avtag{position:absolute;left:16px;top:14px;font-size:12px;color:#fff;background:rgba(13,11,26,.6);padding:3px 10px;border-radius:12px;z-index:2}
+.apb{position:absolute;left:0;right:0;bottom:0;height:4px;background:rgba(255,255,255,.15);z-index:2}
+.apb i{display:block;height:100%;background:#5c4bff;transform-origin:0 50%}
+.acaps{position:relative;min-height:420px}
+.acap{position:absolute;left:0;right:0;top:0;opacity:0}
+.acap.fl{opacity:1}
+.acap small{display:block;font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:13px;color:#5c4bff}
+.acap b{display:block;font-size:20px;line-height:1.3;font-weight:600;margin-top:8px}
+.acap p{font-size:16px;line-height:1.5;color:#52586e;margin-top:8px}
+.ademo{display:flex;align-items:center;justify-content:space-between;gap:32px;padding:32px 40px;border-radius:14px;background:#101014;color:#fff}
+.ademo .mut{color:#a9a9b8}.ademo .eye{color:#7cf29a}
+.abig{height:64px;padding:0 32px;border-radius:32px;font-size:18px;background:#7cf29a!important;color:#0b0b10!important;white-space:nowrap}
+.sim3 b{display:block;font-size:20px;line-height:1.3;font-weight:600;margin-top:8px}
+.sim3 p:not(.eye){font-size:17px;line-height:1.6;color:#2a2c38;margin-top:10px}
+.simst{margin-top:32px;padding-top:16px;border-top:1px solid #ebebf0;font-size:16px;line-height:1.5;color:#52586e;max-width:900px}
+.simst b{color:#121214;font-weight:600}
+.simsub{font-size:16px;color:#52586e;margin-top:10px}
+.simq{height:600px}
+.cimg{display:block;width:100%;max-width:440px;height:200px;object-fit:cover;object-position:top left;border-radius:10px;margin-top:12px;box-shadow:inset 0 0 0 1px #e4e0ff}
+.simc{position:relative;height:540px;border-radius:16px;background:#ffffff;box-shadow:inset 0 0 0 1px #ebebf0,0 24px 60px rgba(21,17,46,.08);padding:28px 32px}
+.beat{position:absolute;left:32px;right:32px;top:28px;bottom:28px;display:flex;flex-direction:column;gap:16px;justify-content:center;opacity:0}
+.beat.fl{opacity:1}
+.cb2{max-width:78%;padding:14px 18px;border-radius:18px;background:#f4f3fa}
+.cb2 p{font-size:20px;line-height:1.4;color:#121214;margin-top:6px}
+.cb2.me{align-self:flex-end;background:#5c4bff;border-bottom-right-radius:6px}
+.cb2.me p,.cb2.me .cw{color:#ffffff}
+.cb2.os{border-bottom-left-radius:6px}
+.cb2.ai{border-bottom-left-radius:6px;background:#fbfaff;box-shadow:inset 0 0 0 1px #e4e0ff}
+.cb2.dis{box-shadow:inset 0 0 0 2px #f2a93b;background:#fffaf2}
+.cb2 em{display:inline-block;margin-top:8px;font-style:normal;font-size:13px;font-weight:600;color:#a8650c}
+.cw{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:#52586e}
+.cw i,.seat i{width:10px;height:10px;border-radius:50%;display:block}
+.bt{font-size:28px;line-height:1.2;font-weight:600;text-align:center}
+.bn{font-size:18px;line-height:1.5;color:#52586e;text-align:center}
+.seats{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.seat{display:inline-flex;align-items:center;gap:10px;height:52px;padding:0 20px;border-radius:26px;background:#f4f3fa;font-size:18px;font-weight:600}
+.stt{display:flex;flex-direction:column;align-items:center;gap:10px}
+.stt span{font-size:20px;padding:10px 18px;border-radius:12px;background:#f4f3fa}
+.avwrap{display:flex;justify-content:center;padding:8px 0}
+.avwrap .avid:not(.avph){width:100%}
+.avid.avph{aspect-ratio:390/844;width:270px;border-radius:40px;border:10px solid #121214;box-shadow:0 24px 60px rgba(21,17,46,.25)}
+.avid.avph .afr{object-position:top}
+.avid.avph .avtag{left:50%;transform:translateX(-50%);top:auto;bottom:16px;white-space:nowrap}
+.ademo-cta{display:flex;flex-direction:column;align-items:flex-end;gap:14px}
+.ademo .ademo-live{color:#c9c5ea;border-color:#c9c5ea}
+.cst .lb{display:inline-block}
+.crg{margin-top:40px;border-top:1px solid #3a3466;padding-top:16px}
+.crl{font-size:13px;line-height:1.45;color:#b3a9ff;font-weight:500}
+.crt{font-size:16px;line-height:1.5;color:#ffffff;margin-top:4px;max-width:30ch}
+.crn{font-size:13px;line-height:1.45;color:#c9c5ea;margin-top:16px}
+#pub-snm .csrc,#pub-snm .crd,#pub-adp .csrc,#pub-adp .crd{font-size:11px;line-height:1.4;letter-spacing:.01em}
+/* sfogliatore */
+.pips{display:flex;gap:8px;margin-top:16px}
+.pip{appearance:none;border:0;width:40px;height:40px;border-radius:50%;font:inherit;font-size:16px;font-weight:600;cursor:pointer;background:transparent;color:#b3a9ff;box-shadow:inset 0 0 0 1px #b3a9ff}
+.pip.on{background:#b3a9ff;color:#15112e}
+.pg .pip:focus-visible{outline:3px solid #ffffff;outline-offset:3px}
+.card{margin-top:16px;min-height:176px;border-top:1px solid #3a3466;padding-top:16px}
+.card b{display:block;font-size:16px;font-weight:600;margin-bottom:8px}
+.hot{position:absolute;left:12px;right:12px;border-radius:4px;box-shadow:inset 0 0 0 1px rgba(179,169,255,.35);transition:box-shadow .2s var(--ease)}
+.hot i{position:absolute;left:-10px;top:50%;margin-top:-14px;width:28px;height:28px;border-radius:50%;background:#2c2652;color:#b3a9ff;font-style:normal;font-size:13px;font-weight:700;display:grid;place-items:center}
+.hot.on{box-shadow:inset 0 0 0 2px #b3a9ff,0 0 0 4px rgba(179,169,255,.25)}
+.hot.on i{background:#b3a9ff;color:#15112e}
+.flow{display:flex;flex-direction:column;gap:24px}
+.fbox{position:relative;border:1px solid #3a3466;border-radius:4px;padding:16px 16px 16px 32px;font-size:16px;line-height:1.5}
+.fbox small{display:block;font-size:13px;color:#c9c5ea}
+.fbox.on{border-color:#b3a9ff;box-shadow:0 0 0 4px rgba(179,169,255,.25)}
+.fbox i{position:absolute;left:-14px;top:50%;margin-top:-14px;width:28px;height:28px;border-radius:50%;background:#2c2652;color:#b3a9ff;font-style:normal;font-size:13px;font-weight:700;display:grid;place-items:center}
+.fbox.on i{background:#b3a9ff;color:#15112e}
+
+/* ===== v32 · costruzione col contenuto vero =====
+   Base (senza supporto, movimento ridotto, stampa): la pagina finita, identica alla Proposta v32.
+   I segni (.gd guide, .tk crocini, .q quote, .apn appunto) esistono solo nella costruzione. */
+.gd,.tk,.q,.apn{display:none}
+.w{display:inline-block}
+.pin{position:relative}
+.u{position:relative}
+.u::after{content:'';position:absolute;left:0;right:0;bottom:-2px;height:3px;background:var(--v);transform-origin:left}
+
+@supports (animation-timeline: view()){
+@media (prefers-reduced-motion: no-preference){
+
+/* scena fissata: la traccia aggiunge (--len - 1) schermate, il palco resta fermo sotto la barra */
+.tr{view-timeline:--t block;--D:calc(var(--h) * .6)}
+.tr::after{content:'';display:block;height:0}
+.tr>.pin{position:sticky;top:var(--pt,48px)}
+.tr>.pin>:not(.gd):not(.apn):not(.hglow){position:relative;z-index:1}
+
+/* timeline solo sulle classi di costruzione (solo proprietà singole: la scorciatoia azzera la timeline) */
+.tr :is(.pz,.w,.gd i,.tk b,.q,.rg,.stamp,.tstamp,.arw,.nl,.apn,.veil),.tr .u::after{
+  animation-timeline:--t;animation-duration:1ms;animation-fill-mode:both;
+  animation-timing-function:var(--ease);
+  animation-range:cover calc(var(--h) * .25 + var(--a,0) * var(--D)) cover calc(var(--h) * .25 + var(--b,1) * var(--D))}
+/* apertura con tempi suoi: nome e foto si costruiscono da soli all'apertura della pagina,
+   frase, segni, parole chiave e pulsanti con lo scorrimento, mentre l'apertura resta ferma una schermata */
+.hero-tr{--D:calc(var(--h) * .8)}
+.hero-tr::after{height:var(--D)}
+.hero-tr :is(.pz,.tk b,.q),.hero-tr .u::after{animation-range:cover calc(var(--h) + var(--a,0) * var(--D)) cover calc(var(--h) + var(--b,1) * var(--D))}
+.hero-tr .w,.hero-tr .pz.pc{animation-timeline:auto;animation-range:normal;animation-duration:1.1s;animation-delay:calc(.9s + var(--i,0) * .35s)}
+
+/* il pezzo: contenuto vero fuori posto, opacità sempre 1 */
+.tr :is(.pz,.w){animation-name:k-dock}
+.tr .pz.pc{animation-name:k-dockc}
+.tr .w{--a:calc(var(--t0,.04) + var(--i,0) * .017);--b:calc(var(--t0,.04) + .12 + var(--i,0) * .017)}
+.tr .w:nth-child(4n+1){--x:-.45em;--y:.3em;--r:-2deg}
+.tr .w:nth-child(4n+2){--x:.6em;--y:-.22em;--r:1.5deg}
+.tr .w:nth-child(4n+3){--x:-.25em;--y:.38em;--r:2deg}
+.tr .w:nth-child(4n){--x:.4em;--y:-.3em;--r:-1deg}
+/* titoli dei casi: le parole scendono sulla linea di base una dopo l'altra (niente rotazioni: deve leggersi sempre) */
+.tr .h2 .w{--x:0px;--r:0deg}
+.tr .h2 .w:nth-child(4n+1){--y:.3em}.tr .h2 .w:nth-child(4n+2){--y:.2em}.tr .h2 .w:nth-child(4n+3){--y:.34em}.tr .h2 .w:nth-child(4n){--y:.24em}
+
+/* guide: le 12 colonne si tirano dall'alto, poi svaniscono */
+.tr .gd{display:none!important;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;position:absolute;top:0;bottom:0;left:96px;right:96px;z-index:0;pointer-events:none}
+.tr .gd i{--gc:rgba(92,75,255,.22);background:rgba(92,75,255,.045);box-shadow:inset 1px 0 0 var(--gc),inset -1px 0 0 var(--gc);transform-origin:top;animation-name:k-guide;animation-timing-function:linear;--a:0;--b:.74}
+.tr .gd i:nth-child(odd){--a:.02}.tr .gd i:nth-child(3n){--a:.05}
+.ind .tr .gd i{--gc:rgba(179,169,255,.26);background:rgba(179,169,255,.05)}
+
+/* crocini e quota: il segno «agganciato», sempre dopo il pezzo */
+.tr .tk{display:block;position:absolute;inset:-12px;pointer-events:none;z-index:4}
+.tr .tk b{position:absolute;width:20px;height:20px;border:0 solid var(--v);animation-name:k-tick;animation-timing-function:linear}
+.tr .tk b:nth-child(1){left:0;top:0;border-width:2px 0 0 2px;--dx:-10px;--dy:-10px}
+.tr .tk b:nth-child(2){right:0;top:0;border-width:2px 2px 0 0;--dx:10px;--dy:-10px}
+.tr .tk b:nth-child(3){left:0;bottom:0;border-width:0 0 2px 2px;--dx:-10px;--dy:10px}
+.tr .tk b:nth-child(4){right:0;bottom:0;border-width:0 2px 2px 0;--dx:10px;--dy:10px}
+.tr .q{display:block;position:absolute;top:-34px;left:12px;z-index:4;font-size:13px;font-style:normal;line-height:1.45;font-weight:500;color:var(--v);background:#fcfcfd;padding:1px 6px;white-space:nowrap;pointer-events:none;animation-name:k-tick;animation-timing-function:linear;--dx:0px;--dy:-6px}
+.ind .tr .tk b{border-color:#b3a9ff}
+.ind .tr .q{color:#b3a9ff;background:var(--ind)}
+
+/* l'appunto lavanda: apre la scena, poi la pagina lo sostituisce */
+.tr .apn{display:grid;position:absolute;top:18px;left:96px;z-index:5;gap:8px;max-width:36ch;padding:16px 22px;background:var(--lav);color:var(--ink);font-size:20px;line-height:1.3;font-weight:500;letter-spacing:-.01em;pointer-events:none;animation-name:k-apn;--a:0;--b:.4}
+.tr .apn small{font-size:13px;font-style:italic;font-weight:400;letter-spacing:0;color:var(--v2)}
+.tr .u::after{animation-name:k-ul}
+
+/* timbri */
+.tr :is(.rg,.stamp,.tstamp){animation-name:k-stamp}
+.rg{--rot:0deg}
+
+/* fili e frecce disegnati a mano: lineari */
+.tr .arw{animation-name:k-wire;animation-timing-function:linear}
+.tr .nl{animation-name:k-wirel;animation-timing-function:linear}
+.tr .veil{animation-name:k-veil;animation-timing-function:linear;--a:.14;--b:.4}
+
+/* fuoco da tastiera dentro la scena: pagina finita subito */
+.tr:focus-within :is(.pz,.w,.rg,.stamp,.tstamp,.arw,.nl,.veil){animation-name:none}
+.tr:focus-within :is(.gd,.tk,.q,.apn){display:none}
+
+/* fuori dalle scene: entrate semplici legate all'ingresso, opacità ferma a 1 */
+.rv,.ix,.fin-name .w{animation-name:k-dock;animation-timeline:view();animation-duration:1ms;animation-fill-mode:both;animation-timing-function:var(--ease)}
+.rv{animation-range:cover calc(8% + var(--d,0%)) cover calc(38% + var(--d,0%))}
+.ix{--y:32px;animation-range:cover calc(8% + var(--i,0) * 4%) cover calc(36% + var(--i,0) * 4%)}
+.fin-name .w{animation-range:cover calc(8% + var(--i,0) * 4%) cover calc(36% + var(--i,0) * 4%)}
+.fin-name .w:nth-child(1){--x:-.45em;--y:.3em;--r:-2deg}.fin-name .w:nth-child(2){--x:.6em;--y:-.22em;--r:1.5deg}
+.rg.vw{animation-name:k-stamp;animation-timeline:view();animation-duration:1ms;animation-fill-mode:both;animation-timing-function:var(--ease);animation-range:cover 20% cover 40%}
+.stories .bub{animation-name:k-dock;animation-timeline:view();animation-duration:1ms;animation-fill-mode:both;animation-timing-function:var(--ease);--x:140%;--r:4deg;
+  animation-range:cover calc(10% + var(--i) * 2.5%) cover calc(28% + var(--i) * 2.5%)}
+
+/* card indice: il fondo si stende, poi immagine, striscia, numero e riga si agganciano */
+.kc{animation-name:k-dockc;animation-timeline:view();animation-duration:1ms;animation-fill-mode:both;animation-timing-function:var(--ease);--c:0 0 100% 0;
+  animation-range:cover calc(4% + var(--i,0) * 3%) cover calc(18% + var(--i,0) * 3%)}
+.kc :is(.kl,.kim,.ks,.kd,.kt){animation-name:k-dock;animation-timeline:view();animation-duration:1ms;animation-fill-mode:both;animation-timing-function:var(--ease)}
+.kc .kl{--y:12px;animation-range:cover calc(3% + var(--i,0) * 1.5%) cover calc(16% + var(--i,0) * 1.5%)}
+.kc .kim{--x:-18%;--y:24px;--r:-3deg;--s:.86;animation-range:cover calc(3% + var(--i,0) * 1.5%) cover calc(16% + var(--i,0) * 1.5%)}
+.kc .ks{--y:48px;animation-range:cover calc(3% + var(--i,0) * 1.5%) cover calc(16% + var(--i,0) * 1.5%)}
+.kc .kd{--y:.35em;--r:2deg;animation-range:cover calc(3% + var(--i,0) * 1.5%) cover calc(16% + var(--i,0) * 1.5%)}
+.kc .kt{--y:16px;animation-range:cover calc(3% + var(--i,0) * 1.5%) cover calc(16% + var(--i,0) * 1.5%)}
+.kc:focus-visible,.kc:focus-visible *{animation-name:none}
+.bub.i0{--i:0}.bub.i1{--i:1}.bub.i2{--i:2}.bub.i3{--i:3}.bub.i4{--i:4}.bub.i5{--i:5}.bub.i6{--i:6}.bub.i7{--i:7}.bub.i8{--i:8}.bub.i9{--i:9}.bub.i10{--i:10}
+/* i pezzi spuntano dal nulla con un «pop» */
+.tr :is(.pz,.w),.rv,.ix,.fin-name .w,.stories .bub,.kc,.kc :is(.kl,.kim,.ks,.kd,.kt){animation-timing-function:linear}
+.w{transform-origin:50% 70%}
+.stories .bub{--x:0%}
+.kw::after{animation-name:k-ul;animation-timeline:view();animation-duration:1ms;animation-fill-mode:both;animation-timing-function:var(--ease);animation-range:cover 32% cover 46%}
+.tr .kw::after{animation-timeline:--t}
+/* bolle dei clienti: escono dal nulla, si gonfiano oltre misura e si assestano, come una bolla che fa «pop» */
+.stories .bub{animation-name:k-pop;animation-timing-function:linear;animation-range:cover calc(10% + var(--i) * 2.2%) cover calc(17% + var(--i) * 2.2%)}
+.kn .ring.rs{animation-name:k-pop;animation-timeline:view();animation-duration:1ms;animation-fill-mode:both;animation-timing-function:linear;animation-range:cover 30% cover 36%}
+/* contatori della Proposta v32: contano mentre entrano, il valore vero resta nel DOM */
+.ctr .st{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.ctr .dyn{display:inline;animation-duration:1.8s;animation-timing-function:cubic-bezier(.16,1,.3,1);animation-fill-mode:both;animation-timeline:auto;animation-play-state:paused}
+.go .ctr .dyn{animation-play-state:running}
+.cb .run{display:inline-flex}
+.cb:not(.go) .ctr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.cb.go .run{display:none}
+.d1{counter-reset:k var(--c1k) r var(--c1r);animation-name:a1}.d1::before{content:counter(k) "." counter(r, z3)}
+.d2{counter-reset:n var(--c2);animation-name:a2}.d2::before{content:counter(n)}
+.d3{counter-reset:n var(--c3);animation-name:a3}.d3::before{content:counter(n)}
+.d4{counter-reset:n var(--c4);animation-name:a4}.d4::before{content:counter(n)}
+.d5{counter-reset:n var(--c5);animation-name:a5}.d5::before{content:"+" counter(n) "%"}
+/* «Riavvia»: stesso conteggio con un altro nome, così riparte da zero */
+.rb .d1{animation-name:a1b}.rb .d2{animation-name:a2b}.rb .d3{animation-name:a3b}.rb .d4{animation-name:a4b}.rb .d5{animation-name:a5b}
+.d6{counter-reset:n var(--c6);animation-name:a6}.d6::before{content:counter(n)}
+.d10{counter-reset:n var(--c10);animation-name:a10}.d10::before{content:counter(n)}
+.d11{counter-reset:k var(--c11k) r var(--c11r);animation-name:a11}.d11::before{content:counter(k) "," counter(r, z2) " €"}
+.d12{counter-reset:n var(--c12);animation-name:a12}.d12::before{content:counter(n)}
+.d16{counter-reset:n var(--c16);animation-name:a16}.d16::before{content:counter(n)}
+.d13{counter-reset:n var(--c13);animation-name:a13}.d13::before{content:counter(n)}
+.d14{counter-reset:n var(--c14);animation-name:a14}.d14::before{content:counter(n)}
+.d15{counter-reset:n var(--c15);animation-name:a15}.d15::before{content:counter(n)}
+.d7{counter-reset:k var(--c7k) r var(--c7r);animation-name:a7}.d7::before{content:counter(k) "." counter(r, z3) " €"}
+.d8{counter-reset:k var(--c8k) r var(--c8r);animation-name:a8}.d8::before{content:counter(k) "," counter(r) " mln"}
+.d9{counter-reset:k var(--c9k) r var(--c9r);animation-name:a9}.d9::before{content:counter(k) "." counter(r, z3)}
+/* SNM: scena fissata più lunga, tempi sul tratto fermo (--a/--b da 0 a 1) */
+.snm-tr::after{height:calc(var(--h) * 1.8)}
+.snm-tr .sx{animation-timeline:--t;animation-duration:1ms;animation-fill-mode:both;animation-timing-function:linear;animation-range:cover calc(var(--h) + var(--a) * var(--h) * 1.8) cover calc(var(--h) + var(--b) * var(--h) * 1.8)}
+.snm-tr .igf.sx,.snm-tr .cbf.sx{animation-name:k-dockc,k-show}
+@keyframes k-show{0%{opacity:0}1%,100%{opacity:1}}
+.snm-tr .igs.sx{animation-name:k-feed;animation-timing-function:cubic-bezier(.45,0,.3,1)}
+.snm-tr .tap.sx{animation-name:k-tap}
+.snm-tr .igcta.sx{animation-name:k-press}
+.snm-tr .cbs.sx{animation-name:k-cscroll}
+.ai-tr::after{height:calc(var(--h) * 1.3)}
+.aos-tr::after{height:calc(var(--h) * 2)}
+.simc-tr::after{height:calc(var(--h) * 2)}
+.simq-tr::after{height:calc(var(--h) * 4)}
+.simq-tr .beat.sx{animation-name:k-acap}.simq-tr .beat.f0.sx{animation-name:k-acap0}.simq-tr .beat.fl.sx{animation-name:k-acapl}
+.simq-tr .cb2.sx{animation-name:k-pop}
+.simc-tr .beat.sx{animation-name:k-acap}.simc-tr .beat.f0.sx{animation-name:k-acap0}.simc-tr .beat.fl.sx{animation-name:k-acapl}
+.simc-tr .cb2.sx,.simc-tr .seat.sx,.simc-tr .stt span.sx{animation-name:k-pop}
+.simc-tr .bt.sx,.simc-tr .bn.sx{animation-name:k-intop;animation-timing-function:var(--ease)}
+
+.aos-tr .afr.sx{animation-name:k-afr}.aos-tr .afr.f0.sx{animation-name:k-afr0}.aos-tr .afr.fl.sx{animation-name:k-afrl}
+.aos-tr .acap.sx{animation-name:k-acap}.aos-tr .acap.f0.sx{animation-name:k-acap0}.aos-tr .acap.fl.sx{animation-name:k-acapl}
+.aos-tr .apb i.sx{animation-name:k-apb}
+@keyframes k-afr{0%{opacity:0;transform:scale(1.06)}20%{opacity:1}80%{opacity:1}100%{opacity:0;transform:scale(1)}}
+@keyframes k-afr0{0%{opacity:1;transform:scale(1.04)}80%{opacity:1}100%{opacity:0;transform:scale(1)}}
+@keyframes k-afrl{0%{opacity:0;transform:scale(1.06)}20%{opacity:1}100%{opacity:1;transform:scale(1)}}
+@keyframes k-acap{0%{opacity:0;transform:translateY(24px)}20%,80%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-24px)}}
+@keyframes k-acap0{0%,80%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-24px)}}
+@keyframes k-acapl{0%{opacity:0;transform:translateY(24px)}20%,100%{opacity:1;transform:none}}
+@keyframes k-apb{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.ai-tr .ty.sx{animation-name:k-show}
+.ai-tr .lt.sx,.ai-tr .dots.sx{animation-name:k-wire}
+.ai-tr .ok.sx{animation-name:k-pop}
+.ai-tr .edw.sx{animation-name:k-dockc}
+.ai-tr .tc.sx{animation-name:k-build}
+@keyframes k-build{0%{clip-path:inset(100% 0 0 0);transform:translateY(24px)}60%{clip-path:inset(0 0 0 0);transform:translateY(-4px)}100%{clip-path:inset(0 0 0 0);transform:none}}
+.adp-tr .cbs.sx{animation-name:k-fscroll}
+@keyframes k-fscroll{0%,18%{transform:translateY(0)}38%,55%{transform:translateY(-520px)}80%,100%{transform:translateY(-1120px)}}
+.snm-tr .hz.sx{animation-name:k-hon}
+.snm-tr .pq.sx{animation-name:k-pipon}
+.snm-tr .snc.sx,.snm-tr .snt.sx{animation-name:k-intop;animation-timing-function:var(--ease)}
+.snarw,.snt{opacity:1}
+@keyframes k-feed{from{transform:translateY(0)}to{transform:translateY(-1752px)}}
+@keyframes k-tap{0%{transform:scale(0);opacity:0}5%{opacity:1}35%{transform:scale(1.15);opacity:1}55%{transform:scale(.8);opacity:1}75%{transform:scale(1);opacity:1}100%{transform:scale(1.7);opacity:0}}
+@keyframes k-press{0%,100%{background:#5c4bff}45%,60%{background:#3524c9}}
+@keyframes k-cscroll{0%,18%{transform:translateY(0)}38%,55%{transform:translateY(-796px)}80%,100%{transform:translateY(-2190px)}}
+@keyframes k-hon{from{box-shadow:inset 0 0 0 2px rgba(92,75,255,0),0 0 0 4px rgba(92,75,255,0)}to{box-shadow:inset 0 0 0 2px #5c4bff,0 0 0 4px rgba(92,75,255,.18)}}
+@keyframes k-pipon{from{background:transparent;color:#b3a9ff;transform:scale(.6)}60%{transform:scale(1.2)}to{background:#b3a9ff;color:#15112e;transform:scale(1)}}
+/* Pubblicità: titolo più lento */
+#ads .disp.rv{animation-range:cover 2% cover 64%}
+/* contatori: riquadro e pulsante entrano con il pop, il numero fa pop al clic */
+.cif:has(.cb){animation-name:k-pop;animation-duration:1ms;animation-fill-mode:both;animation-timing-function:linear;transform-origin:left bottom}
+.cb:not(.go) .run{animation-name:k-pop;animation-duration:1ms;animation-fill-mode:both;animation-timing-function:linear}
+.cif:nth-child(2){--i:1}.cif:nth-child(3){--i:2}
+#ai .cst .lb{animation-name:k-brick;animation-timeline:view();animation-duration:1ms;animation-fill-mode:both;animation-timing-function:linear;animation-range:cover calc(4% + var(--i) * 3.2%) cover calc(16% + var(--i) * 3.2%)}
+@keyframes k-brick{0%{transform:translateY(-140%) rotate(-8deg);opacity:0}45%{transform:translateY(8%) rotate(2deg) scaleY(.86);opacity:1}62%{transform:translateY(-6%) scaleY(1.06)}80%{transform:translateY(2%)}100%{transform:none;opacity:1}}
+#ai .cif:has(.cb){animation-timeline:view();animation-range:entry calc(40% + var(--i,0) * 12%) entry calc(75% + var(--i,0) * 12%)}
+#ai .cb:not(.go) .run{animation-timeline:view();animation-range:entry calc(70% + var(--i,0) * 10%) cover calc(22% + var(--i,0) * 3%)}
+#ads .cif:has(.cb){animation-timeline:view();animation-range:cover calc(26% + var(--i,0) * 5%) cover calc(38% + var(--i,0) * 5%)}
+#ads .cb:not(.go) .run{animation-timeline:view();animation-range:cover calc(34% + var(--i,0) * 5%) cover calc(46% + var(--i,0) * 5%)}
+.tr .cif:has(.cb){animation-timeline:--t;animation-range:cover calc(var(--h) * .25 + (.5 + var(--i,0) * .05) * var(--D)) cover calc(var(--h) * .25 + (.6 + var(--i,0) * .05) * var(--D))}
+.tr .cb:not(.go) .run{animation-timeline:--t;animation-range:cover calc(var(--h) * .25 + (.58 + var(--i,0) * .05) * var(--D)) cover calc(var(--h) * .25 + (.68 + var(--i,0) * .05) * var(--D))}
+.cb.go .ctr{animation:k-pop .7s linear both;transform-origin:left bottom}
+}}
+
+/* movimento ridotto: nessuna scena, nessun segno; solo le tre parole di capitolo si schiariscono appena */
+@supports (animation-timeline: view()){
+@media (prefers-reduced-motion: reduce){
+.rv{animation-name:k-soft;animation-timeline:view();animation-duration:1ms;animation-fill-mode:both;animation-timing-function:linear;animation-range:entry 0% cover 25%}
+.viewer,.bars i.cur::after{animation:none}
+}}
+
+/* «pop»: ogni pezzo nasce da un punto, si gonfia oltre misura e si assesta */
+@keyframes k-dock{0%{transform:scale(.5);opacity:0}50%{transform:scale(1.08);opacity:1}72%{transform:scale(.97)}100%{transform:scale(1);opacity:1}}
+@keyframes k-dockc{0%{transform:scale(0)}55%{transform:scale(1.07)}72%{transform:scale(.97)}86%{transform:scale(1.015)}100%{transform:scale(1)}}
+@keyframes k-pop{0%{transform:scale(.5);opacity:0}50%{transform:scale(1.08);opacity:1}72%{transform:scale(.97)}100%{transform:scale(1);opacity:1}}
+@keyframes k-guide{0%{transform:scaleY(0);opacity:1}22%{transform:scaleY(1)}84%{opacity:1}100%{transform:scaleY(1);opacity:0}}
+@keyframes k-tick{0%{opacity:0;translate:var(--dx) var(--dy)}30%,70%{opacity:1;translate:0 0}100%{opacity:0;translate:0 0}}
+@keyframes k-ul{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes k-apn{0%,42%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-20px)}}
+@keyframes k-stamp{0%{transform:scale(1.35) rotate(calc(var(--rot,-6deg) - 7deg))}100%{transform:rotate(var(--rot,-6deg))}}
+@keyframes k-wire{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes k-wirel{from{clip-path:inset(-6px -6px -6px 100%)}to{clip-path:inset(-6px -6px -6px -6px)}}
+@keyframes k-veil{from{opacity:1}to{opacity:0}}
+@keyframes k-soft{from{opacity:.6}to{opacity:1}}
+@media print{.pg{height:auto;overflow:visible}.tr::after{display:none}.tr>.pin{position:relative;top:auto}.gd,.tk,.q,.apn{display:none}*{animation:none!important}}
+
+/* ===== TELEFONO (≤ 600 px): una colonna, scene sciolte, stato finale già costruito ===== */
+@container pg (max-width: 600px){
+.bar{padding:0 16px}.bar nav a:not(.cv){display:none}
+.sec{padding-left:16px!important;padding-right:16px!important}
+.g12{display:flex!important;flex-direction:column;gap:24px;align-items:stretch!important}
+.g12>*{width:auto!important;max-width:100%!important;justify-self:auto!important;margin-left:0!important}
+.disp{font-size:64px}.h1{font-size:52px}.h2{font-size:30px}.lead{font-size:18px}
+.ctr,.num{font-size:48px}.nums{font-size:32px}
+.gd{display:none!important}
+/* scene fissate: niente pin, niente tratto fermo */
+.tr::after{height:0!important}
+.tr>.pin{position:relative!important;top:auto!important}
+.sx{animation:none!important}
+.snarw{display:none}
+.g12>p.sm[style*="position: absolute"]{position:static!important;white-space:normal!important}
+/* apertura e card indice */
+.slot[style*="width: 372px"]{width:100%!important;height:auto!important;aspect-ratio:3/4}
+.kc{height:auto;min-height:0}
+.stories{display:flex!important;overflow-x:auto;gap:14px;padding-bottom:8px;scroll-snap-type:x mandatory}
+.stories>*{flex:0 0 76px;scroll-snap-align:start}
+/* casi social */
+.slot.car{width:100%!important;height:auto!important;aspect-ratio:4/5}
+.atext{min-height:0}
+.panel{height:auto;min-height:520px}
+.dev{position:relative;left:auto;width:100%;height:520px}
+/* pubblicità: feed e pagina Contatti in scala */
+.igf,.cbf{zoom:.895;margin:0 auto}
+.igs{transform:none!important}
+.igs .igp:not(:last-child){display:none}
+.tap{display:none}
+/* costruisco */
+.aty{font-size:48px}
+.edb{font-size:13px;gap:10px}
+.ln{white-space:normal}.ln .dots{display:none}
+/* appress os */
+.acaps{min-height:0;display:grid;gap:20px}
+.acap{position:static;opacity:1!important;transform:none!important}
+.ademo{flex-direction:column;align-items:flex-start;padding:24px}
+.abig{height:56px;font-size:16px}
+.foot{flex-wrap:wrap;gap:12px}
+.steps{grid-template-columns:1fr!important;row-gap:24px}
+.simc{height:auto}
+.beat{position:static;opacity:1!important;transform:none!important;margin-bottom:28px}
+.cb2{max-width:92%}.cb2 p{font-size:17px}
+
+.panel{overflow:hidden}
+.run{height:56px;padding:0 22px;font-size:17px}
+}
+</style>
+</helmet>
+<div class="pg">
+<div class="hglow" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i></div>
+
+<header class="bar">
+<b>Giovanni Santuccio</b>
+<nav aria-label="Sezioni"><a href="#social">Social</a><a href="#ads">Pubblicità</a><a href="#ai">Sistemi AI</a><a href="#contatti">Contatti</a><a class="cv" href="#percorso">CV ↓</a></nav>
+</header>
+
+<!-- APERTURA · scena fissata «L'appunto diventa la pagina» -->
+<section id="inizio">
+<div class="tr hero-tr" style="--len: 2">
+<div class="pin sec" style="padding-top: 112px">
+<div class="gd" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<div class="g12" style="align-items: end">
+<div style="grid-column: 1 / 7; display: flex; flex-direction: column; align-self: center">
+<h1 class="h1" style="--t0: 0.18"><span class="w" style="--i: 0">Giovanni</span><br><span class="w" style="--i: 2">Santuccio</span></h1>
+<p class="lead pz" style="margin-top: 40px; max-width: 612px; --y: 1.4em; --a: 0; --b: 0.3">Faccio <span class="u kw" style="--a: 0.35; --b: 0.5">comunicazione</span> per aziende siciliane: strategia, piani editoriali, set e pubblicità Meta. E costruisco gli <span class="u kw" style="--a: 0.45; --b: 0.6">strumenti di IA</span> che mi aiutano a farla.</p>
+<div class="pz" style="display: flex; gap: 16px; margin-top: 24px; --a: 0.62; --b: 0.88"><a class="btn" href="#percorso">Scarica il CV</a><a class="btn gh" href="#contatti">Scrivimi</a></div>
+</div>
+<div class="slot" style="grid-column: 8 / 13; justify-self: end; width: 372px; height: 496px"><img class="img pz pc" src="./assets/a59c0e45c56470361027e99920ccc818.jpg" alt="Giovanni Santuccio, braccia conserte su fondo nero" style="object-position: 50% 0%; --x: -30%; --y: 14%; --r: -6deg; --s: .82; --c: 8% 12% 16% 10%; --a: 0; --b: 1; --i: 3"><i class="tk" aria-hidden="true" style="--a: 0.2; --b: 0.4"><b></b><b></b><b></b><b></b></i><i class="q" aria-hidden="true" style="--a: 0.22; --b: 0.42">3:4 · foto vera</i></div>
+</div>
+</div>
+</div>
+<div class="sec" style="padding-bottom: 96px">
+<div class="g12" style="padding-top: 96px">
+<div class="kc k1" style="grid-column: 1 / 5; --i: 0">
+<span class="kl">1 · Social</span>
+<span class="kv"><span class="kim"><img src="./assets/fbc44c3428a188d29cb3e30159052fbc.jpg" alt="Il sacchetto Nordal «Surgelati superiori» sul bancone del negozio di Catania"></span>
+<span class="ks"><span class="kn"><i class="ring rs"><img src="./assets/c9494b384a9c8b7d9f49e859b5ccd34c.jpg" alt=""></i>Nordal</span><a class="ka" href="#social">Vedi il caso</a></span></span>
+<div class="{{k1Cls}}"><b class="kd ctr"><span class="st">+149%</span><span class="dyn d5" aria-hidden="true"></span></b><button class="run" type="button" onClick="{{k1Go}}"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 1 L11 6 L2 11 Z" fill="currentColor"></path></svg>Avvia il contatore</button></div>
+<span class="kt">Visualizzazioni <span class="u kw">non a pagamento</span> su Instagram, Nordal</span>
+</div>
+<div class="kc k2" style="grid-column: 5 / 9; --i: 1">
+<span class="kl">2 · Pubblicità</span>
+<span class="kv"><span class="kim"><img src="./assets/777aa54d4db159a65e060430f7bda42f.webp" alt="Inserzione della Scuola Nautica Magnano: barca a vela davanti a Ortigia"></span>
+<span class="ks"><span class="kn">scuolanauticamagnano.it</span><a class="ka" href="#ads">Scopri di più</a></span></span>
+<div class="{{k2Cls}}"><b class="kd ctr"><span class="st">6.107</span><span class="dyn d1" aria-hidden="true"></span></b><button class="run" type="button" onClick="{{k2Go}}"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 1 L11 6 L2 11 Z" fill="currentColor"></path></svg>Avvia il contatore</button></div>
+<span class="kt">Visite al sito <span class="u kw">con 563 €</span>, Scuola Nautica Magnano</span>
+</div>
+<div class="kc k3" style="grid-column: 9 / 13; --i: 2">
+<span class="kl">3 · Sistemi AI</span>
+<span class="kv"><span class="kim"><img src="./assets/f7dc4ef90034b5c77f9d72c886b5237e.jpg" alt="Appress OS, il pianeta Clienti"></span>
+<span class="ks"><span class="kn">Appress OS</span><a class="ka" href="#ai">Entra</a></span></span>
+<div class="{{k3Cls}}"><b class="kd ctr"><span class="st">55</span><span class="dyn d6" aria-hidden="true"></span></b><button class="run" type="button" onClick="{{k3Go}}"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 1 L11 6 L2 11 Z" fill="currentColor"></path></svg>Avvia il contatore</button></div>
+<span class="kt">Refusi segnalati in automatico su <span class="u kw">37 piani editoriali</span>, luglio – novembre 2026</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SOCIAL, APERTURA -->
+<section class="sec" id="social" style="padding-top: 144px; padding-bottom: 96px">
+<p class="eye">competenza 1 di 3 · social</p>
+<p class="disp rv" style="color: #5c4bff; margin-top: 16px; --x: -.3em">Social.</p>
+<div class="stories" aria-label="Storie dei clienti">
+<sc-for list="{{bubbles}}" as="b" hint-placeholder-count="10">
+<button class="{{b.cls}}" onClick="{{b.open}}" aria-label="Apri le storie di {{b.name}}"><span class="ring"><img src="{{b.cover}}" alt=""></span><b>{{b.name}}</b><small>{{b.sector}}</small></button>
+</sc-for>
+</div>
+<div class="g12" style="margin-top: 40px"><p class="lead" style="grid-column: 1 / 7">Piani editoriali, copioni, regia sul set e motion graphic con l'IA. Tocca una storia: sono <span class="u kw">reel veri</span>. Poi scorri, quattro casi da vicino.</p></div>
+<sc-if value="{{storyOpen}}" hint-placeholder-val="{{false}}">
+<div class="viewer" role="dialog" aria-label="Storie di {{story.name}}">
+<button class="cnav cprev" type="button" onClick="{{prevClient}}" aria-label="Cliente precedente: {{prevName}}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>{{prevName}}</span></button>
+<button class="cnav cnext" type="button" onClick="{{nextClient}}" aria-label="Cliente successivo: {{nextName}}"><span>{{nextName}}</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+<div class="sframe">
+<img class="bg" src="{{story.poster}}" alt="">
+<sc-if value="{{sndOn}}" hint-placeholder-val="{{true}}"><video class="fg" src="{{story.vid}}" poster="{{story.poster}}" autoplay="" loop="" playsinline="" aria-label="{{story.alt}}"></video></sc-if>
+<sc-if value="{{sndOff}}" hint-placeholder-val="{{false}}"><video class="fg" src="{{story.vid}}" poster="{{story.poster}}" autoplay="" muted="" loop="" playsinline="" aria-label="{{story.alt}}"></video></sc-if>
+<button class="snd" type="button" onClick="{{toggleSnd}}" aria-pressed="{{sndPressed}}" aria-label="{{sndLabel}}"><sc-if value="{{sndOn}}" hint-placeholder-val="{{true}}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"></path><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"></path></svg></sc-if><sc-if value="{{sndOff}}" hint-placeholder-val="{{false}}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"></path><path d="M16.5 9.5l5 5M21.5 9.5l-5 5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"></path></svg></sc-if></button>
+<div class="bars"><sc-for list="{{story.bars}}" as="x" hint-placeholder-count="3"><i class="{{x.cls}}"></i></sc-for></div>
+<div class="shead"><span class="ring rs"><img src="{{story.cover}}" alt=""></span><b>{{story.name}}</b><small>{{story.sector}}</small></div>
+<p class="scap">{{story.cap}}</p>
+<button class="tap l" onClick="{{prevStory}}" aria-label="Storia precedente"></button>
+<button class="tap r" onClick="{{nextStory}}" aria-label="Storia successiva"></button>
+</div>
+<button class="sclose" onClick="{{closeStory}}" aria-label="Chiudi le storie">✕</button>
+</div>
+</sc-if>
+</section>
+
+<!-- SOCIAL · Caso Nordal Surgelati · scena «Il menabò si monta» -->
+<section id="nordal" aria-label="Caso Nordal Surgelati">
+<div class="tr case-soc" style="--len: 1.8">
+<div class="pin sec" style="padding-top: 48px; padding-bottom: 96px">
+<div class="gd" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<div class="g12">
+<div class="ptext">
+<div style="display: flex; flex-direction: column">
+<h2 class="h2"><span class="w" style="--i: 0">Nordal.</span> <span class="w" style="--i: 1">Il</span> <span class="w" style="--i: 2">surgelato</span> <span class="w" style="--i: 3">raccontato</span> <span class="w" style="--i: 4">da</span> <span class="w" style="--i: 5">chi</span> <span class="w" style="--i: 6">lo</span> <span class="w" style="--i: 7">porta</span> <span class="w" style="--i: 8">a</span> <span class="w" style="--i: 9">casa.</span></h2>
+</div>
+<div class="stk">
+<div class="st3 s1"><p class="lead">Tre negozi tra Augusta e Catania e una pagina fatta quasi solo di offerte sponsorizzate. Ho spostato il racconto <span class="u kw" style="--a: 0.88; --b: 0.97">sulle persone</span>.</p></div>
+<div class="st3 s2"><div class="role"><p class="rl">Il mio lavoro</p><div class="chips"><span>Strategia</span><span>Piani</span><span>Testi</span><span>Copioni</span><span>Regia sul set</span></div><p class="rw"><b>Team</b> riprese, montaggio, grafiche · <b>Cliente</b> inserzioni a pagamento</p></div></div>
+<div class="st3 s3"><div style="display: flex; flex-direction: column; gap: 8px">
+<p class="num" style="color: #5c4bff">+149%</p>
+<p class="sm mut">visualizzazioni non a pagamento su Instagram, dic 2025 – ott 2026 sull'anno prima · fonte Meta · non solo merito mio</p>
+</div></div>
+</div>
+</div>
+<div class="pmedia">
+<div class="slot lift car" style="width: 400px; height: 500px"><div class="cfr pz pc" style="--x: -26%; --y: 8%; --r: -5deg; --s: .84; --c: 6% 10% 14% 8%; --a: 0.1; --b: 0.34"><div class="ctrk" style="transform: translateX({{ncX}})"><img src="./assets/fbbaf7f039a33dd2e0f83b7e55ea9287.jpg" alt="Carosello Nordal, copertina: «La vita prima e dopo Nordal»"><img src="./assets/ada42699479391b291bbcd786de451b7.jpg" alt="Prima: mezz’ora a pulire un chilo di calamari. Dopo: apri la busta"><img src="./assets/6346050eeaff4f25c2676f8e27d1b03e.jpg" alt="Prima: un pomeriggio tra riso, ragù e panatura. Dopo: li scaldi e via"><img src="./assets/f0e0b094a482c23dbba1114576104e49.jpg" alt="Prima: ceci, riposo e frittura. Dopo: dritte in padella"><img src="./assets/bee798fcf3efbbd57c04e8f75f081243.jpg" alt="Prima: ragù sul fuoco dall’alba. Dopo: le infili in forno"></div><button class="cbt cl" type="button" onClick="{{ncPrev}}" aria-label="Immagine precedente del carosello"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></button><button class="cbt cr" type="button" onClick="{{ncNext}}" aria-label="Immagine successiva del carosello"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></button><div class="cdots" aria-hidden="true"><sc-for list="{{ncDots}}" as="d" hint-placeholder-count="5"><i class="{{d.cls}}"></i></sc-for></div></div><i class="tk" aria-hidden="true" style="--a: 0.34; --b: 0.46"><b></b><b></b><b></b><b></b></i><i class="q" aria-hidden="true" style="--a: 0.35; --b: 0.47">carosello · 5 slide</i></div>
+<div class="slot" style="z-index: 1"><div class="g22">
+<img class="img pz" src="./assets/5c2cf8c6da78f0790e79bc2e12280755.jpg" alt="Post Nordal di marzo 2026: due ragazzi al bancone del negozio" style="--x: -98px; --y: 141px; --r: -7deg; --s: .9; --a: 0.3; --b: 0.42">
+<img class="img pz" src="./assets/a0995259d3067027ad43bd2e99a66939.jpg" alt="Post Nordal di aprile 2026: assaggio al bancone, con la friggitrice ad aria" style="--x: -310px; --y: 141px; --r: 4deg; --s: .9; --a: 0.34; --b: 0.46">
+<img class="img pz" src="./assets/cb24a293408bf6a6a323f6d78ca02600.jpg" alt="Post Nordal di maggio 2026: una proposta in ginocchio con un anello di calamaro" style="--x: -98px; --y: -121px; --r: -3deg; --s: .9; --a: 0.37; --b: 0.49">
+<video class="img pz" src="./assets/9de717a6407f6159e87c4cb81874902f.mp4" poster="./assets/1feac07a05108bce180dc2111a69dc12.jpg" autoplay="" muted="" loop="" playsinline="" aria-label="Reel Nordal di giugno 2026: il gambero rosso" style="--x: -310px; --y: -121px; --r: 6deg; --s: .9; --a: 0.4; --b: 0.52"></video>
+</div><i class="tk" aria-hidden="true" style="--a: 0.58; --b: 0.7"><b></b><b></b><b></b><b></b></i><i class="q" aria-hidden="true" style="--a: 0.59; --b: 0.71">4 post veri</i></div>
+</div>
+</div>
+<div class="foot"><a class="more" href="Caso_Nordal.dc.html">Approfondisci il caso →</a><p class="sm mut rg" style="--a: 0.74; --b: 0.84">2 di 12 · pagina</p></div>
+</div>
+</div>
+</section>
+
+<!-- SOCIAL · Caso Scuola Nautica Magnano, social · scena «Il menabò si monta» -->
+<section id="snm" aria-label="Caso Scuola Nautica Magnano, social">
+<div class="tr case-soc" style="--len: 1.8">
+<div class="pin sec" style="padding-top: 96px; padding-bottom: 96px; border-top: 1px solid #ebebf0">
+<div class="gd" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<div class="g12">
+<div class="ptext">
+<div style="display: flex; flex-direction: column">
+<h2 class="h2"><span class="w" style="--i: 0">Scuola</span> <span class="w" style="--i: 1">Nautica</span> <span class="w" style="--i: 2">Magnano.</span> <span class="w" style="--i: 3">Il</span> <span class="w" style="--i: 4">gommone,</span> <span class="w" style="--i: 5">la</span> <span class="w" style="--i: 6">vela,</span> <span class="w" style="--i: 7">Siracusa.</span></h2>
+</div>
+<div class="stk">
+<div class="st3 s1"><p class="lead">Una scuola nautica a Siracusa: pagina Instagram e post costruiti <span class="u kw" style="--a: 0.88; --b: 0.97">sul mare vero</span> e sulle foto della scuola.</p></div>
+<div class="st3 s2"><div class="role"><p class="rl">Il mio lavoro</p><div class="chips"><span>Pagina Instagram</span><span>Post</span><span>Inserzioni</span><span>Sito e pagina Contatti</span><span>Report</span></div><p class="rw"><b>Freelance</b> riprese e montaggio dei video · <b>Scuola</b> fotografie</p></div></div>
+<div class="st3 s3"><p class="body"><a href="#pub-snm" style="color: #5c4bff; font-weight: 600; text-decoration: none">I numeri delle inserzioni sono nel capitolo Pubblicità →</a></p></div>
+</div>
+</div>
+<div class="pmedia">
+<div class="slot lift car" style="width: 400px; height: 500px"><div class="cfr pz pc" style="--x: -26%; --y: 8%; --r: -5deg; --s: .84; --c: 6% 10% 14% 8%; --a: 0.1; --b: 0.34"><div class="ctrk" style="transform: translateX({{nsX}})"><img src="./assets/bff4b93d8e4e86f59ad66c07d3f3063e.jpg" alt="Carosello Scuola Nautica Magnano: «Inizia il tuo percorso», con l’indirizzo della sede a Siracusa"><img src="./assets/67442eb2e1935a751475983e4f7856df.jpg" alt="Lezioni il lunedì e il mercoledì, dalle 19:00 alle 20:30"><img src="./assets/1db7035236f7f044d882930b42b61668.jpg" alt="20 lezioni: un percorso completo e strutturato"><img src="./assets/4bee4a7bee0f2e67c7a6cdf8307690cc.jpg" alt="Pronto in 40 giorni, esame incluso"><img src="./assets/f6adb6cdeed909885f21cdeea8484be4.jpg" alt="Naviga senza limiti: patente nautica senza limiti"></div><button class="cbt cl" type="button" onClick="{{nsPrev}}" aria-label="Immagine precedente del carosello"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></button><button class="cbt cr" type="button" onClick="{{nsNext}}" aria-label="Immagine successiva del carosello"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></button><div class="cdots" aria-hidden="true"><sc-for list="{{nsDots}}" as="d" hint-placeholder-count="5"><i class="{{d.cls}}"></i></sc-for></div></div><i class="tk" aria-hidden="true" style="--a: 0.34; --b: 0.46"><b></b><b></b><b></b><b></b></i><i class="q" aria-hidden="true" style="--a: 0.35; --b: 0.47">carosello · 5 slide</i></div>
+<div class="slot" style="z-index: 1"><div class="g22">
+<img class="img pz" src="./assets/f779819a732bd964a72bd8db6364fd22.jpg" alt="Post di aprile 2026: «Diventa il capitano del tuo futuro!», patente vela e motore" style="--x: -98px; --y: 141px; --r: -7deg; --s: .9; --a: 0.3; --b: 0.42">
+<img class="img pz" src="./assets/0686338fd1c1ab18c720a1d728eeeaf2.jpg" alt="Post di febbraio 2026: «Preparati per l’esame di voga», Gente di mare" style="--x: -310px; --y: 141px; --r: 4deg; --s: .9; --a: 0.34; --b: 0.46">
+<img class="img pz" src="./assets/c0841f89affbc2de1d30f95b93a6285b.jpg" alt="Post di gennaio 2026: nuovo corso, patente senza limiti" style="--x: -98px; --y: -121px; --r: -3deg; --s: .9; --a: 0.37; --b: 0.49">
+<video class="img pz" src="./assets/7a88e7d8cb3728b6be5a0cdf9dbc3f53.mp4" poster="./assets/8c1660a02c69524bb6a9725c88ed5292.jpg" autoplay="" muted="" loop="" playsinline="" aria-label="Reel della Scuola Nautica Magnano di agosto 2026: i controlli prima di mollare gli ormeggi" style="--x: -310px; --y: -121px; --r: 6deg; --s: .9; --a: 0.4; --b: 0.52"></video>
+</div><i class="tk" aria-hidden="true" style="--a: 0.58; --b: 0.7"><b></b><b></b><b></b><b></b></i><i class="q" aria-hidden="true" style="--a: 0.59; --b: 0.71">3 post e un reel</i></div>
+</div>
+</div>
+<div class="foot"><a class="more" href="Caso_SNM.dc.html">Approfondisci il caso →</a><p class="sm mut rg" style="--a: 0.74; --b: 0.84">3 di 12 · pagina</p></div>
+</div>
+</div>
+</section>
+
+<!-- SOCIAL · Caso Plus Italia · scena «Il menabò si monta» -->
+<section id="plus" aria-label="Caso Plus Italia">
+<div class="tr case-soc" style="--len: 1.8">
+<div class="pin sec" style="padding-top: 96px; padding-bottom: 96px; border-top: 1px solid #ebebf0">
+<div class="gd" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<div class="g12">
+<div class="ptext">
+<div style="display: flex; flex-direction: column">
+<h2 class="h2"><span class="w" style="--i: 0">Plus</span> <span class="w" style="--i: 1">Italia.</span> <span class="w" style="--i: 2">Pubblicare</span> <span class="w" style="--i: 3">meno,</span> <span class="w" style="--i: 4">farsi</span> <span class="w" style="--i: 5">conoscere</span> <span class="w" style="--i: 6">di</span> <span class="w" style="--i: 7">più.</span></h2>
+</div>
+<div class="stk">
+<div class="st3 s1"><p class="lead">Un post al giorno e nessuno che rispondeva. Ho convinto il cliente a pubblicare <span class="u kw" style="--a: 0.88; --b: 0.97">meno, con più cura</span>.</p></div>
+<div class="st3 s2"><div class="role"><p class="rl">Il mio lavoro</p><div class="chips"><span>Strategia</span><span>Piani</span><span>Testi</span><span>Grafiche e motion</span><span>Copioni</span><span>Report</span></div><p class="rw"><b>Team</b> riprese</p></div></div>
+<div class="st3 s3"><div style="display: flex; flex-direction: column; gap: 8px">
+<p class="num" style="color: #5c4bff">×10</p>
+<p class="sm mut">«Mi piace» per post su Facebook (da 0,9 a 9,2), con un terzo dei post · Meta Business Suite, nov 2023 – ott 2024 vs nov 2025 – ott 2026</p>
+</div></div>
+</div>
+</div>
+<div class="pmedia">
+<div class="slot lift car" style="width: 400px; height: 500px"><div class="cfr pz pc" style="--x: -26%; --y: 8%; --r: -5deg; --s: .84; --c: 6% 10% 14% 8%; --a: 0.1; --b: 0.34"><div class="ctrk" style="transform: translateX({{npX}})"><img src="./assets/7f41a24d43ae7ff6f7f5913789d0d84b.jpg" alt="Carosello Plus Italia: «Prima Convention 2010», l’album dei vent’anni"><img src="./assets/fbb9b60515fd551c9f313ab53e5ff38e.jpg" alt="Fig. 1: giovani, curiosi e con una gran voglia di capire dove si poteva arrivare"><img src="./assets/201c4446e8b227e7268c7cbf45bafbef.jpg" alt="Fig. 2: la prima di una lunga serie"><img src="./assets/d1c1fb76edc898794393fbf558cc382b.jpg" alt="Fig. 3: eravamo all’inizio, provarci sul serio"><img src="./assets/db55ba8f0239a22b5ae3037902c4d7a1.jpg" alt="Fig. 4: vent’anni fa non sapevamo dove ci avrebbe portato questa strada"><img src="./assets/960234a510d9edfa2ae80252195e4e1b.jpg" alt="Fig. 5: le prime volte non sono mai perfette"><img src="./assets/f03706411a878c0c669756250c083917.jpg" alt="Fig. 6: dentro c’è già tutto quello che è venuto dopo"></div><button class="cbt cl" type="button" onClick="{{npPrev}}" aria-label="Immagine precedente del carosello"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></button><button class="cbt cr" type="button" onClick="{{npNext}}" aria-label="Immagine successiva del carosello"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></button><div class="cdots" aria-hidden="true"><sc-for list="{{npDots}}" as="d" hint-placeholder-count="7"><i class="{{d.cls}}"></i></sc-for></div></div><i class="tk" aria-hidden="true" style="--a: 0.34; --b: 0.46"><b></b><b></b><b></b><b></b></i><i class="q" aria-hidden="true" style="--a: 0.35; --b: 0.47">carosello · 7 slide</i></div>
+<div class="slot" style="z-index: 1"><div class="g22">
+<img class="img pz fit" src="./assets/2632d11ed20368b878a93b5fa159eeda.jpg" alt="Post Plus Italia: «Plus Italia, partner di fiducia», lubrificanti e additivi per officine, aziende e privati" style="--x: -98px; --y: 141px; --r: -7deg; --s: .9; --a: 0.3; --b: 0.42">
+<img class="img pz" src="./assets/be7888ff9711ead15347d4ce41686ef3.jpg" alt="Post Plus Italia di aprile 2026: distributori esclusivi, cosa vuol dire" style="--x: -310px; --y: 141px; --r: 4deg; --s: .9; --a: 0.34; --b: 0.46">
+<img class="img pz" src="./assets/cf80c31d80ca2981ab9faafedc3bbd19.jpg" alt="Post Plus Italia di febbraio 2026: Shell affida a Plus Italia anche la Sardegna" style="--x: -98px; --y: -121px; --r: -3deg; --s: .9; --a: 0.37; --b: 0.49">
+<video class="img pz" src="./assets/5df2f1d4f7d00094fb94254d2fde7488.mp4" poster="./assets/4c952f9910db32eb77f1c41f94eb1b29.jpg" autoplay="" muted="" loop="" playsinline="" aria-label="Reel Plus Italia «Chi siamo»: l’amministratore racconta la storia dell’azienda" style="--x: -310px; --y: -121px; --r: 6deg; --s: .9; --a: 0.4; --b: 0.52"></video>
+</div><i class="tk" aria-hidden="true" style="--a: 0.58; --b: 0.7"><b></b><b></b><b></b><b></b></i><i class="q" aria-hidden="true" style="--a: 0.59; --b: 0.71">3 post e un reel</i></div>
+</div>
+</div>
+<div class="foot"><a class="more" href="Caso_Plus.dc.html">Approfondisci il caso →</a><p class="sm mut rg" style="--a: 0.74; --b: 0.84">4 di 12 · pagina</p></div>
+</div>
+</div>
+</section>
+
+<!-- SOCIAL · Caso The Yard Hostel · scena «Il menabò si monta» -->
+<section id="theyard" aria-label="Caso The Yard Hostel">
+<div class="tr case-soc" style="--len: 1.8">
+<div class="pin sec" style="padding-top: 96px; padding-bottom: 96px; border-top: 1px solid #ebebf0">
+<div class="gd" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<div class="g12">
+<div class="ptext">
+<div style="display: flex; flex-direction: column">
+<h2 class="h2"><span class="w" style="--i: 0">The</span> <span class="w" style="--i: 1">Yard</span> <span class="w" style="--i: 2">Hostel.</span> <span class="w" style="--i: 3">Tre</span> <span class="w" style="--i: 4">anni</span> <span class="w" style="--i: 5">di</span> <span class="w" style="--i: 6">serate,</span> <span class="w" style="--i: 7">un</span> <span class="w" style="--i: 8">post</span> <span class="w" style="--i: 9">alla</span> <span class="w" style="--i: 10">volta.</span></h2>
+</div>
+<div class="stk">
+<div class="st3 s1"><p class="lead">L'ostello aveva già un'identità: serviva <span class="u kw" style="--a: 0.88; --b: 0.97">una struttura</span> per raccontarla. Format ricorrenti: musica dal vivo, cocktail, veranda, eventi.</p></div>
+<div class="st3 s2"><div class="role"><p class="rl">Il mio lavoro</p><div class="chips"><span>Strategia</span><span>Format</span><span>Testi</span><span>Pubblicazione</span><span>Eventi</span><span>Report</span></div><p class="rw"><b>Freelance</b> foto, video, grafiche</p></div></div>
+<div class="st3 s3"><div style="display: flex; flex-direction: column; gap: 8px">
+<p class="num" style="color: #5c4bff">227.000</p>
+<p class="sm mut">visualizzazioni circa per un reel del 12 gennaio 2024 · video del freelance esterno · Instagram, rilevato il 9 ottobre 2026</p>
+</div></div>
+</div>
+</div>
+<div class="pmedia">
+<div class="slot lift car" style="width: 400px; height: 500px"><div class="cfr pz pc" style="--x: -26%; --y: 8%; --r: -5deg; --s: .84; --c: 6% 10% 14% 8%; --a: 0.1; --b: 0.34"><div class="ctrk" style="transform: translateX({{ntX}})"><img src="./assets/f6f27925cd2335072c72cbc11801c502.jpg" alt="Carosello The Yard Hostel di giugno 2026: la veranda, il saluto di fine stagione"><img src="./assets/37af84a1188a4e82392c8aea6679af01.jpg" alt="Il barman prepara un drink"><img src="./assets/fbb899b9dce6fc57e35bb09f34e50bd5.jpg" alt="Una ragazza all’ingresso del bar"><img src="./assets/c30de0a271cdc48ebffa6e840aaa984a.jpg" alt="Un ospite seduto nella sala con il pavimento a scacchi"></div><button class="cbt cl" type="button" onClick="{{ntPrev}}" aria-label="Immagine precedente del carosello"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></button><button class="cbt cr" type="button" onClick="{{ntNext}}" aria-label="Immagine successiva del carosello"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></button><div class="cdots" aria-hidden="true"><sc-for list="{{ntDots}}" as="d" hint-placeholder-count="4"><i class="{{d.cls}}"></i></sc-for></div></div><i class="tk" aria-hidden="true" style="--a: 0.34; --b: 0.46"><b></b><b></b><b></b><b></b></i><i class="q" aria-hidden="true" style="--a: 0.35; --b: 0.47">carosello · 4 slide</i></div>
+<div class="slot" style="z-index: 1"><div class="g22">
+<img class="img pz" src="./assets/7ef64beed5b8d22fdddc8440ad20bb98.jpg" alt="Post The Yard Hostel di aprile 2026: la veranda nel sole di aprile" style="--x: -98px; --y: 141px; --r: -7deg; --s: .9; --a: 0.3; --b: 0.42">
+<img class="img pz" src="./assets/a696597fdecb08992d043f7ec0d4925d.jpg" alt="Post The Yard Hostel di maggio 2026: il vetro che separa il fuori dal dentro" style="--x: -310px; --y: 141px; --r: 4deg; --s: .9; --a: 0.34; --b: 0.46">
+<img class="img pz" src="./assets/ceff82a7465045930d2fc21da3feed03.jpg" alt="Post The Yard Hostel di maggio 2026: le mani del barman al bancone" style="--x: -98px; --y: -121px; --r: -3deg; --s: .9; --a: 0.37; --b: 0.49">
+<video class="img pz" src="./assets/5a21adc0e20c08b40faf74818e7d0655.mp4" poster="./assets/655886436d41841d145ea4ca3ccabf0d.jpg" autoplay="" muted="" loop="" playsinline="" aria-label="Reel The Yard Hostel del 12 gennaio 2024, circa 227.000 visualizzazioni" style="--x: -310px; --y: -121px; --r: 6deg; --s: .9; --a: 0.4; --b: 0.52"></video>
+</div><i class="tk" aria-hidden="true" style="--a: 0.58; --b: 0.7"><b></b><b></b><b></b><b></b></i><i class="q" aria-hidden="true" style="--a: 0.59; --b: 0.71">3 post e un reel</i></div>
+</div>
+</div>
+<div class="foot"><a class="more" href="Caso_TheYard.dc.html">Approfondisci il caso →</a><p class="sm mut rg" style="--a: 0.74; --b: 0.84">5 di 12 · pagina</p></div>
+</div>
+</div>
+</section>
+
+<!-- PUBBLICITÀ, APERTURA -->
+<section class="sec ind" id="ads" style="padding-top: 144px; padding-bottom: 144px; min-height: var(--h); display: flex; flex-direction: column; justify-content: center">
+<p class="disp rv" style="color: #ffffff; --x: -.3em">Pubblicità.</p>
+<div class="g12" style="margin-top: 24px"><p class="lead" style="grid-column: 1 / 7">I soldi dei clienti, controllati <span class="u kw">ogni mattina</span>. Poi decido io.</p></div>
+<div class="g12" style="margin-top: 120px">
+<div class="cif" style="grid-column: 1 / 5"><div class="{{g1Cls}}"><p class="ctr"><span class="st">21.000 €</span><span class="dyn d7" aria-hidden="true"></span></p><button class="run" type="button" onClick="{{g1Go}}"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 1 L11 6 L2 11 Z" fill="currentColor"></path></svg>Avvia il contatore</button></div><p class="csrc"><span class="c1">spesi in pubblicità Meta</span><span class="c2">account Appress, gen – ott 2026</span></p></div>
+<div class="cif" style="grid-column: 5 / 9"><div class="{{g2Cls}}"><p class="ctr"><span class="st">12,8 mln</span><span class="dyn d8" aria-hidden="true"></span></p><button class="run" type="button" onClick="{{g2Go}}"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 1 L11 6 L2 11 Z" fill="currentColor"></path></svg>Avvia il contatore</button></div><p class="csrc"><span class="c1">impressioni, a 1,65 € ogni mille</span><span class="c2">stessi account e periodo</span></p></div>
+<div class="cif" style="grid-column: 9 / 13"><div class="{{g3Cls}}"><p class="ctr"><span class="st">165.000</span><span class="dyn d9" aria-hidden="true"></span></p><button class="run" type="button" onClick="{{g3Go}}"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 1 L11 6 L2 11 Z" fill="currentColor"></path></svg>Avvia il contatore</button></div><p class="csrc"><span class="c1">clic sui link</span><span class="c2">stessi account e periodo</span></p></div>
+</div>
+</section>
+
+<!-- PUBBLICITÀ, CASO SNM · scena «La prova» -->
+<section class="ind" id="pub-snm" aria-label="Pubblicità per la Scuola Nautica Magnano">
+<div class="tr case-ads snm-tr" style="--pt: 23px">
+<div class="pin sec" style="padding-top: 64px">
+<div class="gd" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<h2 class="h2"><span class="w" style="--i: 0">Una</span> <span class="w" style="--i: 1">pagina</span> <span class="w" style="--i: 2">Contatti</span> <span class="w" style="--i: 3">che</span> <span class="w" style="--i: 4">conta.</span></h2>
+<p class="lead" style="margin-top: 16px">Con «Scopri di più» l'inserzione porta alla <span class="u kw" style="--a: 0.88; --b: 0.97">pagina Contatti</span> che ho rifatto, online dal 29 ottobre 2026.</p>
+<div class="g12" style="margin-top: 32px; position: relative; align-items: start">
+<div class="slot" style="grid-column: 5 / 9">
+<div class="igf sx" role="img" aria-label="Feed Instagram con tre post della Scuola Nautica Magnano e l'inserzione video «Segnali sonori» con il pulsante Scopri di più" style="--a: 0; --b: .06">
+<div class="igs sx" style="--a: .07; --b: .34">
+<div class="igp"><header><i></i><b>scuola_nautica_magnano</b></header><img src="./assets/bc581ce33dc8c377c2d8453040b025c6.jpg" alt="Post «Naviga senza limiti»"><footer><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-3.2-6.4L20 4v5h-5"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3 10 14M21 3l-7 18-4-7-7-4z"></path></svg></footer></div>
+<div class="igp"><header><i></i><b>scuola_nautica_magnano</b></header><img src="./assets/4321713315f5c1713ea47fe5a76011c3.jpg" alt="Post «Rinnovo patente nautica»"><footer><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-3.2-6.4L20 4v5h-5"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3 10 14M21 3l-7 18-4-7-7-4z"></path></svg></footer></div>
+<div class="igp"><header><i></i><b>scuola_nautica_magnano</b></header><img src="./assets/3b938ae3aa9eeacaff519dfde7c0dd09.jpg" alt="Post «Stessa patente, nuova casa»"><footer><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-3.2-6.4L20 4v5h-5"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3 10 14M21 3l-7 18-4-7-7-4z"></path></svg></footer></div>
+<div class="igp"><header><i></i><div><b>scuola_nautica_magnano</b><br><small>Sponsorizzato</small></div></header><video class="igv" src="./assets/33f0779863843ae2545dcdfe147ecee7.mp4" poster="./assets/c6f2be6d6b36a13afeb9d15b152f01d3.jpg" autoplay="" muted="" loop="" playsinline="" aria-hidden="true"></video><p class="igcta sx" style="--a: .38; --b: .42"><span>Scopri di più</span><span aria-hidden="true">›</span></p><footer><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-3.2-6.4L20 4v5h-5"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3 10 14M21 3l-7 18-4-7-7-4z"></path></svg></footer></div>
+</div>
+<i class="tap sx" aria-hidden="true" style="--a: .36; --b: .43"></i>
+</div>
+</div>
+<div class="slot" style="grid-column: 9 / 13">
+<div class="cbf sx" style="--a: .42; --b: .5">
+<p class="sm cbb">scuolanauticamagnano.it/contatti</p>
+<div class="cbv"><div class="cbs sx" style="--a: .5; --b: .97">
+<img src="./assets/6cbecfc1e5634e8bfc6bee3b31370b81.jpg" alt="La pagina Contatti vera della scuola: primo schermo, domande «Quale patente fa per te», modulo «Ti chiamiamo noi»">
+<span class="hot hz hz1 sx" style="top: 8px; height: 764px; --a: .5; --b: .53"><i>1</i></span>
+<span class="hot hz hz2 sx" style="top: 804px; height: 1060px; --a: .69; --b: .72"><i>2</i></span>
+<span class="hot hz hz3 sx" style="top: 2180px; height: 500px; --a: .87; --b: .9"><i>3</i></span>
+</div></div>
+</div>
+</div>
+<div style="grid-column: 1 / 5; grid-row: 1; display: flex; flex-direction: column">
+<div class="sx snt" style="--a: .44; --b: .5"><p class="eye">cosa ho deciso</p>
+<div class="pips" aria-hidden="true"><span class="pip pq sx" style="--a: .5; --b: .53">1</span><span class="pip pq sx" style="--a: .69; --b: .72">2</span><span class="pip pq sx" style="--a: .87; --b: .9">3</span></div></div>
+<div class="snc sx" style="--a: .5; --b: .57"><b>1 · primo schermo</b><p class="body">Nel primo schermo, senza scorrere: orari del corso serale, voto Google, WhatsApp e «ti risponde entro 24 ore».</p></div>
+<div class="snc sx" style="--a: .69; --b: .76"><b>2 · come si arriva</b><p class="body">Tre domande («Quale patente fa per te») e il messaggio WhatsApp è già scritto. Chi non vuole scrivere lascia il numero.</p></div>
+<div class="snc sx" style="--a: .87; --b: .94"><b>3 · cosa conta</b><p class="body">Conta come contatto solo un invio vero del modulo o un clic su WhatsApp, chiamata, email: una volta sola e con il consenso.</p></div>
+</div>
+<svg class="snarw sx snt" width="60" height="80" viewBox="0 0 60 80" style="position: absolute; left: 796px; top: 430px; overflow: visible; z-index: 4; --a: 0.42; --b: 0.47" aria-hidden="true"><path d="M8 66 C 30 60, 34 30, 52 14" fill="none" stroke="#b3a9ff" stroke-width="2" stroke-linecap="round"></path><path d="M40 14 L 53 13 L 50 26" fill="none" stroke="#b3a9ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<p class="sm sx snt" style="position: absolute; left: 424px; top: 572px; color: #ffffff; white-space: nowrap; z-index: 4; --a: .42; --b: .47">il clic porta alla pagina Contatti ↗</p>
+</div>
+</div>
+</div>
+<div class="sec" style="padding-bottom: 96px">
+<div class="g12" style="padding-top: 64px">
+<div class="cif" style="grid-column: 1 / 5"><div class="{{p1Cls}}"><p class="ctr"><span class="st">6.107</span><span class="dyn d1" aria-hidden="true"></span></p><button class="run" type="button" onClick="{{p1Go}}"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 1 L11 6 L2 11 Z" fill="currentColor"></path></svg>Avvia il contatore</button></div><p class="csrc"><span class="c1">Visite al sito con 563 €</span><span class="c2">Meta, 19 dic 2025 – 31 ott 2026</span></p></div>
+<div class="cif" style="grid-column: 5 / 9"><div class="{{p2Cls}}"><p class="ctr"><span class="st">573</span><span class="dyn d2" aria-hidden="true"></span></p><button class="run" type="button" onClick="{{p2Go}}"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 1 L11 6 L2 11 Z" fill="currentColor"></path></svg>Avvia il contatore</button></div><p class="csrc"><span class="c1">Viste della pagina Contatti</span><span class="c2">WP Statistics, 5 ott – 3 nov (nuova pagina dal 29 ott)</span></p></div>
+<div class="cif" style="grid-column: 9 / 13"><div class="{{p3Cls}}"><p class="ctr"><span class="st">9</span><span class="dyn d3" aria-hidden="true"></span> su 10</p><button class="run" type="button" onClick="{{p3Go}}"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 1 L11 6 L2 11 Z" fill="currentColor"></path></svg>Avvia il contatore</button></div><p class="csrc"><span class="c1">Visitatori da smartphone</span><span class="c2">WP Statistics, 14 set – 3 nov 2026</span></p></div>
+</div>
+<div class="g12 crg"><div style="grid-column: 1 / 5"><p class="crl">Io</p><p class="crt">Strategia, inserzioni e budget Meta; pagina Contatti.</p></div><div style="grid-column: 5 / 9"><p class="crl">Freelance esterno</p><p class="crt">Video.</p></div><div style="grid-column: 9 / 13"><p class="crl">Scuola</p><p class="crt">Foto.</p></div></div><p class="crn">Incarico personale, senza Appress. Le cifre non sono attribuibili solo al mio lavoro.</p>
+<div class="foot"><a class="more" href="Pub_SNM_Contatti.dc.html">Guarda la pagina, sezione per sezione →</a><p class="sm mut rg vw">6 di 12 · pagina</p></div>
+</div>
+</section>
+
+<!-- PUBBLICITÀ, CASO AD PUGLIESE · scena «La prova» -->
+<section class="ind" id="pub-adp" aria-label="Pubblicità per AD Pugliese">
+<div class="tr case-ads snm-tr adp-tr">
+<div class="pin sec" style="padding-top: 64px; border-top: 1px solid #2c2652">
+<div class="gd" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<h2 class="h2"><span class="w" style="--i: 0">Il</span> <span class="w" style="--i: 1">modulo</span> <span class="w" style="--i: 2">giusto</span> <span class="w" style="--i: 3">per</span> <span class="w" style="--i: 4">ogni</span> <span class="w" style="--i: 5">auto.</span></h2>
+<p class="lead" style="margin-top: 16px">Tre marchi, una promozione per modello: alcune inserzioni puntavano al modulo <span class="u kw" style="--a: 0.88; --b: 0.97">di un'altra auto</span>.</p>
+<div class="g12" style="margin-top: 32px; position: relative; align-items: start">
+<div class="slot" style="grid-column: 5 / 9">
+<div class="igf sx" role="img" aria-label="Feed con tre post di A.D. Pugliese e l'inserzione Peugeot 208 con il pulsante Contattaci" style="--a: 0; --b: .06">
+<div class="igs sx" style="--a: .07; --b: .34">
+<div class="igp"><header><i></i><b>A.D. Pugliese S.p.A.</b></header><img src="./assets/d9f72d9380db2f4f84a2ec47e217bf27.jpg" alt="Post Nuova 500 hybrid"><footer><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-3.2-6.4L20 4v5h-5"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3 10 14M21 3l-7 18-4-7-7-4z"></path></svg></footer></div>
+<div class="igp"><header><i></i><b>A.D. Pugliese S.p.A.</b></header><img src="./assets/22ddb083649b921180c15057db9ff979.jpg" alt="Post Nuova Opel Mokka"><footer><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-3.2-6.4L20 4v5h-5"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3 10 14M21 3l-7 18-4-7-7-4z"></path></svg></footer></div>
+<div class="igp"><header><i></i><b>A.D. Pugliese S.p.A.</b></header><img src="./assets/7ed51a1b53e5a98dae19a6573da0fb72.jpg" alt="Post Nuova 600"><footer><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-3.2-6.4L20 4v5h-5"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3 10 14M21 3l-7 18-4-7-7-4z"></path></svg></footer></div>
+<div class="igp"><header><i></i><div><b>A.D. Pugliese S.p.A.</b><br><small>Sponsorizzato</small></div></header><img class="igv" src="./assets/2ca604866793ac358b874c1e768f2241.jpg" alt=""><p class="igcta sx" style="--a: .38; --b: .42"><span>Contattaci</span><span aria-hidden="true">›</span></p><footer><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-3.2-6.4L20 4v5h-5"></path></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3 10 14M21 3l-7 18-4-7-7-4z"></path></svg></footer></div>
+</div>
+<i class="tap sx" aria-hidden="true" style="--a: .36; --b: .43"></i>
+</div>
+</div>
+<div class="slot" style="grid-column: 9 / 13">
+<div class="cbf sx" style="--a: .42; --b: .5">
+<p class="sm cbb">Modulo Meta · Peugeot 208</p>
+<div class="cbv"><div class="cbs mfs sx" style="--a: .5; --b: .97">
+<div class="mfa" style="height: 520px"><img src="./assets/2ca604866793ac358b874c1e768f2241.jpg" alt=""><i></i><b class="mfn">A.D. Pugliese S.p.A.</b><p class="mft">Peugeot 208</p><p class="mfp">Compila il modulo per ricevere l'offerta sulla Peugeot 208.</p><span class="mfb">Continua</span></div>
+<div class="mfq" style="height: 560px"><p class="mft">Le tue informazioni</p><span class="mfl">Nome e cognome</span><span class="mfi"></span><span class="mfl">Numero di telefono</span><span class="mfi"></span><span class="mfl">Email</span><span class="mfi"></span><span class="mfl">Quale sede preferisci?</span><span class="mfo">Catania</span><span class="mfo">Ragusa</span></div>
+<div class="mfq" style="height: 260px"><p class="mft">Informativa sulla privacy</p><p class="mfp">A.D. Pugliese usa i dati per ricontattarti su questa offerta.</p><span class="mfb">Invia</span></div>
+<div class="mfd" style="height: 300px"><i>✓</i><p class="mft">Grazie, richiesta inviata</p><p class="mfp">Ti ricontattiamo al più presto.</p></div>
+<span class="hot hz sx" style="top: 8px; height: 504px; --a: .5; --b: .53"><i>1</i></span>
+<span class="hot hz sx" style="top: 528px; height: 544px; --a: .69; --b: .72"><i>2</i></span>
+<span class="hot hz sx" style="top: 1088px; height: 544px; --a: .87; --b: .9"><i>3</i></span>
+</div></div>
+</div>
+</div>
+<div style="grid-column: 1 / 5; grid-row: 1; display: flex; flex-direction: column">
+<div class="sx snt" style="--a: .44; --b: .5"><p class="eye">cosa ho deciso</p>
+<div class="pips" aria-hidden="true"><span class="pip pq sx" style="--a: .5; --b: .53">1</span><span class="pip pq sx" style="--a: .69; --b: .72">2</span><span class="pip pq sx" style="--a: .87; --b: .9">3</span></div></div>
+<div class="snc sx" style="--a: .5; --b: .57"><b>1 · modello per modello</b><p class="body">Ho controllato ogni inserzione: ognuna porta al modulo della sua auto.</p></div>
+<div class="snc sx" style="--a: .69; --b: .76"><b>2 · stesse domande ovunque</b><p class="body">Un modello di modulo unico, copiato per ogni auto: le domande sono sempre le stesse.</p></div>
+<div class="snc sx" style="--a: .87; --b: .94"><b>3 · dritto nel registro</b><p class="body">Ogni contatto arriva nel registro dello studio, pronto per la richiamata.</p></div>
+</div>
+<svg class="snarw sx snt" width="60" height="80" viewBox="0 0 60 80" style="position: absolute; left: 796px; top: 430px; overflow: visible; z-index: 4; --a: 0.42; --b: 0.47" aria-hidden="true"><path d="M8 66 C 30 60, 34 30, 52 14" fill="none" stroke="#b3a9ff" stroke-width="2" stroke-linecap="round"></path><path d="M40 14 L 53 13 L 50 26" fill="none" stroke="#b3a9ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<p class="sm sx snt" style="position: absolute; left: 424px; top: 572px; color: #ffffff; white-space: nowrap; z-index: 4; --a: .42; --b: .47">il clic apre il modulo Meta ↗</p>
+<p class="sm mut sx snt" style="position: absolute; left: 848px; top: 572px; white-space: nowrap; z-index: 4; --a: .46; --b: .5">ricostruzione del modulo, non schermata</p>
+</div>
+</div>
+</div>
+<div class="sec" style="padding-bottom: 96px">
+<div class="g12" style="padding-top: 64px">
+<div class="cif" style="grid-column: 1 / 5"><div class="{{a1Cls}}"><p class="ctr"><span class="st">282</span><span class="dyn d10" aria-hidden="true"></span></p><button class="run" type="button" onClick="{{a1Go}}"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 1 L11 6 L2 11 Z" fill="currentColor"></path></svg>Avvia il contatore</button></div><p class="csrc"><span class="c1">Contatti dai moduli Meta</span><span class="c2">campagne A.D. Pugliese (Stellantis e BMW), 16 set – 10 nov 2026</span></p></div>
+<div class="cif" style="grid-column: 5 / 9"><div class="{{a2Cls}}"><p class="ctr"><span class="st">4,47 €</span><span class="dyn d11" aria-hidden="true"></span></p><button class="run" type="button" onClick="{{a2Go}}"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 1 L11 6 L2 11 Z" fill="currentColor"></path></svg>Avvia il contatore</button></div><p class="csrc"><span class="c1">Costo per contatto</span><span class="c2">1.261 € spesi, stesse campagne e periodo</span></p></div>
+<div class="cif" style="grid-column: 9 / 13"><div class="{{a3Cls}}"><p class="ctr"><span class="st">13</span><span class="dyn d12" aria-hidden="true"></span></p><button class="run" type="button" onClick="{{a3Go}}"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 1 L11 6 L2 11 Z" fill="currentColor"></path></svg>Avvia il contatore</button></div><p class="csrc"><span class="c1">Modelli in promozione a ottobre, ognuno col suo modulo</span><span class="c2">Meta</span></p></div>
+</div>
+<div class="g12 crg"><div style="grid-column: 1 / 5"><p class="crl">Io</p><p class="crt">Campagne, moduli, controllo dei contatti, report.</p></div><div style="grid-column: 5 / 9"><p class="crl">Team Appress</p><p class="crt">Alcune inserzioni, arrivo dei contatti.</p></div><div style="grid-column: 9 / 13"><p class="crl">Cliente</p><p class="crt">Grafiche dei marchi; lavora i contatti.</p></div></div><p class="crn">Le cifre non sono attribuibili solo al mio lavoro.</p>
+<div class="foot" style="justify-content: flex-end"><p class="sm mut rg vw">7 di 12 · pagina</p></div>
+</div>
+</section>
+
+<!-- SISTEMI AI, APERTURA -->
+<section id="ai" aria-label="Sistemi AI" style="background: #101014; color: #ffffff">
+<div class="tr snm-tr ai-tr">
+<div class="pin sec" style="padding-top: 72px">
+<p class="disp aty" aria-label="Costruisco."><span class="ty sx" style="--a: -0.420; --b: -0.415">C</span><span class="ty sx" style="--a: -0.400; --b: -0.395">o</span><span class="ty sx" style="--a: -0.380; --b: -0.375">s</span><span class="ty sx" style="--a: -0.360; --b: -0.355">t</span><span class="ty sx" style="--a: -0.340; --b: -0.335">r</span><span class="ty sx" style="--a: -0.320; --b: -0.315">u</span><span class="ty sx" style="--a: -0.300; --b: -0.295">i</span><span class="ty sx" style="--a: -0.280; --b: -0.275">s</span><span class="ty sx" style="--a: -0.260; --b: -0.255">c</span><span class="ty sx" style="--a: -0.240; --b: -0.235">o</span><span class="ty sx" style="--a: -0.220; --b: -0.215">.</span><span class="caret" aria-hidden="true"></span></p>
+<div class="g12" style="margin-top: 16px"><p class="lead sx snt" style="grid-column: 1 / 7; --a: -.2; --b: -.14">Quattro strumenti di IA <span class="u kw">progettati da me</span>: uno lavora tutti i giorni, uno è in tasca, uno è online, uno è un esperimento.</p></div>
+<div class="g12" style="margin-top: 32px; align-items: stretch">
+<div class="edw sx" style="grid-column: 5 / 13; grid-row: 1; --a: -.14; --b: -.06">
+<p class="edh"><i></i><i></i><i></i><span>terminale · costruisco</span></p>
+<div class="edb">
+<p class="ln"><span class="lt sx" style="--a: -.04; --b: .02"><span class="pr">$</span> costruisco --tutto</span></p>
+<p class="ln"><span class="lt sx" style="--a: 0.04; --b: 0.07">compilo appress-os</span> <span class="dots sx" style="--a: 0.07; --b: 0.11">............</span> <span class="ok sx" style="--a: 0.11; --b: 0.13">✓ ok</span></p>
+<p class="ln"><span class="lt sx" style="--a: 0.22; --b: 0.25">compilo askesis</span> <span class="dots sx" style="--a: 0.25; --b: 0.29">...............</span> <span class="ok sx" style="--a: 0.29; --b: 0.31">✓ ok</span></p>
+<p class="ln"><span class="lt sx" style="--a: 0.40; --b: 0.43">compilo calculon</span> <span class="dots sx" style="--a: 0.43; --b: 0.47">..............</span> <span class="ok sx" style="--a: 0.47; --b: 0.49">✓ ok</span></p>
+<p class="ln"><span class="lt sx" style="--a: 0.58; --b: 0.61">compilo simposio</span> <span class="dots sx" style="--a: 0.61; --b: 0.65">..............</span> <span class="ok sx" style="--a: 0.65; --b: 0.67">✓ ok</span></p>
+<p class="ln"><span class="lt sum sx" style="--a: .8; --b: .86">→ 4 strumenti costruiti</span></p>
+</div>
+</div>
+<div class="tcs" style="grid-column: 1 / 5; grid-row: 1">
+<a class="tc sx" href="#appress-os" style="--a: 0.10; --b: 0.15"><span class="tcn">01</span><span class="tcb"><b>Appress OS</b><small>lavora tutti i giorni</small></span><span class="tca" aria-hidden="true">apri →</span></a>
+<a class="tc sx" href="#askesis" style="--a: 0.28; --b: 0.33"><span class="tcn">02</span><span class="tcb"><b>Askesis</b><small>sta in tasca</small></span><span class="tca" aria-hidden="true">apri →</span></a>
+<a class="tc sx" href="#calculon" style="--a: 0.46; --b: 0.51"><span class="tcn">03</span><span class="tcb"><b>Calculon</b><small>è online</small></span><span class="tca" aria-hidden="true">apri →</span></a>
+<a class="tc sx" href="#simposio" style="--a: 0.64; --b: 0.69"><span class="tcn">04</span><span class="tcb"><b>Simposio</b><small>è un esperimento</small></span><span class="tca" aria-hidden="true">apri →</span></a>
+</div>
+</div>
+</div>
+</div>
+<div class="sec" style="padding-top: 64px; padding-bottom: 96px">
+<div class="g12">
+<div class="cif" style="grid-column: 1 / 5"><div class="{{g4Cls}}"><p class="ctr"><span class="st">4</span><span class="dyn d13" aria-hidden="true"></span></p><button class="run" type="button" onClick="{{g4Go}}"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 1 L11 6 L2 11 Z" fill="currentColor"></path></svg>Avvia il contatore</button></div><p class="csrc"><span class="c1">Strumenti di IA progettati da me</span><span class="c2">Appress OS, Askesis, Calculon, Simposio</span></p></div>
+<div class="cif" style="grid-column: 5 / 9"><div class="{{g5Cls}}"><p class="ctr"><span class="st">33</span><span class="dyn d15" aria-hidden="true"></span></p><button class="run" type="button" onClick="{{g5Go}}"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 1 L11 6 L2 11 Z" fill="currentColor"></path></svg>Avvia il contatore</button></div><p class="csrc"><span class="c1">Agenti di IA che ho messo al lavoro</span><span class="c2">testi, grafica, video, sito e marketing · novembre 2026</span></p></div>
+<div class="cif" style="grid-column: 9 / 13"><div class="{{g6Cls}}"><p class="ctr"><span class="st">177</span><span class="dyn d16" aria-hidden="true"></span></p><button class="run" type="button" onClick="{{g6Go}}"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 1 L11 6 L2 11 Z" fill="currentColor"></path></svg>Avvia il contatore</button></div><p class="csrc"><span class="c1">Regole di lavoro imparate dalle mie correzioni</span><span class="c2">memoria del mio sistema, all’11 novembre 2026</span></p></div>
+</div>
+</div>
+</section>
+
+<!-- SISTEMI AI · Appress OS · scena «La scheda tecnica» -->
+<section id="appress-os" aria-label="Appress OS">
+<div class="tr snm-tr aos-tr">
+<div class="pin sec" style="padding-top: 64px">
+<h2 class="h2"><span class="w" style="--i: 0">Appress</span> <span class="w" style="--i: 1">OS.</span> <span class="w" style="--i: 2">Il</span> <span class="w" style="--i: 3">sistema</span> <span class="w" style="--i: 4">operativo</span> <span class="w" style="--i: 5">dello</span> <span class="w" style="--i: 6">studio.</span></h2>
+<div class="g12" style="margin-top: 28px; align-items: start">
+<div class="avid" style="grid-column: 5 / 13; grid-row: 1" role="img" aria-label="Giro dentro Appress OS: ingresso, corridoio con il portello, rotta dei pianeti, Taskboard, Clienti, workspace del cliente, Studio Editoriale, Social, Report e Consegna. Catture vere.">
+<img class="afr sx f0" src="./assets/285d7fbed4051d37c1b4633dc1334ce8.jpg" alt="" style="--a: 0.00; --b: 0.13">
+<img class="afr sx" src="./assets/9f47f379122c64c8005f11db1da8ecb3.jpg" alt="" style="--a: 0.10; --b: 0.23">
+<img class="afr sx" src="./assets/c05781fbc137032d39b1e3319bb5006c.jpg" alt="" style="--a: 0.20; --b: 0.33">
+<img class="afr sx" src="./assets/3344f38c4c90b2c232776b814294acb5.jpg" alt="" style="--a: 0.30; --b: 0.43">
+<img class="afr sx" src="./assets/4ab81e92b48061798f90be0783f8be16.jpg" alt="" style="--a: 0.40; --b: 0.53">
+<img class="afr sx" src="./assets/607e81ff3d7f0ae86fe8bd4eebb6e4a7.jpg" alt="" style="--a: 0.50; --b: 0.63">
+<img class="afr sx" src="./assets/62c10d39263be02521f29808188d6beb.jpg" alt="" style="--a: 0.60; --b: 0.73">
+<img class="afr sx" src="./assets/6392b5671f18682e842d0fda33ad4917.jpg" alt="" style="--a: 0.70; --b: 0.83">
+<img class="afr sx fl" src="./assets/ae59940e056ebd47a02eb70394db1e6c.jpg" alt="" style="--a: 0.80; --b: 0.93">
+<p class="avtag">catture vere · scorri per avanzare</p>
+<div class="apb" aria-hidden="true"><i class="sx" style="--a: 0; --b: 1"></i></div>
+</div>
+<div class="acaps" style="grid-column: 1 / 5; grid-row: 1">
+<div class="acap sx f0" style="--a: 0.00; --b: 0.13"><small>01 / 09</small><b>Benvenuto a bordo</b><p>La navicella è il cursore. Un solo pulsante, «Sali al ponte di comando», e il viaggio parte.</p></div>
+<div class="acap sx" style="--a: 0.10; --b: 0.23"><small>02 / 09</small><b>Il corridoio</b><p>In fondo al corridoio si apre un portello circolare: dietro c’è la rotta con i pianeti dello studio.</p></div>
+<div class="acap sx" style="--a: 0.20; --b: 0.33"><small>03 / 09</small><b>Sette pianeti, uno per lavoro</b><p>Sei attivi e uno in arrivo, Controllo &amp; Performance. Si scorre con frecce o rotella; «Entra» parte con un salto.</p></div>
+<div class="acap sx" style="--a: 0.30; --b: 0.43"><small>04 / 09</small><b>Taskboard: il piano di oggi</b><p>Fascia oraria, cliente, attività del PED, ore e chi lo fa. La mattina si parte da un piano, non da una lista.</p></div>
+<div class="acap sx" style="--a: 0.40; --b: 0.53"><small>05 / 09</small><b>Clienti</b><p>22 clienti in un carosello di pianeti: per ognuno lo stato del PED e l’attività in corso, poi «Apri workspace».</p></div>
+<div class="acap sx" style="--a: 0.50; --b: 0.63"><small>06 / 09</small><b>Il workspace del cliente</b><p>Sei schede: Panoramica, Memoria, PED &amp; Copy, Attività, Asset, Workflow. La Panoramica indica la prossima azione utile.</p></div>
+<div class="acap sx" style="--a: 0.60; --b: 0.73"><small>07 / 09</small><b>Studio Editoriale</b><p>Crea, Revisione, PED, Chat. Il sistema prepara, una persona sceglie: approvare un testo e promuoverlo sono due consensi separati.</p></div>
+<div class="acap sx" style="--a: 0.70; --b: 0.83"><small>08 / 09</small><b>Social: cosa decidere oggi</b><p>Uscite fallite, da approvare, grafiche mancanti, in ordine di urgenza. Nulla viene programmato senza approvazione.</p></div>
+<div class="acap sx fl" style="--a: 0.80; --b: 0.93"><small>09 / 09</small><b>Report &amp; Consegna</b><p>Cinque passi, dalla preparazione allo storico, senza associazioni inventate. Il sistema prepara lo stato, il passo lo decide una persona.</p></div>
+</div>
+</div>
+</div>
+</div>
+<div class="sec" style="padding-top: 48px; padding-bottom: 96px">
+<div class="ademo">
+<div><p class="eye">mini demo · 10 passi guidati, circa 1 minuto</p><p class="h2" style="margin-top: 8px">Provalo con le tue mani.</p><p class="body mut" style="margin-top: 8px; max-width: 560px">Un tutorial: puoi toccare solo il passo indicato, come al primo livello di un videogioco.</p></div>
+<a class="btn abig" href="Demo_AppressOS.dc.html">Prova la demo →</a>
+</div>
+<div class="foot"><a class="more" href="Progetto_AppressOS.dc.html">Approfondisci: pianeti, sezioni e tutorial →</a><p class="sm mut rg vw">8 di 12 · pagina</p></div>
+</div>
+</section>
+
+<!-- SISTEMI AI · Askesis · scena «La scheda tecnica» -->
+<section id="askesis" aria-label="Askesis">
+<div class="tr snm-tr aos-tr">
+<div class="pin sec" style="padding-top: 64px; border-top: 1px solid #ebebf0">
+<h2 class="h2"><span class="w" style="--i: 0">Askesis.</span> <span class="w" style="--i: 1">Palestra</span> <span class="w" style="--i: 2">e</span> <span class="w" style="--i: 3">cibo,</span> <span class="w" style="--i: 4">con</span> <span class="w" style="--i: 5">un</span> <span class="w" style="--i: 6">coach</span> <span class="w" style="--i: 7">che</span> <span class="w" style="--i: 8">non</span> <span class="w" style="--i: 9">ti</span> <span class="w" style="--i: 10">fa</span> <span class="w" style="--i: 11">sentire</span> <span class="w" style="--i: 12">in</span> <span class="w" style="--i: 13">colpa.</span></h2>
+<div class="g12" style="margin-top: 28px; align-items: start">
+<div class="avwrap" style="grid-column: 5 / 13; grid-row: 1">
+<div class="avid avph" role="img" aria-label="Giro dentro Askesis: benvenuto, profilo, scheda della palestra, obiettivo del giorno, Oggi, seduta guidata, recupero, proposta per la prossima volta, pasto a grammi. Catture vere.">
+<img class="afr sx f0" src="./assets/5bc3887b8f0788d9b40627f8f325ee9c.jpg" alt="" style="--a: 0.00; --b: 0.11">
+<img class="afr sx" src="./assets/ce3e020bbffcb60982b84b97fa81fc7d.jpg" alt="" style="--a: 0.10; --b: 0.21">
+<img class="afr sx" src="./assets/10f55b6ad7a430babf81d7cd87ff056d.jpg" alt="" style="--a: 0.20; --b: 0.32">
+<img class="afr sx" src="./assets/2daa2eed30182635b89f3367e9038b3a.jpg" alt="" style="--a: 0.30; --b: 0.42">
+<img class="afr sx" src="./assets/e478f179a608e42759da9b683038f896.jpg" alt="" style="--a: 0.40; --b: 0.52">
+<img class="afr sx" src="./assets/8ba036efc7f400be01871b2721664743.jpg" alt="" style="--a: 0.50; --b: 0.61">
+<img class="afr sx" src="./assets/199330f0c43b0dbe7b319c9f49fd3569.jpg" alt="" style="--a: 0.60; --b: 0.72">
+<img class="afr sx" src="./assets/57002a0eb9b48f30b1e69bfa7a73ab3e.jpg" alt="" style="--a: 0.70; --b: 0.82">
+<img class="afr sx fl" src="./assets/716b5a014f119e1d76b599a530e79be4.jpg" alt="" style="--a: 0.80; --b: 0.92">
+<p class="avtag">catture vere · scorri per avanzare</p>
+<div class="apb" aria-hidden="true"><i class="sx" style="--a: 0; --b: 1"></i></div>
+</div>
+</div>
+<div class="acaps" style="grid-column: 1 / 5; grid-row: 1">
+<div class="acap sx f0" style="--a: 0.00; --b: 0.11"><small>01 / 09</small><b>Il benvenuto</b><p>Si apre nel browser del telefono, senza registrazione. Il coach presenta le tre aree: allenamento, alimentazione e progressi.</p></div>
+<div class="acap sx" style="--a: 0.10; --b: 0.21"><small>02 / 09</small><b>Parlami di te</b><p>Nome, età, altezza, peso, obiettivo, attività ed esperienza. Da queste risposte l'app stima calorie e proteine del giorno.</p></div>
+<div class="acap sx" style="--a: 0.20; --b: 0.32"><small>03 / 09</small><b>La scheda in un attimo</b><p>Si incolla la scheda della palestra come testo, un esercizio per riga: l'app la divide in sedute con serie, ripetizioni e carichi.</p></div>
+<div class="acap sx" style="--a: 0.30; --b: 0.42"><small>04 / 09</small><b>Un obiettivo con le fonti</b><p>Senza un piano del dietista, calorie e proteine si stimano dal profilo con i livelli di attività e le quote proteiche dei LARN.</p></div>
+<div class="acap sx" style="--a: 0.40; --b: 0.52"><small>05 / 09</small><b>Oggi</b><p>Una schermata sola: il pasto del momento, la seduta del giorno e i numeri di oggi. Un tocco su «Apri» porta dove serve.</p></div>
+<div class="acap sx" style="--a: 0.50; --b: 0.61"><small>06 / 09</small><b>La seduta guidata</b><p>Un esercizio alla volta, con foto, carico e ripetizioni regolabili. Si segna la serie con un tocco su «Serie fatta».</p></div>
+<div class="acap sx" style="--a: 0.60; --b: 0.72"><small>07 / 09</small><b>Il recupero</b><p>Dopo ogni serie parte il cronometro a tutto schermo, con la serie che viene dopo e i tasti per togliere o aggiungere 15 secondi.</p></div>
+<div class="acap sx" style="--a: 0.70; --b: 0.82"><small>08 / 09</small><b>La prossima volta</b><p>A fine seduta l'app propone un aumento solo dove hai chiuso tutte le serie al massimo delle ripetizioni, e lo applica solo se confermi.</p></div>
+<div class="acap sx fl" style="--a: 0.80; --b: 0.92"><small>09 / 09</small><b>Il cibo che insegna</b><p>Il pasto si compone a grammi da una libreria di 338 alimenti. Se manca il condimento, l'app chiede: «Hai messo l'olio?»</p></div>
+</div>
+</div>
+</div>
+</div>
+<div class="sec" style="padding-top: 48px; padding-bottom: 96px">
+<div class="ademo">
+<div><p class="eye">mini demo · 9 passi guidati, circa 1 minuto</p><p class="h2" style="margin-top: 8px">Provalo con le tue mani.</p><p class="body mut" style="margin-top: 8px; max-width: 560px">Un tutorial: tocchi solo il passo indicato. Testata con quattro utenti simulati da agenti di IA, non persone vere; io ho deciso cosa fa, schermata per schermata.</p></div>
+<div class="ademo-cta"><a class="btn abig" href="Demo_Askesis.dc.html">Prova la demo →</a><a class="more ademo-live" href="https://san7u7.github.io/coach-palestra/">Apri l’app vera ↗</a></div>
+</div>
+<div class="foot"><a class="more" href="Progetto_Askesis.dc.html">Approfondisci: caso e tutorial →</a><p class="sm mut rg vw">9 di 12 · pagina</p></div>
+</div>
+</section>
+
+<!-- SISTEMI AI · Calculon · scena «La scheda tecnica» -->
+<section id="calculon" aria-label="Calculon">
+<div class="tr snm-tr aos-tr">
+<div class="pin sec" style="padding-top: 64px; border-top: 1px solid #ebebf0">
+<h2 class="h2"><span class="w" style="--i: 0">Calculon.</span> <span class="w" style="--i: 1">Le</span> <span class="w" style="--i: 2">spese</span> <span class="w" style="--i: 3">in</span> <span class="w" style="--i: 4">comune,</span> <span class="w" style="--i: 5">senza</span> <span class="w" style="--i: 6">che</span> <span class="w" style="--i: 7">il</span> <span class="w" style="--i: 8">server</span> <span class="w" style="--i: 9">sappia</span> <span class="w" style="--i: 10">chi</span> <span class="w" style="--i: 11">deve</span> <span class="w" style="--i: 12">cosa.</span></h2>
+<div class="g12" style="margin-top: 28px; align-items: start">
+<div class="avwrap" style="grid-column: 5 / 13; grid-row: 1">
+<div class="avid avph" role="img" aria-label="Giro dentro Calculon: primo avvio, spesa scritta a parole, categoria suggerita, il mese, uno spazio condiviso, la divisione delle spese. Catture vere.">
+<img class="afr sx f0" src="./assets/234b42715696a32bbec9e2a385ab67a8.jpg" alt="" style="--a: 0.00; --b: 0.15">
+<img class="afr sx" src="./assets/8bc43dce1b59dfaf9ee9ef8b38d7677c.jpg" alt="" style="--a: 0.11; --b: 0.26">
+<img class="afr sx" src="./assets/a35c61e9e1a7ae30ec7909e4512db963.jpg" alt="" style="--a: 0.23; --b: 0.38">
+<img class="afr sx" src="./assets/158fb6305b17818625eb787638cda501.jpg" alt="" style="--a: 0.34; --b: 0.49">
+<img class="afr sx" src="./assets/3dac4e1a73d61fd3f9e17e636e55a642.jpg" alt="" style="--a: 0.46; --b: 0.61">
+<img class="afr sx" src="./assets/ac4bf1509eff7b2cc61d8763467a49fe.jpg" alt="" style="--a: 0.57; --b: 0.72">
+<img class="afr sx" src="./assets/c9f92bb3473a9f8d316b695518b0d21a.jpg" alt="" style="--a: 0.69; --b: 0.83">
+<img class="afr sx fl" src="./assets/95c9af188a3124141f4f3a27ee2e28a9.jpg" alt="" style="--a: 0.80; --b: 0.95">
+<p class="avtag">catture vere · scorri per avanzare</p>
+<div class="apb" aria-hidden="true"><i class="sx" style="--a: 0; --b: 1"></i></div>
+</div>
+</div>
+<div class="acaps" style="grid-column: 1 / 5; grid-row: 1">
+<div class="acap sx f0" style="--a: 0.00; --b: 0.15"><small>01 / 08</small><b>Si parte da zero</b><p>Al primo avvio l'app non chiede account né registrazione: «Dammi un numero e cominciamo».</p></div>
+<div class="acap sx" style="--a: 0.11; --b: 0.26"><small>02 / 08</small><b>Scrivi come parli</b><p>Si scrive «34,20 spesa conad carta»: importo, conto e descrizione si compilano da soli.</p></div>
+<div class="acap sx" style="--a: 0.23; --b: 0.38"><small>03 / 08</small><b>Impara dalle tue scelte</b><p>La spesa Conad era già finita due volte in Alimentari, così l'app propone «Forse Alimentari». Un tocco e la categoria è a posto.</p></div>
+<div class="acap sx" style="--a: 0.34; --b: 0.49"><small>04 / 08</small><b>Il mese in una schermata</b><p>In home ci sono quanto resta, entrate, uscite e gli ultimi movimenti. La nuova spesa è già in cima.</p></div>
+<div class="acap sx" style="--a: 0.46; --b: 0.61"><small>05 / 08</small><b>Il mio mese</b><p>Entrate, uscite, differenza e tutti i movimenti del mese, con le frecce per tornare ai mesi precedenti.</p></div>
+<div class="acap sx" style="--a: 0.57; --b: 0.72"><small>06 / 08</small><b>Uno spazio per le spese in comune</b><p>Un nome e i partecipanti: lo spazio condiviso è pronto, anche senza connessione.</p></div>
+<div class="acap sx" style="--a: 0.69; --b: 0.83"><small>07 / 08</small><b>Chi ha pagato, come si divide</b><p>Per ogni spesa si sceglie chi ha pagato e se dividerla in parti uguali o con importi personalizzati.</p></div>
+<div class="acap sx fl" style="--a: 0.80; --b: 0.95"><small>08 / 08</small><b>I conti si fanno da soli</b><p>Marta ha pagato la cena da 96 €: Luca e Sara le devono 32 € a testa. Al server partono solo dati cifrati.</p></div>
+</div>
+</div>
+</div>
+</div>
+<div class="sec" style="padding-top: 48px; padding-bottom: 96px">
+<div class="ademo">
+<div><p class="eye">mini demo · 11 passi guidati, circa 1 minuto</p><p class="h2" style="margin-top: 8px">Provalo con le tue mani.</p><p class="body mut" style="margin-top: 8px; max-width: 560px">Un tutorial: tocchi solo il passo indicato. Provato dal vivo tra due telefoni, 877 test superati. Limite: sul telefono i dati non sono ancora cifrati a riposo.</p></div>
+<div class="ademo-cta"><a class="btn abig" href="Demo_Calculon.dc.html">Prova la demo →</a><a class="more ademo-live" href="https://san7u7.github.io/Calculon/cassa-comune/">Apri l’app vera ↗</a></div>
+</div>
+<div class="foot"><a class="more" href="Progetto_Calculon.dc.html">Approfondisci: caso e tutorial →</a><p class="sm mut rg vw">10 di 12 · pagina</p></div>
+</div>
+</section>
+
+<!-- SISTEMI AI · Simposio · scena «La scheda tecnica» -->
+<section id="simposio" aria-label="Simposio">
+<div class="tr snm-tr simc-tr">
+<div class="pin sec" style="padding-top: 64px; border-top: 1px solid #ebebf0">
+<h2 class="h2"><span class="w" style="--i: 0">Simposio.</span> <span class="w" style="--i: 1">Le</span> <span class="w" style="--i: 2">IA</span> <span class="w" style="--i: 3">discutono,</span> <span class="w" style="--i: 4">decide</span> <span class="w" style="--i: 5">una</span> <span class="w" style="--i: 6">persona.</span></h2>
+<p class="simsub">Una conversazione d’esempio, con dati di prova. Scorri.</p>
+<div class="g12" style="margin-top: 28px">
+<div class="simc" style="grid-column: 3 / 11">
+<div class="beat sx f0" style="--a: -0.2; --b: 0.30">
+<div class="cb2 me sx" style="--a: -0.12; --b: -0.08"><span class="cw">Tu</span><p>Per IGM Augusta togliamo le sponsorizzate e puntiamo tutto sui contenuti?</p></div>
+<div class="cb2 os sx" style="--a: 0.06; --b: 0.10"><span class="cw"><i style="background: #5c4bff"></i>Appress OS</span><p>Mi fermo qui: cambia la strategia. Preparo la scheda per il Simposio, decidi tu.</p></div>
+</div>
+<div class="beat sx" style="--a: 0.28; --b: 0.56">
+<p class="bt sx" style="--a: 0.31; --b: 0.35">Al tavolo: un motore e tre IA</p>
+<div class="seats"><span class="seat sx" style="--a: 0.36; --b: 0.39"><i style="background: #d97757"></i>Claude</span><span class="seat sx" style="--a: 0.40; --b: 0.43"><i style="background: #10a37f"></i>Codex</span><span class="seat sx" style="--a: 0.44; --b: 0.47"><i style="background: #615ced"></i>Qwen · in locale</span></div>
+<p class="bn sx" style="--a: 0.49; --b: 0.53">Prima ognuna analizza da sola. Poi si contro-esaminano.</p>
+</div>
+<div class="beat sx" style="--a: 0.54; --b: 0.92">
+<div class="cb2 ai sx" style="--a: 0.57; --b: 0.61"><span class="cw"><i style="background: #10a37f"></i>Codex</span><p>Sì, ma per gradi: un mese di prova sui contenuti.</p></div>
+<div class="cb2 ai dis sx" style="--a: 0.64; --b: 0.68"><span class="cw"><i style="background: #615ced"></i>Qwen · in locale</span><p>No: senza sponsorizzate il negozio perde le offerte della settimana.</p><em>dissenso a verbale</em></div>
+<div class="cb2 ai sx" style="--a: 0.71; --b: 0.75"><span class="cw"><i style="background: #d97757"></i>Claude</span><p>Compromesso: sponsorizziamo solo i contenuti che vanno già da soli.</p></div>
+<p class="bn sx" style="--a: 0.79; --b: 0.83">Il motore non vota e non pesa i modelli: mette a verbale accordi e dissenso.</p>
+</div>
+<div class="beat sx fl" style="--a: 0.90; --b: 1.16">
+<div class="cb2 me sx" style="--a: 0.93; --b: 0.97"><span class="cw">Tu</span><p>Decido io: il compromesso.</p></div>
+<div class="cb2 os sx" style="--a: 0.99; --b: 1.03"><span class="cw"><i style="background: #5c4bff"></i>Appress OS</span><p>Ratificato. Diventa un mandato operativo, con la tesi contraria a verbale.</p></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tr snm-tr simq-tr">
+<div class="pin sec" style="padding-top: 56px">
+<p class="h2" style="font-size: 32px">Chiedilo al Simposio.</p>
+<p class="simsub">Le domande che faresti tu. Rispondono le tre IA, a turno. Scorri.</p>
+<div class="g12" style="margin-top: 24px">
+<div class="simc simq" style="grid-column: 3 / 11">
+<div class="beat sx f0" style="--a: -0.15; --b: 0.30">
+<div class="cb2 me sx" style="--a: -0.09; --b: -0.05"><span class="cw">Tu</span><p>A cosa servi?</p></div>
+<div class="cb2 os sx" style="--a: -0.04; --b: 0.00"><span class="cw"><i style="background: #d97757"></i>Claude</span><p>Ti aiutiamo con le decisioni importanti. Ne discutiamo in tre, ma l’ultima parola è tua.</p></div>
+</div>
+<div class="beat sx" style="--a: 0.28; --b: 0.62">
+<div class="cb2 me sx" style="--a: 0.33; --b: 0.37"><span class="cw">Tu</span><p>Quali decisioni?</p></div>
+<div class="cb2 os sx" style="--a: 0.38; --b: 0.42"><span class="cw"><i style="background: #10a37f"></i>Codex</span><p>Quelle che cambiano la rotta di un cliente: strategia, budget, obiettivi o un piano già approvato.</p></div>
+</div>
+<div class="beat sx" style="--a: 0.60; --b: 0.94">
+<div class="cb2 me sx" style="--a: 0.65; --b: 0.69"><span class="cw">Tu</span><p>Come agisci su Appress OS?</p></div>
+<div class="cb2 os sx" style="--a: 0.70; --b: 0.74"><span class="cw"><i style="background: #615ced"></i>Qwen · in locale</span><p>Facciamo da guardiani. Se nello Studio Editoriale chiedi uno di questi cambi, Appress OS si ferma.</p><img src="./assets/63d7638e2dd8c3726c5926f9617e4a05.jpg" alt="" class="cimg"></div>
+</div>
+<div class="beat sx" style="--a: 0.92; --b: 1.26">
+<div class="cb2 me sx" style="--a: 0.97; --b: 1.01"><span class="cw">Tu</span><p>E poi?</p></div>
+<div class="cb2 os sx" style="--a: 1.02; --b: 1.06"><span class="cw"><i style="background: #d97757"></i>Claude</span><p>Si prepara una scheda con la domanda e i paletti. Noi analizziamo, ognuno per conto suo, poi ci contestiamo. Non parte niente finché non dici sì.</p><img src="./assets/b1e56e432344d37d66fec5450178a6cc.jpg" alt="" class="cimg"></div>
+</div>
+<div class="beat sx" style="--a: 1.24; --b: 1.58">
+<div class="cb2 me sx" style="--a: 1.29; --b: 1.33"><span class="cw">Tu</span><p>E il lavoro di tutti i giorni?</p></div>
+<div class="cb2 os sx" style="--a: 1.34; --b: 1.38"><span class="cw"><i style="background: #10a37f"></i>Codex</span><p>Va avanti come sempre: una richiesta normale passa subito, senza di noi.</p><img src="./assets/09f86a883d4edb8d7b79db7be939139e.jpg" alt="" class="cimg"></div>
+</div>
+<div class="beat sx" style="--a: 1.56; --b: 1.90">
+<div class="cb2 me sx" style="--a: 1.61; --b: 1.65"><span class="cw">Tu</span><p>Dopo che ho deciso?</p></div>
+<div class="cb2 os sx" style="--a: 1.66; --b: 1.70"><span class="cw"><i style="background: #615ced"></i>Qwen · in locale</span><p>La tua scelta torna ad Appress OS come istruzione chiara, con il verbale: chi di noi era d’accordo e chi no.</p><img src="./assets/7117beb1a72369722e625f9fc460c1fd.jpg" alt="" class="cimg"></div>
+</div>
+<div class="beat sx fl" style="--a: 1.88; --b: 2.22">
+<div class="cb2 me sx" style="--a: 1.93; --b: 1.97"><span class="cw">Tu</span><p>A che punto sei?</p></div>
+<div class="cb2 os sx" style="--a: 1.98; --b: 2.02"><span class="cw"><i style="background: #d97757"></i>Claude</span><p>561 test superati. Dal vivo finora ha parlato solo Claude, su dati inventati. Il giro in tre arriva dopo.</p><img src="./assets/7eea2e8dc6ccb607ceb5272d6eaec2e2.jpg" alt="" class="cimg"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sec" style="padding-top: 48px; padding-bottom: 96px">
+<div class="ademo">
+<div><p class="eye">prova giocabile · fai tu il moderatore</p><p class="h2" style="margin-top: 8px">Provalo con le tue mani.</p><p class="body mut" style="margin-top: 8px; max-width: 560px">Una prova con dati di esempio: leggi le tesi degli analisti, anche quella contraria, e decidi tu. Un giro completo con tutti i modelli dal vivo non l’ho ancora fatto: è il più ambizioso dei quattro e il meno finito.</p></div>
+<div class="ademo-cta"><a class="btn abig" href="Progetto_Simposio.dc.html">Fai il moderatore →</a></div>
+</div>
+<div class="foot"><a class="more" href="Progetto_Simposio.dc.html">Approfondisci: fai tu il moderatore →</a><p class="sm mut rg vw">11 di 12 · pagina</p></div>
+</div>
+</section>
+
+<!-- FINALE CV · scena «L'appunto diventa il CV» -->
+<section id="percorso" aria-label="CV e contatti">
+<div class="tr fin-tr" style="--len: 2; --pt: -59px">
+<div class="pin sec" style="padding-top: 144px">
+<div class="gd" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<div class="apn" aria-hidden="true" style="top: 159px"><span>Ultima pagina: <span class="u" style="--a: 0; --b: 0.06">CV di Giovanni</span>. Una facciata, <span class="u" style="--a: 0.04; --b: 0.1">solo cose vere</span>.</span><small>appunto di G. · l'ultima pagina</small></div>
+<div class="g12" style="align-items: start">
+<div class="slot" style="grid-column: 1 / 8">
+<article class="sheet pz" aria-label="CV di Giovanni Santuccio" style="--x: -8%; --y: 10%; --r: -3deg; --s: .6; --a: 0.14; --b: 0.4">
+<i class="veil" aria-hidden="true"></i>
+<header style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px"><b class="h2" style="white-space: nowrap">Giovanni Santuccio</b><span class="sm mut" style="text-align: right">social, pubblicità Meta e sistemi AI · Sicilia</span></header>
+<p class="eye" style="margin-top: 24px">percorso</p>
+<div style="margin-top: 8px">
+<div class="cvrow body pz" style="--x: -48px; --a: 0.4; --b: 0.5"><b>2021</b><span>Primi clienti social</span><span></span></div>
+<div class="cvrow body pz" style="--x: -48px; --a: 0.44; --b: 0.54"><b>2023 – 2026</b><span>The Yard Hostel, social da freelance</span><span class="mut">Sicilia</span></div>
+<div class="cvrow body pz" style="--x: -48px; --a: 0.48; --b: 0.58"><b>dal 2024</b><span>Appress Studio, da dipendente. Plus Italia, Nordal, IGM</span><span class="mut">Sicilia</span></div>
+<div class="cvrow body pz" style="--x: -48px; --a: 0.51; --b: 0.61"><b>dal 2025</b><span>Scuola Nautica Magnano, da freelance</span><span class="mut">Siracusa</span></div>
+<div class="cvrow body pz" style="--x: -48px; --a: 0.54; --b: 0.64"><b>2026</b><span>22.000 € di campagne Meta. Appress OS, Calculon, Askesis</span><span class="mut">Appress Studio</span></div>
+</div>
+<p class="body" style="margin-top: 16px; font-weight: 600">Oggi: cerco un ruolo dove strategia, contenuti e IA lavorano insieme.</p>
+<p class="eye" style="margin-top: 40px">competenze</p>
+<div class="sk3" style="margin-top: 8px">
+<div class="pz" style="--y: 24px; --a: 0.52; --b: 0.62"><p class="body" style="font-weight: 600">Social e contenuti</p><p class="sm mut" style="margin-top: 4px">Strategia, piani editoriali, testi, copioni, regia sul set, motion graphic con l'IA, report.</p></div>
+<div class="pz" style="--y: 24px; --a: 0.57; --b: 0.67"><p class="body" style="font-weight: 600">Pubblicità Meta</p><p class="sm mut" style="margin-top: 4px">Pianificazione, inserzioni, pagine di arrivo, tracciamento dei contatti, controllo ogni mattina.</p></div>
+<div class="pz" style="--y: 24px; --a: 0.62; --b: 0.72"><p class="body" style="font-weight: 600">Sistemi AI</p><p class="sm mut" style="margin-top: 4px">Sistemi con cancelli umani, prototipi su Claude Design, sviluppo con Claude Code sotto la mia revisione.</p></div>
+</div>
+<div class="chips" style="margin-top: 24px" aria-label="Strumenti"><span class="pz" style="--x: -14px; --y: 10px; --a: 0.6; --b: 0.68">Meta Business Suite</span><span class="pz" style="--x: 10px; --y: -8px; --a: 0.606; --b: 0.686">Gestione inserzioni</span><span class="pz" style="--x: -6px; --y: 14px; --a: 0.612; --b: 0.692">Figma</span><span class="pz" style="--x: 16px; --y: 6px; --a: 0.618; --b: 0.698">WordPress</span><span class="pz" style="--x: -12px; --y: -10px; --a: 0.624; --b: 0.704">ClickUp</span><span class="pz" style="--x: 8px; --y: 12px; --a: 0.63; --b: 0.71">Claude</span><span class="pz" style="--x: -18px; --y: 4px; --a: 0.636; --b: 0.716">Claude Code</span><span class="pz" style="--x: 12px; --y: -12px; --a: 0.642; --b: 0.722">Claude Design</span><span class="pz" style="--x: -8px; --y: 8px; --a: 0.648; --b: 0.728">HyperFrames</span><span class="pz" style="--x: 14px; --y: 10px; --a: 0.654; --b: 0.734">Italiano madrelingua</span></div>
+<div style="display: flex; justify-content: flex-end; margin-top: 24px"><p class="stamp" style="font-size: 20px; color: #5c4bff; box-shadow: inset 0 0 0 2px #5c4bff; background: #ffffff; --a: 0.78; --b: 0.88">Approvato. Manca il tuo brief.</p></div>
+</article>
+<i class="tk" aria-hidden="true" style="--a: 0.64; --b: 0.76"><b></b><b></b><b></b><b></b></i><i class="q" aria-hidden="true" style="--a: 0.65; --b: 0.77">5 righe · 1 facciata</i>
+</div>
+<div id="contatti" style="grid-column: 9 / 13; display: flex; flex-direction: column">
+<p class="eye">contatti</p>
+<h3 class="h2" style="margin-top: 16px">Il sito è finito. Il prossimo lavoro no.</h3>
+<div style="display: flex; flex-direction: column; gap: 16px; margin-top: 24px">
+<a class="cbtn" href="mailto:g.santuccio7@gmail.com" style="background: #5c4bff; color: #ffffff">g.santuccio7@gmail.com <span aria-hidden="true">→</span></a>
+<a class="cbtn" href="https://www.linkedin.com/in/giovanni-santuccio" target="_blank" rel="noopener" style="box-shadow: inset 0 0 0 1px #121214">LinkedIn <span aria-hidden="true">↗</span></a>
+<a class="cbtn" href="#percorso" style="box-shadow: inset 0 0 0 1px #121214">Scarica il CV (PDF) <span aria-hidden="true">↓</span></a>
+</div>
+<p class="sm mut" style="margin-top: 24px">Questo sito l'ha impaginato un sistema. Le decisioni le ho prese io.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sec" style="padding-bottom: 96px">
+<div class="g12" style="padding-top: 96px"><p class="sm mut rg vw" style="grid-column: 12 / 13; justify-self: end; white-space: nowrap">12 di 12 · pagina</p><p class="h1 fin-name" style="grid-column: 1 / 13; margin-top: 16px"><span class="w" style="--i: 0">Giovanni</span> <span class="w" style="--i: 1">Santuccio</span></p></div>
+</div>
+</section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { ask: false, calc: false, st: -1, seg: 0, snm: 1, adp: 1, go: {}, snd: true, nc: 0, ns: 0, np: 0, nt: 0 };
+  }
+  renderVals() {
+    const s = this.state;
+    const v = (vid, poster, alt, cap) => [vid, poster, alt, cap];
+    const MG = 'Motion graphic con l’IA, ideato e realizzato da me dall’inizio alla fine.';
+    const B = [
+      { name: 'Nordal', sector: 'Alimentare', cover: './assets/c9494b384a9c8b7d9f49e859b5ccd34c.jpg', segs: [
+        v('./assets/2fbef2b2a727478a58b4d89a38972875.mp4', './assets/826742381b4eeae1b357f9fe236f59e3.jpg', 'Reel Nordal di aprile 2026: i gyoza, con il sogno del Giappone in una nuvoletta', '«Gyoza». Reel di aprile 2026.'),
+        v('./assets/de11d3e38a95476fa39c272cc5ec46bb.mp4', './assets/5611af609360ef87ddbb184a66744ad0.jpg', 'Reel Nordal di maggio 2026: i donut, «quando sei a dieta e il tuo amico mangia davanti a te»', '«Donut». Reel di maggio 2026.'),
+        v('./assets/6263ab4e1b2206efd13aa3c902a1f60d.mp4', './assets/c806d2635df83f64829905c0f6361af5.jpg', 'Reel Nordal di luglio 2026: la calamarata, dalla busta al piatto, presentata da Francesco', '«La calamarata, dalla busta al piatto». Reel di luglio 2026.'),
+        v('./assets/bc26c933a793a33e47effe25e3a27b28.mp4', './assets/def1c5f87f91fc843a16d1b139af9fec.jpg', 'Reel Nordal di agosto 2026: animazione di una sera d’estate al mare', 'Reel di agosto 2026.') ] },
+      { name: 'Piano B', sector: 'Ristorazione', cover: './assets/a0e8ba412c38f0d8858c3aee72112d9a.jpg', segs: [
+        v('./assets/8354b1775bd5dd2cc4bf105914a0f7af.mp4', './assets/eb52aa2f71ee164411e867845ecbcca6.jpg', 'Reel Piano B: la mozzarella', 'La mozzarella giusta. Piano e testi miei, riprese del team video.'),
+        v('./assets/45c79cb83ad12c951e94d3d04c0292d8.mp4', './assets/45208d168f4119dc6eea3e3af1932668.jpg', 'Reel Piano B di marzo 2026: la pizza al padellino', '«Padellino». Reel di marzo 2026.'),
+        v('./assets/564bc51f4a29a876dc9d2094fdc04138.mp4', './assets/78aa86172f8a616843cd0234ca8bae0e.jpg', 'Reel Piano B di aprile 2026: la pizza primaverile', '«Pizza primaverile». Reel di aprile 2026.'),
+        v('./assets/60d2e2fe9eba2164654b5de39456e137.mp4', './assets/633663934cf4c6adcfdf91c29f4777d2.jpg', 'Reel Piano B di maggio 2026: pane parlato, l’impasto raccontato a voce', '«Pane parlato». Reel di maggio 2026.') ] },
+      { name: 'Cortile Arabo', sector: 'Ristorazione', cover: './assets/e38ad04cdf0e40e724b4a8c3065a98f5.png', segs: [
+        v('./assets/6e871a768ec5d9c77f9a2ce32d981b7e.mp4', './assets/220afaa696a5d88f2b391e4736b480b8.jpg', 'Reel Cortile Arabo di giugno 2026: un piatto visto dall’alto', 'Reel di giugno 2026.'),
+        v('./assets/1320bc3ec97cc533893d13bb882f7692.mp4', './assets/24f5609b8a166f8f91cf1791f3fc8a84.jpg', 'Reel Cortile Arabo di luglio 2026: dietro le quinte del locale', 'Reel di luglio 2026.'),
+        v('./assets/53b7d1c8ddf8fdb14a313de4b97293f1.mp4', './assets/f40a538ad18e97e4bd0c87742a7be369.jpg', 'Reel Cortile Arabo di settembre 2026: la tavola apparecchiata sul mare', 'Reel di settembre 2026.'),
+        v('./assets/c38dfe7fe430f5d6a333ed8d754d8a6b.mp4', './assets/37e1c9994acac32ed995de4856a55c58.jpg', 'Reel Cortile Arabo di ottobre 2026: quindici secondi al Cortile Arabo, il servizio al tramonto', '«15 seconds of Cortile Arabo». Reel di ottobre 2026.') ] },
+      { name: 'Gurrieri', sector: 'Vino', cover: './assets/43785ff0ede136f55fad0de8b9dac652.jpg', segs: [
+        v('./assets/36771bef7f796747cc192a998fa18de7.mp4', './assets/86988d17d2d387444e1a3cdbe947fa13.jpg', 'Reel Gurrieri di dicembre 2025: la storia della cantina raccontata in poltrona, con un calice di rosso', 'La storia della cantina, raccontata a voce. Reel di dicembre 2025.'),
+        v('./assets/cdd059531d2c1cf14a1b45215d8a05a6.mp4', './assets/e92161e8da42086de58c529f85be060f.jpg', 'Reel Gurrieri di gennaio 2026: la potatura in vigna', '«Potatura». Reel di gennaio 2026.'),
+        v('./assets/8be35b9898468425d00ff1ad04be8f3b.mp4', './assets/4ddb72f7c35b06a54eb342aec02a75cb.jpg', 'Reel Gurrieri di gennaio 2026: l’imbottigliatrice in cantina', '«Imbottigliatrice». Reel di gennaio 2026.'),
+        v('./assets/d25ecf68c3d3193b2d047945f3d40122.mp4', './assets/3dba274c91954ae9de3662019ea8687d.jpg', 'Reel Gurrieri di maggio 2026: in cantina, la presentazione di un vino accanto alla botte', 'Reel di maggio 2026.') ] },
+      { name: 'Midolo', sector: 'Arredamento', cover: './assets/3548aca8db9ce2d4fc1ed04aa94db1b4.jpg', segs: [
+        v('./assets/6a256cefdf3981946c958ffa50fd40c6.mp4', './assets/a8149a22d19da158951db9a466abc6c1.jpg', 'Reel Midolo Mobili di marzo 2026: la regola 60-30-10 dei colori, spiegata dallo staff', '«60-30-10». Reel di marzo 2026.'),
+        v('./assets/097f7e7528e37e0a135480454503045c.mp4', './assets/e3a10f5fc67e78f575a7b112325314c4.jpg', 'Reel Midolo Mobili di aprile 2026: gli errori da evitare quando si progetta casa', '«Errori da evitare». Reel di aprile 2026.'),
+        v('./assets/bfb92a0cbeeb4f7378a74f790f500a6d.mp4', './assets/b89fe119a81d7ea0b1272a6d350cd8e0.jpg', 'Reel Midolo Mobili di maggio 2026: come nascondere gli elettrodomestici in cucina', '«Nascondere gli elettrodomestici». Reel di maggio 2026.') ] },
+      { name: 'Midolo 37', sector: 'Arredamento', cover: './assets/5a66787d7f9dabeb8b695b02975ca8b7.jpg', segs: [
+        v('./assets/9ed0276d8a68c26013686e03d32ad5b7.mp4', './assets/76a3020fecf169805c0945a13d10ede5.jpg', 'Reel Midolo 37 di marzo-aprile 2026: «Non metterle fretta, MidoloTrentasette è il suo Pokémon Center»', '«Walk-in Pokémon». Reel di marzo-aprile 2026.'),
+        v('./assets/679f6958d15b3b7168ca1cc42847a4ec.mp4', './assets/5b92e7584d7e294ae50d07db30ac9afd.jpg', 'Reel Midolo 37 di giugno 2026: progettare casa partendo dalla posizione dell’albero di Natale', '«L’albero di Natale». Reel di giugno 2026.'),
+        v('./assets/2d1a437671369f2315c8c5d06c6483c4.mp4', './assets/94a8d937037cbc643906f71c8ccf41c0.jpg', 'Reel Midolo 37 di agosto 2026: una cameretta con letto a ponte che si compone', 'Reel di agosto 2026.'),
+        v('./assets/e3f03d85ad328bfd905eece0eb915d6d.mp4', './assets/54c53fecd95c6c1ce6475fdc52369b1a.jpg', 'Reel Midolo 37: un elicottero sorvola Ortigia e porta il telo rosso «Chiusi per ristrutturazione» sullo showroom', '«Chiusi per ristrutturazione»: l’elicottero su Ortigia.') ] },
+      { name: 'Giardini del Sole', sector: 'Moda', cover: './assets/f7b9d0359aca0fe0ee1cc88f86868490.jpg', segs: [
+        v('./assets/ebbc687436d606264adfd5e2bd234614.mp4', './assets/0e2fa2c1e70449728a53f46e5c1929c4.jpg', 'Video Giardini del Sole di ottobre 2026: la galleria del centro diventa una passerella', '«In passerella»: la galleria diventa una passerella. Ottobre 2026.'),
+        v('./assets/582a6edf4a60b401784ddf2c1b614622.mp4', './assets/711277c425ed5d9a15e5d6dfffedf18b.jpg', 'Reel Giardini del Sole di luglio 2026: la reazione quando indossi le scarpe nuove comprate in saldo', '«Le scarpe nuove in saldo». Reel di luglio 2026.'),
+        v('./assets/5606fcd452848ad5458d9127962df46b.mp4', './assets/6942fda6e143828b358013cf35009fd9.jpg', 'Video Giardini del Sole di ottobre 2026: collane sovrapposte, senza esagerare', 'Rubrica «Il dettaglio giusto»: collane sovrapposte. Ottobre 2026.'),
+        v('./assets/0bbc405f69b10429a8cdc40b0c4f3bab.mp4', './assets/4c88114e08e6185594a1631beb1f3754.jpg', 'Video Giardini del Sole di ottobre 2026: la vellutata di zucca con nocciole tostate', 'Rubrica «In tavola»: vellutata di zucca. Ottobre 2026.') ] },
+      { name: 'AuraDigital', sector: 'Tecnologia', cover: './assets/6847d9fe16c06e044389de3680d69dcc.jpg', segs: [
+        v('./assets/ba09c1cdded6f60cafae7ee28b3893e7.mp4', './assets/5dce7778b34529fa286321dc18fb0476.jpg', 'Video AuraDigital di novembre 2026: «Sui Mac i virus non arrivano» è falso, gli infostealer', '«Sui Mac i virus non arrivano»? Falso. Novembre 2026.'),
+        v('./assets/98523944fbbc389f59b7368d57a2f787.mp4', './assets/39ff3ecf2a9e976652f57c94163e68f0.jpg', 'Video AuraDigital di novembre 2026: vuoi l’AI in ufficio? Parti dal Mac giusto', '«Vuoi l’AI in ufficio? Parti dal Mac giusto». Novembre 2026.'),
+        v('./assets/2904800bd0ea84cbe6655dd0706c9f5e.mp4', './assets/f6487429edd0419daa12f687df72ce99.jpg', 'Video AuraDigital di novembre 2026: iPad Pro, 5,1 mm', 'iPad Pro, 5,1 mm. Novembre 2026.'),
+        v('./assets/ba75569feafc705ced7dcfc7c002eafd.mp4', './assets/d42522723caea2037415f1f5801b9f59.jpg', 'Video AuraDigital di settembre 2026: il noleggio raccontato come un videogioco a piattaforme', 'Il noleggio come un videogioco: zero immobilizzo, upgrade costante, supporto incluso. Settembre 2026.') ] },
+      { name: 'Plus Italia', sector: 'Industria, B2B', cover: './assets/fc5b194d0c7dba4159df5c0610ae8c82.jpg', segs: [
+        v('./assets/26bb62dbd528ddef1bf968fa338c3caa.mp4', './assets/af2d110dc2539cb8d356d9aa3c16e748.jpg', 'Reel Plus Italia di gennaio 2026: quiz con le colleghe sulla storia dell’azienda', '«Quiz». Reel di gennaio 2026.'),
+        v('./assets/f3c7688447833323d8d4243396b78cf2.mp4', './assets/f076eb658edfd109530c42e46df3ef99.jpg', 'Reel Plus Italia di febbraio 2026: intervista tripla a tre persone dell’azienda', '«Intervista tripla». Reel di febbraio 2026.'),
+        v('./assets/f2690a399baeaed66e3cdb85415c40cb.mp4', './assets/4b7dc56a70a420db255c559eeb8fac21.jpg', 'Reel Plus Italia di dicembre 2025: Natale in ufficio, una busta rossa di auguri', '«Natale». Reel di dicembre 2025.'),
+        v('./assets/6269a5e8da2ceb5a27b2dfd68aa4c616.mp4', './assets/8db07b50c50d400604e003337ecd550c.jpg', 'Reel Plus Italia di ottobre 2026: TG Due Ruote, pioggia di biglietti per EICMA', '«TG Due Ruote»: i biglietti EICMA invadono lo schermo. Reel di ottobre 2026.') ] },
+      { name: 'IGM', sector: 'Ambiente', cover: './assets/abb53b38be2ba802eb055644b81c4226.jpg', segs: [
+        v('./assets/c440ede719a9cb06e336d119790bb83d.mp4', './assets/10a87a93d2a3a77e7451902c6194cf84.jpg', 'Video IGM Augusta di agosto 2026: la grigliata di Ferragosto raccontata come una chat', 'Augusta · La grigliata di Ferragosto, in chat. Agosto 2026.'),
+        v('./assets/1a9bcfb2c48c7601e9701b8443c09354.mp4', './assets/8595d0355b392a7124fdcf2925effea5.jpg', 'Video IGM Floridia di ottobre 2026: una lattina non finisce, si evolve', 'Floridia · «Una lattina non finisce. Si evolve». Ottobre 2026.'),
+        v('./assets/c91873ac4d1e0b224703851e9d30739f.mp4', './assets/65c1ffcff5dedab34547740b793123cb.jpg', 'Video IGM Giarre di ottobre 2026: il vetro non invecchia', 'Giarre · «Il vetro non invecchia». Ottobre 2026.'),
+        v('./assets/dab5f00f19dd97e533d8b6cbb403c9fb.mp4', './assets/ca1531cbd58b8f4e5ab16e536bfab386.jpg', 'Video IGM Priolo per il Capodanno: le 23:59 in paese, e il Gallo?', 'Priolo · «23:59. E il Gallo?». Capodanno.') ] },
+      { name: 'Scuola Nautica Magnano', sector: 'Formazione', cover: './assets/2be8bc6f0d28fcb3f86ffaa1af88511c.jpg', segs: [
+        v('./assets/5c996f61cdc77b87518f117f28db8ff0.mp4', './assets/71884f7ff78c77eaf3817f8da70b2753.jpg', 'Reel Scuola Nautica Magnano di novembre 2026: due fischi lunghi e uno breve, i segnali sonori in porto', '«Due fischi lunghi e uno breve»: i segnali sonori. Novembre 2026.'),
+        v('./assets/78281af878ec9f3ed5c17e9ec3082769.mp4', './assets/27464f9806559643d4ded342682c402a.jpg', 'Reel Scuola Nautica Magnano di ottobre 2026: vuoi la patente nautica? Una recensione a 5 stelle', '«Vuoi la patente nautica?». Ottobre 2026.'),
+        v('./assets/9dbdc740dc80f38e7c54020adde165b4.mp4', './assets/502ab2da2cb02dc3ad5c5ff1f1bf1ac0.jpg', 'Reel Scuola Nautica Magnano di ottobre 2026: una nuova sede, la stessa rotta', '«Una nuova sede, la stessa rotta». Ottobre 2026.'),
+        v('./assets/fb36e2b7af7d76540023c670c233c62f.mp4', './assets/3f374fe0238938a85d9dd4c66e7aea30.jpg', 'Reel Scuola Nautica Magnano di agosto 2026: gestire una scuola nautica è facilissimo', '«Gestire una scuola nautica è facilissimo». Agosto 2026.') ] }
+    ];
+    const cur = s.st >= 0 ? B[s.st] : B[0];
+    const seg = cur.segs[Math.min(s.seg, cur.segs.length - 1)];
+    const go = (d) => () => {
+      const n = s.seg + d;
+      if (n < 0) { if (s.st > 0) this.setState({ st: s.st - 1, seg: 0 }); return; }
+      if (n >= cur.segs.length) { if (s.st < B.length - 1) this.setState({ st: s.st + 1, seg: 0 }); else this.setState({ st: -1, seg: 0 }); return; }
+      this.setState({ seg: n });
+    };
+    const o = {
+      askLive: s.ask, askFirst: !s.ask,
+      askLabel: s.ask ? 'Torna alla prima schermata' : 'Apri Askesis qui',
+      tryAsk: () => this.setState({ ask: !s.ask }),
+      calcLive: s.calc, calcFirst: !s.calc,
+      calcLabel: s.calc ? 'Torna alla schermata Aggiungi' : 'Apri Calculon qui',
+      tryCalc: () => this.setState({ calc: !s.calc }),
+      bubbles: B.map((b, i) => ({ name: b.name, sector: b.sector, cover: b.cover, cls: 'bub i' + i, open: () => this.setState({ st: i, seg: 0 }) })),
+      storyOpen: s.st >= 0,
+      story: { name: cur.name, sector: cur.sector, cover: cur.cover, vid: seg[0], poster: seg[1], alt: seg[2], cap: seg[3], bars: cur.segs.map((x, i) => ({ cls: i < s.seg ? 'on' : (i === s.seg ? 'cur' : '') })) },
+      nextStory: go(1), prevStory: go(-1),
+      closeStory: () => this.setState({ st: -1, seg: 0 }),
+      prevName: B[(Math.max(s.st, 0) + B.length - 1) % B.length].name,
+      nextName: B[(Math.max(s.st, 0) + 1) % B.length].name,
+      prevClient: () => this.setState({ st: (s.st + B.length - 1) % B.length, seg: 0 }),
+      nextClient: () => this.setState({ st: (s.st + 1) % B.length, seg: 0 }),
+      sndOn: s.snd, sndOff: !s.snd, sndPressed: s.snd ? 'false' : 'true',
+      sndLabel: s.snd ? 'Togli l’audio' : 'Attiva l’audio',
+      toggleSnd: () => this.setState({ snd: !s.snd })
+    };
+    ['snm', 'adp'].forEach((k) => {
+      [1, 2, 3].forEach((n) => {
+        const on = s[k] === n;
+        o[k + n] = on;
+        o[k + 'P' + n] = on ? 'pip on' : 'pip';
+        o[k + 'H' + n] = k === 'snm' ? (on ? 'hot on' : 'hot') : (on ? 'fbox on' : 'fbox');
+        o[k + 'Go' + n] = () => { const u = {}; u[k] = n; this.setState(u); };
+      });
+    });
+    ['k1', 'k2', 'k3', 'p1', 'p2', 'p3', 'a1', 'a2', 'a3', 'g1', 'g2', 'g3', 'g4', 'g5', 'g6'].forEach((k) => {
+      const on = !!s.go[k];
+      o[k + 'Cls'] = on ? 'cb go' : 'cb';
+      o[k + 'Go'] = () => { const g = Object.assign({}, s.go); g[k] = true; this.setState({ go: g }); };
+    });
+    const NC = 5;
+    o.ncX = (-100 * s.nc) + '%';
+    o.ncLab = (s.nc + 1) + ' / ' + NC;
+    o.ncDots = Array.from({ length: NC }, (x, i) => ({ cls: i === s.nc ? 'on' : '' }));
+    o.ncPrev = () => this.setState({ nc: (s.nc + NC - 1) % NC });
+    o.ncNext = () => this.setState({ nc: (s.nc + 1) % NC });
+    o.nsX = (-100 * s.ns) + '%';
+    o.nsDots = Array.from({ length: 5 }, (x, i) => ({ cls: i === s.ns ? 'on' : '' }));
+    o.nsPrev = () => this.setState({ ns: (s.ns + 4) % 5 });
+    o.nsNext = () => this.setState({ ns: (s.ns + 1) % 5 });
+    [['np', 7], ['nt', 4]].forEach(([k, N]) => {
+      o[k + 'X'] = (-100 * s[k]) + '%';
+      o[k + 'Dots'] = Array.from({ length: N }, (x, i) => ({ cls: i === s[k] ? 'on' : '' }));
+      o[k + 'Prev'] = () => { const u = {}; u[k] = (s[k] + N - 1) % N; this.setState(u); };
+      o[k + 'Next'] = () => { const u = {}; u[k] = (s[k] + 1) % N; this.setState(u); };
+    });
+    return o;
+  }
+}
+</script>
+</body>
+</html>
